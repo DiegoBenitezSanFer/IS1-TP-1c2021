@@ -38,6 +38,10 @@ descripcionDeErrorDeNoSePuedeDividirPorUnNumeroMayor
 descripcionDeErrorDeNumerosNegativosNoSoportados
 	^ 'Numeros negativos fuera del dominio'! !
 
+!I class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:16:38'!
+minusTo: unNumero
+	^ unNumero previous.! !
+
 !I class methodsFor: 'as yet unclassified' stamp: 'ARM 4/5/2021 20:31:42'!
 next
 
@@ -66,18 +70,16 @@ II class
 
 	^self previous + unSumando next! !
 
-!II class methodsFor: 'as yet unclassified' stamp: 'DB 4/5/2021 21:44:30'!
+!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:20:21'!
 - unSustraendo
-
-	unSustraendo = I ifTrue: [^self previous].
 	
-	^self previous - unSustraendo previous
+	^ unSustraendo minusTo: self
 	
 	
 	
 	 ! !
 
-!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 19:56:28'!
+!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:31:10'!
 / unDivisor
 	(unDivisor isChildOf: self) ifTrue: [^ self error: self descripcionDeErrorDeNoSePuedeDividirPorUnNumeroMayor ].
 	self = unDivisor ifTrue: [^I].
@@ -87,12 +89,16 @@ II class
 descripcionDeErrorDeNoSePuedeDividirPorUnNumeroMayor
 	^ 'Las fracciones no pertenecen al dominio'.! !
 
-!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:04:25'!
+!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:48:48'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
 	next := III.
 	previous := I.! !
+
+!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:23:56'!
+minusTo: unNumero
+	^ self previous minusTo: unNumero previous.! !
 
 !II class methodsFor: 'as yet unclassified' stamp: 'ARM 4/5/2021 21:07:59'!
 next
@@ -125,7 +131,7 @@ II subclass: #III
 III class
 	instanceVariableNames: ''!
 
-!III class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:04:25'!
+!III class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:48:48'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -146,7 +152,7 @@ III subclass: #IIII
 IIII class
 	instanceVariableNames: ''!
 
-!IIII class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:04:25'!
+!IIII class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:48:48'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -167,7 +173,7 @@ IIII subclass: #IIIII
 IIIII class
 	instanceVariableNames: ''!
 
-!IIIII class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:04:25'!
+!IIIII class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:48:48'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
