@@ -11,17 +11,17 @@ DenotativeObject subclass: #I
 I class
 	instanceVariableNames: ''!
 
-!I class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 19:22:42'!
-* unNumero
-	^ unNumero! !
+!I class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:52:50'!
+* unMultiplicador
+	^ unMultiplicador! !
 
 !I class methodsFor: 'as yet unclassified' stamp: 'ARM 4/5/2021 20:46:25'!
 + unSumando
 
 	^unSumando next! !
 
-!I class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 19:18:09'!
-- unNumero
+!I class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:51:21'!
+- unSustraendo 
 	self error: self descripcionDeErrorDeNumerosNegativosNoSoportados.! !
 
 !I class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 19:29:05'!
@@ -38,9 +38,9 @@ descripcionDeErrorDeNoSePuedeDividirPorUnNumeroMayor
 descripcionDeErrorDeNumerosNegativosNoSoportados
 	^ 'Numeros negativos fuera del dominio'! !
 
-!I class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:16:38'!
-minusTo: unNumero
-	^ unNumero previous.! !
+!I class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:53:32'!
+minusTo: unMinuendo
+	^ unMinuendo previous.! !
 
 !I class methodsFor: 'as yet unclassified' stamp: 'ARM 4/5/2021 20:31:42'!
 next
@@ -61,9 +61,9 @@ DenotativeObject subclass: #II
 II class
 	instanceVariableNames: 'next previous'!
 
-!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 19:22:01'!
-* unNumero
-	^ unNumero + (self previous * unNumero ).! !
+!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:53:56'!
+* unMultiplicador
+	^ unMultiplicador + (self previous * unMultiplicador ).! !
 
 !II class methodsFor: 'as yet unclassified' stamp: 'ARM 4/5/2021 20:56:14'!
 + unSumando
@@ -89,16 +89,16 @@ II class
 descripcionDeErrorDeNoSePuedeDividirPorUnNumeroMayor
 	^ 'Las fracciones no pertenecen al dominio'.! !
 
-!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:48:48'!
+!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:54:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
 	next := III.
 	previous := I.! !
 
-!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:23:56'!
-minusTo: unNumero
-	^ self previous minusTo: unNumero previous.! !
+!II class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:54:14'!
+minusTo: unMinuendo
+	^ self previous minusTo: unMinuendo previous.! !
 
 !II class methodsFor: 'as yet unclassified' stamp: 'ARM 4/5/2021 21:07:59'!
 next
@@ -131,7 +131,7 @@ II subclass: #III
 III class
 	instanceVariableNames: ''!
 
-!III class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:48:48'!
+!III class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:54:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -152,7 +152,7 @@ III subclass: #IIII
 IIII class
 	instanceVariableNames: ''!
 
-!IIII class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:48:48'!
+!IIII class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:54:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -173,7 +173,7 @@ IIII subclass: #IIIII
 IIIII class
 	instanceVariableNames: ''!
 
-!IIIII class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:48:48'!
+!IIIII class methodsFor: 'as yet unclassified' stamp: 'cr 4/7/2021 20:54:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
