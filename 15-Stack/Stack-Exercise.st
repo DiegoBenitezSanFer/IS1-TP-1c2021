@@ -139,49 +139,79 @@ test10CanNotTopWhenThereAreNoObjectsInTheStack
 
 !classDefinition: #SentenceFinderByPrefixTest category: 'Stack-Exercise'!
 TestCase subclass: #SentenceFinderByPrefixTest
-	instanceVariableNames: ''
+	instanceVariableNames: 'sentenceFinder'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!SentenceFinderByPrefixTest methodsFor: 'nil' stamp: 'cr 4/26/2021 21:11:46'!
+setUp
+	sentenceFinder  _ SentenceFinderByPrefix new! !
+
+
+!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:16:18'!
+test01FindingElementsInEmptySentenceFinderReturnsAnEmptyCollection
+	|result|
+	result _ sentenceFinder find: ''.
+	self assert: result isEmpty.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:43:40'!
+test02WhenTheExpectedPrefixMatchAllElementsMustReturnAll
+	|result element1 element2|
+	element1  _ 'an element'.
+	element2  _ 'another element'.
+	sentenceFinder add: element1 ; add: element2 .
+	result _ sentenceFinder find: 'a'.
+	self assert: (result includes: element1) .
+	self assert: (result includes: element2)! !
+
+!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:52:50'!
+test03xxxx
+	self should: [sentenceFinder find: 'an '] raise: Error withMessageText: SentenceFinderByPrefix PrefixWithSpacesNotAllowedErrorDescription.
+	! !
 
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
 Object subclass: #OOStack
-	instanceVariableNames: 'elements'
+	instanceVariableNames: 'current size'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/25/2021 23:39:17'!
+!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:08:18'!
 initialize
-	elements _ OrderedCollection new.! !
+	current _ EmptyNode new.
+	size _ 0! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/25/2021 23:38:22'!
+!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 18:38:59'!
 isEmpty
-	
-	^elements isEmpty.! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 00:17:11'!
+	^ self size = 0
+! !
+
+!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:07:40'!
 pop
+	|currentValue|
+	currentValue _ current value.
+	current _ current previous.
+	size _ size - 1.
+	^ currentValue ! !
 
-	elements size = 0 ifTrue: [^ self error: self class  stackEmptyErrorDescription ].
-	^elements removeLast! !
-
-!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/25/2021 23:37:47'!
+!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:07:21'!
 push: anElement
+	current _ current add: anElement.
+	size _ size + 1.
+	^current value! !
 
-	^elements add: anElement! !
-
-!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/25/2021 23:48:13'!
+!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:06:58'!
 size
-	
-	^elements size! !
+	^size
+	! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 00:20:08'!
+!OOStack methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 18:37:01'!
 top
 
-	elements isEmpty ifTrue: [^ self error: self class stackEmptyErrorDescription ].
-	^ elements at: (elements size)! !
+	^ current value! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -195,9 +225,126 @@ stackEmptyErrorDescription
 	^ 'Stack is empty!!!!!!'! !
 
 
-!classDefinition: #SentenceFinderByPrefix category: 'Stack-Exercise'!
-Object subclass: #SentenceFinderByPrefix
+!classDefinition: #OOStackNode category: 'Stack-Exercise'!
+Object subclass: #OOStackNode
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
+
+!OOStackNode methodsFor: 'nil' stamp: 'cr 4/26/2021 20:53:06'!
+value
+	^ self subclassResponsibility ! !
+
+
+!OOStackNode methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 20:55:20'!
+add: anElement
+
+	^ NotEmptyNode with: anElement withPrevious: self! !
+
+!OOStackNode methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 20:52:53'!
+hasPrevious
+	^ self subclassResponsibility ! !
+
+!OOStackNode methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 20:53:00'!
+previous
+	^ self subclassResponsibility ! !
+
+
+!classDefinition: #EmptyNode category: 'Stack-Exercise'!
+OOStackNode subclass: #EmptyNode
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Exercise'!
+
+!EmptyNode methodsFor: 'nil' stamp: 'cr 4/26/2021 20:01:25'!
+value
+	^ self error: OOStack stackEmptyErrorDescription ! !
+
+
+!EmptyNode methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 19:17:52'!
+hasPrevious
+
+	^ false! !
+
+!EmptyNode methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 19:22:47'!
+previous
+	self value! !
+
+
+!classDefinition: #NotEmptyNode category: 'Stack-Exercise'!
+OOStackNode subclass: #NotEmptyNode
+	instanceVariableNames: 'previous value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Exercise'!
+
+
+!NotEmptyNode methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 19:18:12'!
+hasPrevious
+	
+	^ true! !
+
+!NotEmptyNode methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 18:44:59'!
+initializeWith: anElement withPrevious: aPreviousNode
+	value _ anElement.
+	previous  _ aPreviousNode ! !
+
+!NotEmptyNode methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 19:23:03'!
+previous
+	^ previous ! !
+
+!NotEmptyNode methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 18:41:48'!
+value
+	^ value! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'NotEmptyNode class' category: 'Stack-Exercise'!
+NotEmptyNode class
+	instanceVariableNames: ''!
+
+!NotEmptyNode class methodsFor: 'nil' stamp: 'cr 4/26/2021 18:44:17'!
+with: anElement withPrevious: aPreviousNode
+	^ NotEmptyNode new initializeWith: anElement withPrevious: aPreviousNode ! !
+
+
+!classDefinition: #SentenceFinderByPrefix category: 'Stack-Exercise'!
+Object subclass: #SentenceFinderByPrefix
+	instanceVariableNames: 'stack'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Stack-Exercise'!
+
+!SentenceFinderByPrefix methodsFor: 'nil' stamp: 'cr 4/26/2021 21:17:44'!
+initialize
+	stack _ OOStack new! !
+
+
+!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:31:03'!
+add: anElement 
+	stack push: anElement ! !
+
+!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:42:32'!
+allElements
+	|elements|
+	elements _ OrderedCollection new.
+	[stack isEmpty] whileFalse: [elements add: stack pop].
+	^elements ! !
+
+!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:41:21'!
+find: aPrefix
+	|stackElements|
+	stackElements _ self allElements.
+	^ stackElements select: [:element | element beginsWith: aPrefix ]! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'SentenceFinderByPrefix class' category: 'Stack-Exercise'!
+SentenceFinderByPrefix class
+	instanceVariableNames: ''!
+
+!SentenceFinderByPrefix class methodsFor: 'as yet unclassified' stamp: 'cr 4/26/2021 21:52:24'!
+PrefixWithSpacesNotAllowedErrorDescription
+	^ 'prefix with spaces not allowed'! !
