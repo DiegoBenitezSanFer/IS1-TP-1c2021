@@ -159,87 +159,87 @@ TestCase subclass: #SentenceFinderByPrefixTest
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefixTest methodsFor: 'setUp/tearDown' stamp: 'cr 4/29/2021 16:04:26'!
+!SentenceFinderByPrefixTest methodsFor: 'setUp/tearDown' stamp: 'DB 4/29/2021 16:59:01'!
 setUp
 	stack _ OOStack new.
-	sentenceFinder _ SentenceFinderByPrefix new.
+	sentenceFinder _ SentenceFinderByPrefix with: stack.
 	
 	element1  _ 'an element'.
 	element2  _ 'another element'.
 	element3 _ 'not present'.! !
 
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'cr 4/29/2021 16:09:32'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'DB 4/29/2021 16:59:13'!
 test01FindingElementsInEmptySentenceFinderReturnsAnEmptyCollection
 	|result|
-	result _ sentenceFinder find: 'prefix' onStack: stack.
+	
+	result _ sentenceFinder find: 'prefix'.
 	self assert: result isEmpty.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'cr 4/29/2021 16:09:56'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'DB 4/29/2021 16:59:22'!
 test02WhenTheExpectedPrefixMatchAllElementsMustReturnAll
 	|result|
 
 	stack push: element1 ; push: element2 .
-	
-	result _ sentenceFinder find: 'a' onStack: stack.
+		
+	result _ sentenceFinder find: 'a'.
 	
 	self assert: (result includes: element1) .
 	self assert: (result includes: element2)! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'cr 4/29/2021 16:10:12'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'DB 4/29/2021 16:59:36'!
 test03EmptyPrefixCannotBeValid
-
-	self should: [sentenceFinder find: '' onStack: stack] 
+	
+	self should: [sentenceFinder find: ''] 
 		raise: Error 
 		withMessageText: SentenceFinderByPrefix EmptyPrefixIsNotAllowedErrorDescription .
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'cr 4/29/2021 16:10:31'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'DB 4/29/2021 16:59:42'!
 test04SpacePrefixCannotBeValid
 
-	self should: [sentenceFinder find: ' ' onStack: stack] 
+	self should: [sentenceFinder find: ' '] 
 		raise: Error 
 		withMessageText: SentenceFinderByPrefix PrefixWithSpacesNotAllowedErrorDescription.
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'cr 4/29/2021 16:11:24'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'DB 4/29/2021 16:59:46'!
 test05PrefixWithSpacesCannotBeValid
 
-	self should: [sentenceFinder find: 'Prefix with spaces' onStack: stack] 
+	self should: [sentenceFinder find: 'Prefix with spaces'] 
 		raise: Error 
 		withMessageText: SentenceFinderByPrefix PrefixWithSpacesNotAllowedErrorDescription.
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'cr 4/29/2021 16:13:26'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'DB 4/29/2021 16:59:52'!
 test06FindingWordsDoesNotModifyInnerStackOrder
 	
 	stack push: element1 ; push: element2 .
 	
-	sentenceFinder find: 'a' onStack: stack.
+	sentenceFinder find: 'a' .
 	
 	self assert: stack pop equals: element2.
 	self assert: stack pop equals: element1.	
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'cr 4/29/2021 16:13:58'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'DB 4/29/2021 16:59:58'!
 test07FindingWordsNotMatchingPrefixMustNotBeReturned
 	|result|
 	
 	stack push: element1 ; push: element2 ; push: element3 .
-	
-	result _ sentenceFinder find: 'a' onStack: stack.
+	result _ sentenceFinder find: 'a' .
 	
 	self deny: (result includes: element3)
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'cr 4/29/2021 16:14:48'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'DB 4/29/2021 17:00:02'!
 test08FindMethodAlwaysReturnSameOrder
 	|firstResult secondResult|
 	
 	stack push: element1 ; push: element2 .
 	
-	firstResult _ sentenceFinder find: 'a' onStack: stack.
-	secondResult _ sentenceFinder find: 'a' onStack: stack.
+	firstResult _ sentenceFinder find: 'a' .
+	secondResult _ sentenceFinder find: 'a'.
 	
 	self assert: firstResult equals: secondResult 
 	! !
@@ -376,39 +376,44 @@ with: anElement andPrevious: aPreviousNode
 
 !classDefinition: #SentenceFinderByPrefix category: 'Stack-Exercise'!
 Object subclass: #SentenceFinderByPrefix
-	instanceVariableNames: ''
+	instanceVariableNames: 'backupStack stack'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefix methodsFor: 'operations' stamp: 'cr 4/29/2021 16:08:24'!
-find: aPrefix onStack: anStack
-	|foundSentences backupStack |
+!SentenceFinderByPrefix methodsFor: 'operations' stamp: 'DB 4/29/2021 16:54:34'!
+find: aPrefix
+	|foundSentences  |
 	
 	self validatePrefix: aPrefix.
 	
-	backupStack _ OOStack new.
-	foundSentences _ self selectSentensesStartingWith: aPrefix onStack: anStack AndBackupStackOn: backupStack.
+	foundSentences _ self selectSentensesStartingWith: aPrefix.
 	
-	self restoreStack: anStack with: backupStack.
+	self restoreStack.
 
 	^foundSentences 
 	
 	! !
 
 
-!SentenceFinderByPrefix methodsFor: 'private' stamp: 'cr 4/29/2021 16:08:44'!
-restoreStack: anStack with: backupStack
+!SentenceFinderByPrefix methodsFor: 'private' stamp: 'DB 4/29/2021 17:00:32'!
+initializeWith: aStack
 
-	[backupStack isEmpty] whileFalse: [anStack push: backupStack pop]! !
+	backupStack _ OOStack new.
+	stack _ aStack.! !
 
-!SentenceFinderByPrefix methodsFor: 'private' stamp: 'cr 4/29/2021 16:07:58'!
-selectSentensesStartingWith: aPrefix onStack: anStack AndBackupStackOn: backupStack
+!SentenceFinderByPrefix methodsFor: 'private' stamp: 'DB 4/29/2021 17:00:37'!
+restoreStack
+
+	[backupStack isEmpty] whileFalse: [stack push: backupStack pop]! !
+
+!SentenceFinderByPrefix methodsFor: 'private' stamp: 'DB 4/29/2021 17:00:41'!
+selectSentensesStartingWith: aPrefix
 	|foundSentences|
 	
 	foundSentences _ OrderedCollection new.
-	[anStack isEmpty] whileFalse: [ | aSentence |
-		aSentence := anStack pop.
+	[stack isEmpty] whileFalse: [ | aSentence |
+		aSentence := stack pop.
 		(aSentence beginsWith: aPrefix) ifTrue: [ foundSentences add: aSentence].
 		backupStack push: aSentence
 	].
