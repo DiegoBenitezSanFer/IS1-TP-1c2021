@@ -47,6 +47,46 @@ test01WhenProcessingEmtpyInstructionsMustRemainInPlace
 	
 	! !
 
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:20:30'!
+test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing
+	|coordinate robot|
+	coordinate _ 10@10.
+	robot _ MarsRover at: coordinate facing: #North.
+
+	self should: [robot interpretPackage: 'z' ] 
+		raise: Error withMessageText: [^MarsRover invalidCommandErrorDescription].
+		
+	
+	
+	
+	
+	! !
+
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:29:07'!
+test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates
+	
+	self assertARobotFacing: #West process: 'bb' modifiesItsPositionBy: 2@0 endFacing: #West
+	
+	
+	
+	! !
+
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:36:33'!
+test20WhenProcessingMoreThanOneCommandButOneCommandIsInvalidMustChangeItsCordinatesUntilTheInvalidCommand
+	
+	|coordinate robot|
+	coordinate _ 10@10.
+	robot _ MarsRover at: coordinate facing: #North.
+
+	self should: [robot interpretPackage: 'bbzb' ] 
+		raise: Error withMessageText: [^MarsRover invalidCommandErrorDescription].
+		
+	self assert:(robot isAt: 2@0 facing: #West)
+	
+	
+	
+	! !
+
 
 !MarsRoverTest methodsFor: 'robot-rotating-rigth' stamp: 'crivera 5/14/2021 19:27:43'!
 test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint
@@ -144,41 +184,231 @@ test17WhenMovingBackwardsFacingWestMustChangeItsCordinates
 	! !
 
 
-!classDefinition: #MarsRover category: 'MarsRover'!
-Object subclass: #MarsRover
-	instanceVariableNames: 'currentPosition cardinalPoint robotCommands'
+!classDefinition: #FacingRobot category: 'MarsRover'!
+Object subclass: #FacingRobot
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'MarsRover'!
 
-!MarsRover methodsFor: 'initialization' stamp: 'crivera 5/14/2021 20:37:40'!
+!FacingRobot methodsFor: 'private' stamp: 'crivera 5/16/2021 21:03:44'!
+facing
+	^self class facing
+! !
+
+
+!FacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:47:30'!
+rotateLeft: aRobot
+	self subclassResponsibility 
+! !
+
+!FacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:40:41'!
+rotateRigth: aRobot
+	self subclassResponsibility 
+! !
+
+
+!FacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 18:55:28'!
+moveBackward: aRobot
+	self subclassResponsibility 
+! !
+
+!FacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 19:38:12'!
+moveForward: aRobot
+	self subclassResponsibility 
+! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'FacingRobot class' category: 'MarsRover'!
+FacingRobot class
+	instanceVariableNames: ''!
+
+!FacingRobot class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:10:23'!
+facing
+	self subclassResponsibility ! !
+
+!FacingRobot class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:14:20'!
+facingTo: aCoordinatePoint
+	^ self facing = aCoordinatePoint
+! !
+
+!FacingRobot class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:12:39'!
+for: aCoordinatePoint
+	self subclasses detect: [:subClass | subClass facingTo: aCoordinatePoint ] ifFound: [:subClass | ^ subClass new ] ifNone: []! !
+
+
+!classDefinition: #EastFacingRobot category: 'MarsRover'!
+FacingRobot subclass: #EastFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!EastFacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:52:59'!
+rotateLeft: aRobot 
+	aRobot cardinalPoint: NorthFacingRobot new! !
+
+!EastFacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:45:00'!
+rotateRigth: aRobot 
+	aRobot cardinalPoint: SouthFacingRobot new! !
+
+
+!EastFacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 19:29:53'!
+moveBackward: aRobot
+
+	aRobot moveBy: (-1@0)! !
+
+!EastFacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 19:36:30'!
+moveForward: aRobot
+
+	aRobot moveBy: (1@0)! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'EastFacingRobot class' category: 'MarsRover'!
+EastFacingRobot class
+	instanceVariableNames: ''!
+
+!EastFacingRobot class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:30:36'!
+facing
+	^ #East! !
+
+
+!classDefinition: #NorthFacingRobot category: 'MarsRover'!
+FacingRobot subclass: #NorthFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!NorthFacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:51:22'!
+rotateLeft: aRobot
+	
+	aRobot cardinalPoint: WestFacingRobot new! !
+
+!NorthFacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:43:14'!
+rotateRigth: aRobot
+	
+	aRobot cardinalPoint: EastFacingRobot new! !
+
+
+!NorthFacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 18:55:07'!
+moveBackward: aRobot
+	
+	aRobot moveBy: (0@-1)! !
+
+!NorthFacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 19:35:43'!
+moveForward: aRobot
+	
+	aRobot moveBy: (0@1)! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'NorthFacingRobot class' category: 'MarsRover'!
+NorthFacingRobot class
+	instanceVariableNames: ''!
+
+!NorthFacingRobot class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:10:44'!
+facing
+	^ #North
+! !
+
+
+!classDefinition: #SouthFacingRobot category: 'MarsRover'!
+FacingRobot subclass: #SouthFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!SouthFacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:48:29'!
+rotateLeft: aRobot 
+	aRobot cardinalPoint: EastFacingRobot new! !
+
+!SouthFacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:46:02'!
+rotateRigth: aRobot 
+	aRobot cardinalPoint: WestFacingRobot new! !
+
+
+!SouthFacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 19:32:16'!
+moveBackward: aRobot
+	
+	aRobot moveBy: (0@1)! !
+
+!SouthFacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 19:37:09'!
+moveForward: aRobot
+	
+	aRobot moveBy: (0@-1)! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'SouthFacingRobot class' category: 'MarsRover'!
+SouthFacingRobot class
+	instanceVariableNames: ''!
+
+!SouthFacingRobot class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:31:18'!
+facing
+	^ #South! !
+
+
+!classDefinition: #WestFacingRobot category: 'MarsRover'!
+FacingRobot subclass: #WestFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!WestFacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:54:01'!
+rotateLeft: aRobot 
+	aRobot cardinalPoint: SouthFacingRobot new! !
+
+!WestFacingRobot methodsFor: 'rotate' stamp: 'crivera 5/16/2021 19:41:13'!
+rotateRigth: aRobot
+	aRobot cardinalPoint: NorthFacingRobot new! !
+
+
+!WestFacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 19:33:45'!
+moveBackward: aRobot
+	aRobot moveBy: (1@0)! !
+
+!WestFacingRobot methodsFor: 'move' stamp: 'crivera 5/16/2021 19:39:15'!
+moveForward: aRobot
+	aRobot moveBy: (-1@0)! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'WestFacingRobot class' category: 'MarsRover'!
+WestFacingRobot class
+	instanceVariableNames: ''!
+
+!WestFacingRobot class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:32:57'!
+facing
+	^ #West! !
+
+
+!classDefinition: #MarsRover category: 'MarsRover'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition robotCommands robotFacing'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!MarsRover methodsFor: 'initialization' stamp: 'crivera 5/16/2021 20:51:52'!
 initializeAt: aCoordinate facing: aCoordinatePoint 
 	currentPosition := aCoordinate.
-	cardinalPoint := aCoordinatePoint.
+	robotFacing := FacingRobot for: aCoordinatePoint.
 	
 	robotCommands := OrderedCollection new.
-	
 	RobotCommand subclasses do: [:commandClass | robotCommands add: (commandClass new) ]
 ! !
 
 
-!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 20:40:24'!
-cardinalPoint
-	^ cardinalPoint ! !
-
-!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 21:15:47'!
-cardinalPoint: aCardinalPoint
-	 cardinalPoint _ aCardinalPoint ! !
-
-!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 20:40:56'!
-currentPosition
-	^ currentPosition ! !
-
-!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 21:07:33'!
-interpretPackage: aString 
-	aString isEmptyOrNil ifTrue: [^ self].
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:31:33'!
+interpretPackage: commands 
 	
-	robotCommands detect: [:robotCommand | robotCommand canHandle: aString ] ifFound: [:robotCommand | robotCommand doOn: self] ifNone: []
+	commands do: [:aCommand | self processCommand: aCommand]
+	
 	
 	
 	
@@ -186,14 +416,42 @@ interpretPackage: aString
 	
 	! !
 
-!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 19:11:12'!
-isAt: aCoordinate facing: aPosition 
-	^ currentPosition = aCoordinate and: cardinalPoint = aPosition! !
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:46:23'!
+moveBackward
+	robotFacing moveBackward: self! !
 
-!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 20:45:05'!
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:46:23'!
+moveForward
+	robotFacing moveForward: self! !
+
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:46:23'!
+rotateLeft
+	robotFacing rotateLeft: self! !
+
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:46:23'!
+rotateRigth
+	robotFacing rotateRigth: self! !
+
+
+!MarsRover methodsFor: 'private' stamp: 'crivera 5/16/2021 20:46:23'!
+cardinalPoint: aCardinalPoint
+	 robotFacing _ aCardinalPoint ! !
+
+!MarsRover methodsFor: 'private' stamp: 'crivera 5/14/2021 20:45:05'!
 moveBy: aDelta
 
 	currentPosition _ currentPosition + aDelta ! !
+
+!MarsRover methodsFor: 'private' stamp: 'crivera 5/16/2021 20:32:32'!
+processCommand: aCommand
+	robotCommands detect: [:robotCommand | robotCommand canHandle: aCommand ] 
+		ifFound: [:robotCommand | robotCommand doOn: self] 
+		ifNone: [^self error: self class invalidCommandErrorDescription ]! !
+
+
+!MarsRover methodsFor: 'testing' stamp: 'crivera 5/16/2021 21:02:51'!
+isAt: aCoordinate facing: aPosition 
+	^ currentPosition = aCoordinate and: robotFacing facing = aPosition! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -206,6 +464,9 @@ at: aCoordinate facing: aCoordinatePoint
 	^self new initializeAt: aCoordinate facing: aCoordinatePoint ! !
 
 
+!MarsRover class methodsFor: 'error-descriptions' stamp: 'crivera 5/16/2021 20:10:59'!
+invalidCommandErrorDescription
+	^ 'invalid command'! !
 
 
 !classDefinition: #RobotCommand category: 'MarsRover'!
@@ -235,17 +496,16 @@ RobotCommand subclass: #BackwardCommand
 	poolDictionaries: ''
 	category: 'MarsRover'!
 
-!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 20:56:27'!
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:39:26'!
 doOn: aRobot
 
-		aRobot cardinalPoint = #North ifTrue: [aRobot moveBy: (0@-1)].
-		aRobot cardinalPoint = #East ifTrue: [aRobot moveBy: (-1@0)].
-		aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@1)].
-		aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (1@0)]! !
+	aRobot moveBackward
+		
+		! !
 
-!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 20:53:46'!
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:33:05'!
 myCommand
-	^ 'b'! !
+	^ $b! !
 
 
 !classDefinition: #ForwardCommand category: 'MarsRover'!
@@ -255,17 +515,14 @@ RobotCommand subclass: #ForwardCommand
 	poolDictionaries: ''
 	category: 'MarsRover'!
 
-!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 20:44:20'!
+!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:37:38'!
 doOn: aRobot
 	
-	aRobot cardinalPoint = #North ifTrue: [aRobot moveBy: (0@1)].
-	aRobot cardinalPoint = #East ifTrue: [aRobot moveBy: (1@0)].
-	aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@-1)].
-	aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (-1@0)]! !
+	aRobot moveForward! !
 
-!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 20:25:53'!
+!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:33:17'!
 myCommand
-	^ 'f'! !
+	^ $f! !
 
 
 !classDefinition: #LeftRotationCommand category: 'MarsRover'!
@@ -275,17 +532,14 @@ RobotCommand subclass: #LeftRotationCommand
 	poolDictionaries: ''
 	category: 'MarsRover'!
 
-!LeftRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 21:11:01'!
+!LeftRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:54:10'!
 doOn: aRobot
+	
+	aRobot rotateLeft! !
 
-	aRobot cardinalPoint = #South ifTrue: [^aRobot cardinalPoint: #East].
-	aRobot cardinalPoint = #East ifTrue: [^aRobot cardinalPoint: #North].
-	aRobot cardinalPoint = #North ifTrue: [^aRobot cardinalPoint: #West].
-	aRobot cardinalPoint = #West ifTrue: [^aRobot cardinalPoint: #South]! !
-
-!LeftRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 21:05:14'!
+!LeftRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:33:27'!
 myCommand
-	^ 'l'! !
+	^ $l! !
 
 
 !classDefinition: #RigthRotationCommand category: 'MarsRover'!
@@ -295,15 +549,12 @@ RobotCommand subclass: #RigthRotationCommand
 	poolDictionaries: ''
 	category: 'MarsRover'!
 
-!RigthRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 21:09:14'!
+!RigthRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:45:32'!
 doOn: aRobot
+	
+	aRobot rotateRigth! !
 
-	aRobot cardinalPoint = #West ifTrue: [^aRobot cardinalPoint: #North].
-	aRobot cardinalPoint = #North ifTrue: [^aRobot cardinalPoint: #East].
-	aRobot cardinalPoint = #East ifTrue: [^aRobot cardinalPoint: #South].
-	aRobot cardinalPoint = #South ifTrue: [^aRobot cardinalPoint: #West]! !
-
-!RigthRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/14/2021 21:03:32'!
+!RigthRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:33:35'!
 myCommand 
 
-	^ 'r'! !
+	^ $r! !

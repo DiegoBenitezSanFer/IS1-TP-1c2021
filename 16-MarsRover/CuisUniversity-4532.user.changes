@@ -7104,3 +7104,2526 @@ PASSED!
 
 !testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/14/2021 21:15:55'!
 PASSED!
+
+----QUIT----(14 May 2021 21:33:31) CuisUniversity-4532.image priorSource: 16930822!
+
+----STARTUP---- (16 May 2021 18:32:05) as /Users/crivera/Documents/Facultad/is1/cuis/macos64/CuisUniversity-4532.image!
+
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 18:34:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 18:34:22'!
+PASSED!
+!MarsRover methodsFor: 'initialization' stamp: 'crivera 5/16/2021 18:41:51' prior: 50863498!
+initializeAt: aCoordinate facing: aCoordinatePoint 
+	currentPosition := aCoordinate.
+	cardinalPoint := aCoordinatePoint.
+	
+	robotCommands := OrderedCollection new.
+	RobotCommand subclasses do: [:commandClass | robotCommands add: (commandClass new) ]
+! !
+
+Object subclass: #CoordinatePointStateYYYY
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #CoordinatePointStateYYYY category: 'MarsRover' stamp: 'crivera 5/16/2021 18:46:09'!
+Object subclass: #CoordinatePointStateYYYY
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classRenamed: #CoordinatePointStateYYYY as: #YYYY-CoordinatePointState stamp: 'crivera 5/16/2021 18:46:26'!
+Smalltalk renameClassNamed: #CoordinatePointStateYYYY as: #YYYY-CoordinatePointState!
+
+!classRenamed: #YYYY-CoordinatePointState as: #YYYYCoordinatePointState stamp: 'crivera 5/16/2021 18:47:13'!
+Smalltalk renameClassNamed: #YYYY-CoordinatePointState as: #YYYYCoordinatePointState!
+
+YYYYCoordinatePointState subclass: #NorthFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #NorthFacingRobot category: 'MarsRover' stamp: 'crivera 5/16/2021 18:47:41'!
+YYYYCoordinatePointState subclass: #NorthFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!YYYYCoordinatePointState methodsFor: 'nil' stamp: 'crivera 5/16/2021 18:49:27'!
+moveBackwards: aRobot
+	self subclassResponsibility 
+! !
+!NorthFacingRobot methodsFor: 'no messages' stamp: 'crivera 5/16/2021 18:55:07'!
+moveBackward: aRobot
+	
+	aRobot moveBy: (0@-1)! !
+!YYYYCoordinatePointState methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 18:55:28'!
+moveBackward: aRobot
+	self subclassResponsibility 
+! !
+
+!methodRemoval: YYYYCoordinatePointState #moveBackwards: stamp: 'crivera 5/16/2021 18:55:28'!
+moveBackwards: aRobot
+	self subclassResponsibility 
+!
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 18:55:55' prior: 50864072 overrides: 50863509!
+doOn: aRobot
+
+		aRobot cardinalPoint = #North ifTrue: [aRobot moveBy: (0@-1)].
+		aRobot cardinalPoint = #East ifTrue: [aRobot moveBy: (-1@0)].
+		aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@1)].
+		aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (1@0)].
+		
+		aRobot moveBackward.! !
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'crivera 5/16/2021 18:56:58'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition cardinalPoint robotCommands coorditatePointState'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 18:56:57'!
+moveBackward
+	coorditatePointState moveBackward: self! !
+!MarsRover methodsFor: 'initialization' stamp: 'crivera 5/16/2021 18:58:38' prior: 50865176!
+initializeAt: aCoordinate facing: aCoordinatePoint 
+	currentPosition := aCoordinate.
+	cardinalPoint := YYYYCoordinatePointState for: aCoordinatePoint.
+	
+	robotCommands := OrderedCollection new.
+	RobotCommand subclasses do: [:commandClass | robotCommands add: (commandClass new) ]
+! !
+!YYYYCoordinatePointState class methodsFor: 'no messages' stamp: 'crivera 5/16/2021 18:59:39'!
+for: aCoordinatePoint
+	! !
+!YYYYCoordinatePointState class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:01:39' prior: 50865283!
+for: aCoordinatePoint
+	self subclasses select: [:subClass | subClass facingTo: aCoordinatePoint ]! !
+!YYYYCoordinatePointState class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:03:48' prior: 50865288!
+for: aCoordinatePoint
+	self subclasses detect: [:subClass | subClass facingTo: aCoordinatePoint ] ifFound: [:subClass | ^ subClass new ] ifNone: []! !
+!YYYYCoordinatePointState methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:04:26'!
+facingTo: aCoordinatePoint
+	self subclassResponsibility 
+! !
+!NorthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:05:04'!
+facing
+	^ #North
+! !
+!YYYYCoordinatePointState methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:05:19'!
+facing
+	self subclassResponsibility ! !
+!YYYYCoordinatePointState methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:05:41' prior: 50865303!
+facingTo: aCoordinatePoint
+	^ self facing = aCoordinatePoint 
+! !
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:06:37' prior: 50865245 overrides: 50863509!
+doOn: aRobot
+
+		aRobot cardinalPoint = #East ifTrue: [aRobot moveBy: (-1@0)].
+		aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@1)].
+		aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (1@0)].
+		
+		aRobot moveBackward.! !
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:07:22' prior: 50865323 overrides: 50863509!
+doOn: aRobot
+
+		aRobot moveBackward.
+		
+		aRobot cardinalPoint = #East ifTrue: [aRobot moveBy: (-1@0)].
+		aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@1)].
+		aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (1@0)].
+		
+		! !
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:07:33'!
+ERROR!
+
+self superclass!
+!YYYYCoordinatePointState methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:09:44' prior: 50865317!
+facingTo: aCoordinatePoint
+	^ self facing = aCoordinatePoint 
+! !
+!YYYYCoordinatePointState class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:09:55'!
+facingTo: aCoordinatePoint
+	^ self facing = aCoordinatePoint 
+! !
+!YYYYCoordinatePointState class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:10:23'!
+facing
+	self subclassResponsibility ! !
+!NorthFacingRobot class methodsFor: 'no messages' stamp: 'crivera 5/16/2021 19:10:44' overrides: 50865363!
+facing
+	^ #North
+! !
+
+!methodRemoval: YYYYCoordinatePointState #facing stamp: 'crivera 5/16/2021 19:11:12'!
+facing
+	self subclassResponsibility !
+
+!methodRemoval: YYYYCoordinatePointState #facingTo: stamp: 'crivera 5/16/2021 19:11:16'!
+facingTo: aCoordinatePoint
+	^ self facing = aCoordinatePoint 
+!
+
+!methodRemoval: NorthFacingRobot #facing stamp: 'crivera 5/16/2021 19:11:24'!
+facing
+	^ #North
+!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:11:53'!
+ERROR!
+!YYYYCoordinatePointState class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:12:27' prior: 50865295!
+for: aCoordinatePoint
+	^self subclasses detect: [:subClass | subClass facingTo: aCoordinatePoint ] ifFound: [:subClass | ^ subClass new ] ifNone: []! !
+!YYYYCoordinatePointState class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:12:39' prior: 50865389!
+for: aCoordinatePoint
+	self subclasses detect: [:subClass | subClass facingTo: aCoordinatePoint ] ifFound: [:subClass | ^ subClass new ] ifNone: []! !
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:12:58'!
+ERROR!
+
+YYYYCoordinatePointState subclasses !
+
+self facing = aCoordinatePoint !
+!YYYYCoordinatePointState class methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:14:20' prior: 50865357!
+facingTo: aCoordinatePoint
+	^ self facing = aCoordinatePoint
+! !
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition robotCommands coorditatePointState'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'crivera 5/16/2021 19:15:18'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition robotCommands coorditatePointState'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition robotCommands cardinalPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'crivera 5/16/2021 19:15:50'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition robotCommands cardinalPoint'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:16:17' prior: 50865266!
+moveBackward
+	cardinalPoint moveBackward: self! !
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:16:24'!
+FAILURE!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:17:30' prior: 50861318!
+isAt: aCoordinate facing: aPosition 
+	^ currentPosition = aCoordinate and: cardinalPoint facing = aPosition! !
+!NorthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:22:44'!
+facing
+	^ #North
+! !
+!YYYYCoordinatePointState methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:22:58'!
+facing
+	self subclassResponsibility 
+! !
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:27:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:27:16'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:16'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:16'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:27:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:27:36'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:36'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:36'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:27:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:27:42'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:42'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:42'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:42'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:27:51'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:28:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:28:04'!
+PASSED!
+
+YYYYCoordinatePointState subclass: #EastFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #EastFacingRobot category: 'MarsRover' stamp: 'crivera 5/16/2021 19:28:39'!
+YYYYCoordinatePointState subclass: #EastFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!EastFacingRobot methodsFor: 'no messages' stamp: 'crivera 5/16/2021 19:28:56' overrides: 50865466!
+facing
+	^ #East! !
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:29:31' prior: 50865335 overrides: 50863509!
+doOn: aRobot
+
+		aRobot moveBackward.
+
+		aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@1)].
+		aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (1@0)].
+		
+		! !
+!EastFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:29:53' overrides: 50865234!
+moveBackward: aRobot
+
+	aRobot moveBy: (-1@0)! !
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:30:01'!
+ERROR!
+!EastFacingRobot class methodsFor: 'no messages' stamp: 'crivera 5/16/2021 19:30:36' overrides: 50865363!
+facing
+	^ #East! !
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:30:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:30:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:30:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:30:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:30:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:30:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:30:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:30:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:30:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:30:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:30:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:30:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:30:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:30:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:30:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:30:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:30:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:30:50'!
+ERROR!
+
+YYYYCoordinatePointState subclass: #SouthFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #SouthFacingRobot category: 'MarsRover' stamp: 'crivera 5/16/2021 19:31:05'!
+YYYYCoordinatePointState subclass: #SouthFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!SouthFacingRobot class methodsFor: 'no messages' stamp: 'crivera 5/16/2021 19:31:18' overrides: 50865363!
+facing
+	^ #South! !
+!SouthFacingRobot methodsFor: 'no messages' stamp: 'crivera 5/16/2021 19:31:34' overrides: 50865466!
+facing 
+	^ #South! !
+!SouthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:31:48' overrides: 50865234!
+moveBackward: aRobot
+	
+	! !
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:32:05' prior: 50865732 overrides: 50863509!
+doOn: aRobot
+
+		aRobot moveBackward.
+
+		aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (1@0)].
+		
+		! !
+!SouthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:32:16' prior: 50865853 overrides: 50865234!
+moveBackward: aRobot
+	
+	aRobot moveBy: (0@1)! !
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:32:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:32:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:32:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:32:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:32:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:32:26'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:32:26'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:32:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:32:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:32:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:32:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:32:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:32:26'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:32:26'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:32:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:32:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:32:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:32:26'!
+ERROR!
+
+YYYYCoordinatePointState subclass: #WestFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #WestFacingRobot category: 'MarsRover' stamp: 'crivera 5/16/2021 19:32:40'!
+YYYYCoordinatePointState subclass: #WestFacingRobot
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!WestFacingRobot class methodsFor: 'no messages' stamp: 'crivera 5/16/2021 19:32:57' overrides: 50865363!
+facing
+	^ #West! !
+!WestFacingRobot methodsFor: 'no messages' stamp: 'crivera 5/16/2021 19:33:05' overrides: 50865466!
+facing
+	^ #West! !
+!WestFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:33:19' overrides: 50865234!
+moveBackward: aRobot
+	! !
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:33:34' prior: 50865858 overrides: 50863509!
+doOn: aRobot
+
+		aRobot moveBackward
+		
+		! !
+!WestFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:33:45' prior: 50865969 overrides: 50865234!
+moveBackward: aRobot
+	aRobot moveBy: (1@0)! !
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:33:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:33:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:33:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:33:54'!
+PASSED!
+!NorthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:34:40'!
+moveForward: aRobot
+	! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:34:56'!
+moveForward
+	cardinalPoint moveBackward: self! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:35:03' prior: 50866005!
+moveForward
+	cardinalPoint moveForward: self! !
+!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:35:25' prior: 50863580 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot moveForward.
+	aRobot cardinalPoint = #North ifTrue: [aRobot moveBy: (0@1)].
+	aRobot cardinalPoint = #East ifTrue: [aRobot moveBy: (1@0)].
+	aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@-1)].
+	aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (-1@0)]! !
+!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:35:26' prior: 50866016 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot moveForward.
+	
+	aRobot cardinalPoint = #North ifTrue: [aRobot moveBy: (0@1)].
+	aRobot cardinalPoint = #East ifTrue: [aRobot moveBy: (1@0)].
+	aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@-1)].
+	aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (-1@0)]! !
+!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:35:35' prior: 50866029 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot moveForward.
+	
+	aRobot cardinalPoint = #East ifTrue: [aRobot moveBy: (1@0)].
+	aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@-1)].
+	aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (-1@0)]! !
+!NorthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:35:43' prior: 50866001!
+moveForward: aRobot
+	
+	aRobot moveBy: (0@1)! !
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:35:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:35:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:35:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:35:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:35:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:35:50'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:35:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:35:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:35:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:35:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:35:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:35:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:35:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:35:50'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:35:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:35:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:35:50'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:35:50'!
+PASSED!
+!EastFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:36:09'!
+moveForward: aRobot
+
+	aRobot moveBy: (-1@0)! !
+!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:36:20' prior: 50866042 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot moveForward.
+	
+	aRobot cardinalPoint = #South ifTrue: [aRobot moveBy: (0@-1)].
+	aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (-1@0)]! !
+!EastFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:36:30' prior: 50866135!
+moveForward: aRobot
+
+	aRobot moveBy: (1@0)! !
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:36:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:36:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:36:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:36:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:36:40'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:36:40'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:36:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:36:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:36:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:36:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:36:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:36:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:36:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:36:40'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:36:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:36:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:36:40'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:36:40'!
+PASSED!
+!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:36:57' prior: 50866141 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot moveForward.
+	
+	aRobot cardinalPoint = #West ifTrue: [aRobot moveBy: (-1@0)]! !
+!SouthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:37:09'!
+moveForward: aRobot
+	
+	aRobot moveBy: (0@-1)! !
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:37:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:37:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:37:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:37:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:37:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:37:17'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:37:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:37:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:37:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:37:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:37:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:37:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:37:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:37:17'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:37:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:37:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:37:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:37:17'!
+PASSED!
+!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:37:38' prior: 50866234 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot moveForward! !
+!WestFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:37:58'!
+moveWestward: aRobot
+	aRobot moveBy: (1@0)! !
+!WestFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:38:02' prior: 50866328!
+moveWestward: aRobot
+	aRobot moveBy: (-1@0)! !
+!YYYYCoordinatePointState methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:38:12'!
+moveForward: aRobot
+	self subclassResponsibility 
+! !
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:38:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:38:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:38:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:38:18'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:38:18'!
+ERROR!
+!WestFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:39:15' overrides: 50866338!
+moveForward: aRobot
+	aRobot moveBy: (-1@0)! !
+
+!methodRemoval: WestFacingRobot #moveWestward: stamp: 'crivera 5/16/2021 19:39:24'!
+moveWestward: aRobot
+	aRobot moveBy: (-1@0)!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:39:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:39:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:39:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:39:29'!
+PASSED!
+!RigthRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:40:15' prior: 50864734 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot rotateRigth.
+	aRobot cardinalPoint = #West ifTrue: [^aRobot cardinalPoint: #North].
+	aRobot cardinalPoint = #North ifTrue: [^aRobot cardinalPoint: #East].
+	aRobot cardinalPoint = #East ifTrue: [^aRobot cardinalPoint: #South].
+	aRobot cardinalPoint = #South ifTrue: [^aRobot cardinalPoint: #West]! !
+!YYYYCoordinatePointState methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:40:41'!
+rotateRigth: aRobot
+	self subclassResponsibility 
+! !
+!WestFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:41:13' overrides: 50866406!
+rotateRigth: aRobot
+	aRobot cardinalPoint: NorthFacingRobot new! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:41:47'!
+rotateRigth
+	cardinalPoint rotateRigth: self! !
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:41:53'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:41:53'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:41:53'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:41:53'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:41:53'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:41:53'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:41:53'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:41:53'!
+PASSED!
+!RigthRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:42:35' prior: 50866392 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot rotateRigth.
+	aRobot cardinalPoint = #North ifTrue: [^aRobot cardinalPoint: #East].
+	aRobot cardinalPoint = #East ifTrue: [^aRobot cardinalPoint: #South].
+	aRobot cardinalPoint = #South ifTrue: [^aRobot cardinalPoint: #West]! !
+!NorthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:43:14' overrides: 50866406!
+rotateRigth: aRobot
+	
+	aRobot cardinalPoint: EastFacingRobot new! !
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:43:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:43:31'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:43:31'!
+ERROR!
+!RigthRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:43:54' prior: 50866501 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot rotateRigth.
+	aRobot cardinalPoint = #South ifTrue: [^aRobot cardinalPoint: #West]! !
+!EastFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:44:18' overrides: 50866406!
+rotateRigth: aMarsRover 
+	self shouldBeImplemented.! !
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:44:29'!
+ERROR!
+!EastFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:45:00' prior: 50866540 overrides: 50866406!
+rotateRigth: aRobot 
+	aRobot cardinalPoint: SouthFacingRobot new! !
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:08'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:45:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:45:13'!
+ERROR!
+!RigthRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:45:32' prior: 50866533 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot rotateRigth! !
+!SouthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:45:43' overrides: 50866406!
+rotateRigth: aMarsRover 
+	self shouldBeImplemented.! !
+!SouthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:46:02' prior: 50866645 overrides: 50866406!
+rotateRigth: aRobot 
+	aRobot cardinalPoint: WestFacingRobot new! !
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:04'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:04'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:04'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:04'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:46:04'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:12'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:12'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:12'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:12'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:46:22'!
+FAILURE!
+!YYYYCoordinatePointState methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:47:30'!
+rotateLeft: aRobot
+	self subclassResponsibility 
+! !
+!LeftRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:47:58' prior: 50864829 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot rotateLeft.
+	
+	aRobot cardinalPoint = #East ifTrue: [^aRobot cardinalPoint: #North].
+	aRobot cardinalPoint = #North ifTrue: [^aRobot cardinalPoint: #West].
+	aRobot cardinalPoint = #West ifTrue: [^aRobot cardinalPoint: #South]! !
+!SouthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:48:29' overrides: 50866775!
+rotateLeft: aRobot 
+	aRobot cardinalPoint: EastFacingRobot new! !
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:48:37'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:48:48'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:49:09'!
+rotateLeft
+	cardinalPoint rotateLeft: self! !
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:49:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:49:19'!
+ERROR!
+!EastFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:49:38' overrides: 50866775!
+rotateLeft: aMarsRover 
+	self shouldBeImplemented.! !
+!LeftRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:50:02' prior: 50866781 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot rotateLeft.
+	aRobot cardinalPoint = #North ifTrue: [^aRobot cardinalPoint: #West].
+	aRobot cardinalPoint = #West ifTrue: [^aRobot cardinalPoint: #South]! !
+!NorthFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:51:22' overrides: 50866775!
+rotateLeft: aRobot
+	
+	aRobot cardinalPoint: WestFacingRobot new! !
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:29'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:29'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:51:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:51:40'!
+ERROR!
+!EastFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:52:59' prior: 50866894 overrides: 50866775!
+rotateLeft: aRobot 
+	aRobot cardinalPoint: NorthFacingRobot new! !
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:53:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:53:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:53:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:53:11'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:53:11'!
+ERROR!
+!WestFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:53:31' overrides: 50866775!
+rotateLeft: aMarsRover 
+	self shouldBeImplemented.! !
+!WestFacingRobot methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:54:01' prior: 50867026 overrides: 50866775!
+rotateLeft: aRobot 
+	aRobot cardinalPoint: SouthFacingRobot new! !
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:03'!
+PASSED!
+!LeftRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 19:54:10' prior: 50866900 overrides: 50863509!
+doOn: aRobot
+	
+	aRobot rotateLeft! !
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:54:17'!
+PASSED!
+
+!methodRemoval: MarsRover #cardinalPoint stamp: 'crivera 5/16/2021 19:57:09'!
+cardinalPoint
+	^ cardinalPoint !
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:57:15'!
+PASSED!
+
+!methodRemoval: MarsRover #currentPosition stamp: 'crivera 5/16/2021 19:57:50'!
+currentPosition
+	^ currentPosition !
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 19:57:53'!
+PASSED!
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 19:59:48' prior: 50864636!
+interpretPackage: commands 
+	commands isEmptyOrNil ifTrue: [^ self].
+	
+	robotCommands detect: [:robotCommand | robotCommand canHandle: commands ] ifFound: [:robotCommand | robotCommand doOn: self] ifNone: []
+	
+	
+	
+	
+	
+	! !
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:01:13'!
+assertCommandsNotEmpty: commands 
+	commands isEmptyOrNil ifTrue: [^ self]
+	
+	
+	
+	
+	! !
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:01:55' prior: 50867287!
+interpretPackage: commands 
+	self assertCommandsNotEmpty: commands .
+	
+	robotCommands detect: [:robotCommand | robotCommand canHandle: commands ] ifFound: [:robotCommand | robotCommand doOn: self] ifNone: []
+	
+	
+	
+	
+	
+	! !
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:01:57' prior: 50867303!
+interpretPackage: commands 
+	self assertCommandsNotEmpty: commands.
+	
+	robotCommands detect: [:robotCommand | robotCommand canHandle: commands ] ifFound: [:robotCommand | robotCommand doOn: self] ifNone: []
+	
+	
+	
+	
+	
+	! !
+!MarsRoverTest methodsFor: 'robot-moving-backward' stamp: 'crivera 5/16/2021 20:05:20'!
+test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing
+	
+	self assertARobotFacing: #West process: 'z' modifiesItsPositionBy: 0@0 endFacing: #West
+	
+	
+	
+	! !
+!MarsRoverTest methodsFor: 'robot-moving-backward' stamp: 'crivera 5/16/2021 20:10:23' prior: 50867323!
+test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing
+	self should: [self assertARobotFacing: #West process: 'z' modifiesItsPositionBy: 0@0 endFacing: #West] 
+		raise: Error description: MarsRover invalidCommandErrorDescription
+	
+	
+	
+	
+	! !
+!MarsRover class methodsFor: 'initialization' stamp: 'crivera 5/16/2021 20:10:59'!
+invalidCommandErrorDescription
+	^ 'invalid command'! !
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:11:16'!
+FAILURE!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:13:27' prior: 50867332!
+test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing
+	self should: [self assertARobotFacing: #West process: 'z' modifiesItsPositionBy: 0@0 endFacing: #West] 
+		raise: Error withMessageText: MarsRover invalidCommandErrorDescription.
+		
+	
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:13:29'!
+FAILURE!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:14:07' prior: 50867353!
+test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing
+	self should: [self assertARobotFacing: #West process: 'z' modifiesItsPositionBy: 0@0 endFacing: #West] 
+		raise: Error withMessageText: [MarsRover invalidCommandErrorDescription].
+		
+	
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:14:08'!
+FAILURE!
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:15:50' prior: 50867313!
+interpretPackage: commands 
+	self assertCommandsNotEmpty: commands.
+	
+	robotCommands detect: [:robotCommand | robotCommand canHandle: commands ] 
+		ifFound: [:robotCommand | robotCommand doOn: self] 
+		ifNone: [ self error: self class invalidCommandErrorDescription ]
+	
+	
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:15:57'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:15:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:15:57'!
+ERROR!
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:16:29' prior: 50867387!
+interpretPackage: commands 
+	self assertCommandsNotEmpty: commands.
+	
+	robotCommands detect: [:robotCommand | robotCommand canHandle: commands ] 
+		ifFound: [:robotCommand | robotCommand doOn: self] 
+		ifNone: [^self error: self class invalidCommandErrorDescription ]
+	
+	
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:16:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:16:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:16:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:17:09'!
+ERROR!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:18:39' prior: 50867370!
+test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing
+	|coordinate robot|
+	coordinate _ 10@10.
+	robot _ MarsRover at: coordinate facing: #North.
+
+	self should: [robot interpretPackage: 'z' ] 
+		raise: Error withMessageText: [MarsRover invalidCommandErrorDescription].
+		
+	
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:18:41'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:18:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:18:41'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:19:10'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:19:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:19:10'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:20:05'!
+ERROR!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:20:11'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:20:30' prior: 50867515!
+test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing
+	|coordinate robot|
+	coordinate _ 10@10.
+	robot _ MarsRover at: coordinate facing: #North.
+
+	self should: [robot interpretPackage: 'z' ] 
+		raise: Error withMessageText: [^MarsRover invalidCommandErrorDescription].
+		
+	
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:20:33'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:20:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:20:33'!
+ERROR!
+!MarsRover methodsFor: 'assertions' stamp: 'crivera 5/16/2021 20:24:37' prior: 50867297!
+assertCommandsNotEmpty: commands 
+	^commands isEmptyOrNil ifTrue: [^ self]
+	
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:24:52'!
+ERROR!
+!MarsRover methodsFor: 'assertions' stamp: 'crivera 5/16/2021 20:25:23' prior: 50867808!
+assertCommandsNotEmpty: commands 
+	^[commands isEmptyOrNil ifTrue: [^ self]]
+	
+	
+	
+	
+	! !
+!MarsRover methodsFor: 'assertions' stamp: 'crivera 5/16/2021 20:25:36' prior: 50867818!
+assertCommandsNotEmpty: commands 
+	^[commands isEmptyOrNil ifTrue: [^ self]]
+	
+	
+	
+	
+	! !
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:26:04' prior: 50867412!
+interpretPackage: commands 
+	(self assertCommandsNotEmpty: commands) value.
+	
+	robotCommands detect: [:robotCommand | robotCommand canHandle: commands ] 
+		ifFound: [:robotCommand | robotCommand doOn: self] 
+		ifNone: [^self error: self class invalidCommandErrorDescription ]
+	
+	
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:26:12'!
+ERROR!
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:26:47' prior: 50867830!
+interpretPackage: commands 
+	commands isEmptyOrNil ifTrue: [^ self].
+	
+	robotCommands detect: [:robotCommand | robotCommand canHandle: commands ] 
+		ifFound: [:robotCommand | robotCommand doOn: self] 
+		ifNone: [^self error: self class invalidCommandErrorDescription ]
+	
+	
+	
+	
+	
+	! !
+
+!methodRemoval: MarsRover #assertCommandsNotEmpty: stamp: 'crivera 5/16/2021 20:26:56'!
+assertCommandsNotEmpty: commands 
+	^[commands isEmptyOrNil ifTrue: [^ self]]
+	
+	
+	
+	
+	!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:27:02'!
+PASSED!
+!MarsRoverTest methodsFor: 'robot-moving-backward' stamp: 'crivera 5/16/2021 20:29:07'!
+test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates
+	
+	self assertARobotFacing: #West process: 'bb' modifiesItsPositionBy: 2@0 endFacing: #West
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:29:07'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:29:17'!
+ERROR!
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:31:00' prior: 50867846!
+interpretPackage: commands 
+	commands isEmptyOrNil ifTrue: [^ self].
+	
+	commands do: [:aCommand | self processCommand: aCommand]
+	
+	
+	
+	
+	
+	
+	! !
+!MarsRover methodsFor: 'robot-actions' stamp: 'crivera 5/16/2021 20:31:33' prior: 50867963!
+interpretPackage: commands 
+	
+	commands do: [:aCommand | self processCommand: aCommand]
+	
+	
+	
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:31:41'!
+ERROR!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:32:05'!
+processCommand: aCharacter 
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:32:32' prior: 50867981!
+processCommand: aCommand
+	robotCommands detect: [:robotCommand | robotCommand canHandle: aCommand ] 
+		ifFound: [:robotCommand | robotCommand doOn: self] 
+		ifNone: [^self error: self class invalidCommandErrorDescription ]! !
+
+!testRun: #MarsRoverTest #test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:32:37'!
+ERROR!
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:33:05' prior: 50864068 overrides: 50863425!
+myCommand
+	^ $b! !
+!ForwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:33:17' prior: 50863430 overrides: 50863425!
+myCommand
+	^ $f! !
+!LeftRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:33:27' prior: 50864609 overrides: 50863425!
+myCommand
+	^ $l! !
+!RigthRotationCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:33:35' prior: 50864496 overrides: 50863425!
+myCommand 
+
+	^ $r! !
+
+!testRun: #MarsRoverTest #test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:33:39'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:35:35'!
+test20WhenProcessingMoreThanOneCommandButOneCommandIsInvalidMustChangeItsCordinatesUntilTheInvalidCommand
+	
+	self assertARobotFacing: #West process: 'bbzb' modifiesItsPositionBy: 2@0 endFacing: #West
+	
+	
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:36:24' prior: 50868107!
+test20WhenProcessingMoreThanOneCommandButOneCommandIsInvalidMustChangeItsCordinatesUntilTheInvalidCommand
+	
+	|coordinate robot|
+	coordinate _ 10@10.
+	robot _ MarsRover at: coordinate facing: #North.
+
+	self should: [robot interpretPackage: 'z' ] 
+		raise: Error withMessageText: [^MarsRover invalidCommandErrorDescription].
+		
+	self assert:(robot isAt: 2@0 facing: #West)
+	
+	
+	
+	! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:36:33' prior: 50868117!
+test20WhenProcessingMoreThanOneCommandButOneCommandIsInvalidMustChangeItsCordinatesUntilTheInvalidCommand
+	
+	|coordinate robot|
+	coordinate _ 10@10.
+	robot _ MarsRover at: coordinate facing: #North.
+
+	self should: [robot interpretPackage: 'bbzb' ] 
+		raise: Error withMessageText: [^MarsRover invalidCommandErrorDescription].
+		
+	self assert:(robot isAt: 2@0 facing: #West)
+	
+	
+	
+	! !
+
+!testRun: #MarsRoverTest #test20WhenProcessingMoreThanOneCommandButOneCommandIsInvalidMustChangeItsCordinatesUntilTheInvalidCommand stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20WhenProcessingMoreThanOneCommandButOneCommandIsInvalidMustChangeItsCordinatesUntilTheInvalidCommand stamp: 'crivera 5/16/2021 20:36:36'!
+PASSED!
+!BackwardCommand methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:39:26' prior: 50865974 overrides: 50863509!
+doOn: aRobot
+
+	aRobot moveBackward
+		
+		! !
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'crivera 5/16/2021 20:46:23'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'currentPosition robotCommands robotFacing'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:46:23' prior: 50866807!
+rotateLeft
+	robotFacing rotateLeft: self! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:46:23' prior: 50866010!
+moveForward
+	robotFacing moveForward: self! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:46:23' prior: 50865446!
+moveBackward
+	robotFacing moveBackward: self! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:46:23' prior: 50864936!
+cardinalPoint: aCardinalPoint
+	 robotFacing _ aCardinalPoint ! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:46:23' prior: 50865271!
+initializeAt: aCoordinate facing: aCoordinatePoint 
+	currentPosition := aCoordinate.
+	robotFacing := YYYYCoordinatePointState for: aCoordinatePoint.
+	
+	robotCommands := OrderedCollection new.
+	RobotCommand subclasses do: [:commandClass | robotCommands add: (commandClass new) ]
+! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:46:23' prior: 50866417!
+rotateRigth
+	robotFacing rotateRigth: self! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:46:23' prior: 50865455!
+isAt: aCoordinate facing: aPosition 
+	^ currentPosition = aCoordinate and: robotFacing facing = aPosition! !
+
+!classRenamed: #YYYYCoordinatePointState as: #RobotFacing stamp: 'crivera 5/16/2021 20:49:33'!
+Smalltalk renameClassNamed: #YYYYCoordinatePointState as: #RobotFacing!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:49:33' prior: 50868277!
+initializeAt: aCoordinate facing: aCoordinatePoint 
+	currentPosition := aCoordinate.
+	robotFacing := RobotFacing for: aCoordinatePoint.
+	
+	robotCommands := OrderedCollection new.
+	RobotCommand subclasses do: [:commandClass | robotCommands add: (commandClass new) ]
+! !
+
+!classRenamed: #RobotFacing as: #FacingRobot stamp: 'crivera 5/16/2021 20:51:52'!
+Smalltalk renameClassNamed: #RobotFacing as: #FacingRobot!
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'crivera 5/16/2021 20:51:52' prior: 50868306!
+initializeAt: aCoordinate facing: aCoordinatePoint 
+	currentPosition := aCoordinate.
+	robotFacing := FacingRobot for: aCoordinatePoint.
+	
+	robotCommands := OrderedCollection new.
+	RobotCommand subclasses do: [:commandClass | robotCommands add: (commandClass new) ]
+! !
+!FacingRobot methodsFor: 'private' stamp: 'crivera 5/16/2021 20:59:56' prior: 50865466!
+facing
+	self class facing
+! !
+
+!methodRemoval: EastFacingRobot #facing stamp: 'crivera 5/16/2021 21:00:05'!
+facing
+	^ #East!
+
+!methodRemoval: NorthFacingRobot #facing stamp: 'crivera 5/16/2021 21:00:19'!
+facing
+	^ #North
+!
+
+!methodRemoval: SouthFacingRobot #facing stamp: 'crivera 5/16/2021 21:00:25'!
+facing 
+	^ #South!
+
+!methodRemoval: WestFacingRobot #facing stamp: 'crivera 5/16/2021 21:00:30'!
+facing
+	^ #West!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 21:00:34'!
+FAILURE!
+
+self class!
+!FacingRobot methodsFor: 'private' stamp: 'crivera 5/16/2021 21:01:43' prior: 50868334!
+facing
+	self class facing
+! !
+
+robotFacing facing = aPosition!
+
+robotFacing facing!
+
+robotFacing facing!
+!MarsRover methodsFor: 'testing' stamp: 'crivera 5/16/2021 21:02:51' prior: 50868294!
+isAt: aCoordinate facing: aPosition 
+	^ currentPosition = aCoordinate and: robotFacing facing = aPosition! !
+!FacingRobot methodsFor: 'private' stamp: 'crivera 5/16/2021 21:03:44' prior: 50868355!
+facing
+	^self class facing
+! !
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01WhenProcessingEmtpyInstructionsMustRemainInPlace stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02ProcessingForwardMustChangeRobotCoordinatesAsExpected stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03ProcessingForwardWhenFacingEastMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04ProcessingForwardWhenFacingSouthMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05ProcessingForwardWhenFacingWestMustChangeRobotCoordinates stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06ProcessingRightRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07ProcessingRightRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08ProcessingRightRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09ProcessingRightRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10ProcessingLeftRotationWhenFacingSouthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11ProcessingLeftRotationWhenFacingEastMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12ProcessingLeftRotationWhenFacingNorthMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13ProcessingLeftRotationWhenFacingWestMustChangeRobotCardinalPoint stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14WhenMovingBackwardsFacingNorthMustChangeItsCordinates stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15WhenMovingBackwardsFacingEastMustChangeItsCordinates stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16WhenMovingBackwardsFacingSouthMustChangeItsCordinates stamp: 'crivera 5/16/2021 21:03:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17WhenMovingBackwardsFacingWestMustChangeItsCordinates stamp: 'crivera 5/16/2021 21:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18WhenRobotExecutesAnInvalidCommandItDoesNotChangeItsCoorditatesOrFacing stamp: 'crivera 5/16/2021 21:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19WhenProcessingMoreThanOneCommandMustChangeItsCordinates stamp: 'crivera 5/16/2021 21:03:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20WhenProcessingMoreThanOneCommandButOneCommandIsInvalidMustChangeItsCordinatesUntilTheInvalidCommand stamp: 'crivera 5/16/2021 21:03:49'!
+PASSED!
