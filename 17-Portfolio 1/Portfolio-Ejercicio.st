@@ -32,8 +32,8 @@ test05PortfolioWithAnReceptiveAccountHaveAccountTransaction
 
 ! !
 
-!PortfolioTest methodsFor: 'hasRegistered' stamp: 'DB 5/20/2021 20:14:05'!
-test06
+!PortfolioTest methodsFor: 'hasRegistered' stamp: 'DB 5/25/2021 12:37:25'!
+test06HasRegistrerOfAPortfoloTree
 
 	| portfolio account deposit child |
 	
@@ -130,8 +130,8 @@ test11CyclesCannotBeGenerated
 		withMessageText: [Portfolio cannotAddAccountErrorDescription.]
 		! !
 
-!PortfolioTest methodsFor: 'add restrictions' stamp: 'DB 5/23/2021 20:43:46'!
-test12
+!PortfolioTest methodsFor: 'add restrictions' stamp: 'DB 5/25/2021 12:39:29'!
+test12TwoPortfolioWithTheSameAccountCannotBeAdded
 
 	| portfolio1 portfolio2 account |
 		
@@ -153,8 +153,8 @@ test12
 		withMessageText: [Portfolio cannotAddAccountErrorDescription.]
 		! !
 
-!PortfolioTest methodsFor: 'add restrictions' stamp: 'DB 5/23/2021 20:41:36'!
-test13
+!PortfolioTest methodsFor: 'add restrictions' stamp: 'DB 5/25/2021 12:41:51'!
+test13CannotAddAnAccounInTheRoottIfThereExistAsALeaf
 
 	| portfolio1 portfolio2 account |
 		
@@ -178,14 +178,13 @@ test13
 		withMessageText: [Portfolio cannotAddAccountErrorDescription.]
 		! !
 
-!PortfolioTest methodsFor: 'add restrictions' stamp: 'DB 5/23/2021 20:48:07'!
-test14
+!PortfolioTest methodsFor: 'add restrictions' stamp: 'DB 5/25/2021 12:43:17'!
+test14CannotDuplicateALeaf
 
 	| portfolio1 portfolio2 account |
 		
 	portfolio1 := Portfolio new.
 	portfolio2 := Portfolio new.
-	
 	
 	account := ReceptiveAccount new.
 	portfolio1 add: account.
@@ -199,6 +198,101 @@ test14
 		
 	self 
 		should: [portfolio2 add: account ] 
+		raise: Error  
+		withMessageText: [Portfolio cannotAddAccountErrorDescription.]
+		! !
+
+!PortfolioTest methodsFor: 'add restrictions' stamp: 'DB 5/25/2021 12:46:34'!
+test15CannotDuplicateALeafInADeepTree
+
+	| p1 p2 p3 a b |
+		
+	p1 := Portfolio new.
+	p2 := Portfolio new.
+	p3 := Portfolio  new.
+	
+	a := ReceptiveAccount new.
+	b := ReceptiveAccount new.
+	
+	p2 add: a.
+	p2 add: p3.
+	p1 add: b.
+	p1 add: p2.
+	
+	"P1
+	  |_ P2
+	  	|_ P3 
+	  	|_A
+	  |_ B"
+	  
+	self 
+		should: [p3 add: b ] 
+		raise: Error  
+		withMessageText: [Portfolio cannotAddAccountErrorDescription.]
+		! !
+
+!PortfolioTest methodsFor: 'add restrictions' stamp: 'DB 5/25/2021 12:50:18'!
+test16CannotAddAPortfolioWithAnExistingAccount
+
+	| p1 p2 p3 a b p4 |
+		
+	p1 := Portfolio new.
+	p2 := Portfolio new.
+	p3 := Portfolio new.
+	p4 := Portfolio new.
+	
+	a := ReceptiveAccount new.
+	b := ReceptiveAccount new.
+	
+	p2 add: a.
+	p2 add: p3.
+	p1 add: b.
+	p1 add: p2.
+	
+	p4 add: b.
+	
+	"P1                  P4
+	  |_ P2              |_ B
+	  	|_ P3 
+	  	|_A
+	  |_ B
+	"
+		
+	self 
+		should: [p3 add: p4 ] 
+		raise: Error  
+		withMessageText: [Portfolio cannotAddAccountErrorDescription.]
+		! !
+
+!PortfolioTest methodsFor: 'add restrictions' stamp: 'DB 5/25/2021 12:52:20'!
+test17CannotAddAPortfolioWithAnExistingAccountInTheMiddleOfTheTree
+
+	| p1 p2 p3 a b p4 |
+		
+	p1 := Portfolio new.
+	p2 := Portfolio new.
+	p3 := Portfolio new.
+	p4 := Portfolio new.
+	
+	a := ReceptiveAccount new.
+	b := ReceptiveAccount new.
+	
+	p1 add: p3.
+	p1 add: p2.
+	p2 add: a.
+	p3 add: b.
+	p4 add: p3.
+	
+	"P1                P4
+	  |_ P2           \_ B
+	  	|_ P3 
+	  	|_A
+	  |_ B
+	"
+	  
+		
+	self 
+		should: [p2 add: p4 ] 
 		raise: Error  
 		withMessageText: [Portfolio cannotAddAccountErrorDescription.]
 		! !
@@ -228,8 +322,8 @@ test02APortfolioWithAnAccountHasTheSameBalance
 	self assert: 100 equals: (portfolio balance).
 ! !
 
-!PortfolioTest methodsFor: 'balance' stamp: 'DB 5/17/2021 21:39:01'!
-test03
+!PortfolioTest methodsFor: 'balance' stamp: 'DB 5/25/2021 12:31:33'!
+test03BalanceOfAPortfolioTree
 
 	| portfolio child account |
 	
@@ -240,10 +334,13 @@ test03
 
 	child add: account.	
 	portfolio add: child.
+	
+	
 
 	self assert: 100 equals: (portfolio balance).
 
 ! !
+
 
 
 !classDefinition: #ReceptiveAccountTest category: 'Portfolio-Ejercicio'!
@@ -335,6 +432,248 @@ test07AccountKnowsItsTransactions
 	self assert: 1 equals: account1 transactions size.
 	self assert: (account1 transactions includes: deposit1).
 ! !
+
+
+!classDefinition: #Account category: 'Portfolio-Ejercicio'!
+Object subclass: #Account
+	instanceVariableNames: 'parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!Account methodsFor: 'initialization' stamp: 'DB 5/24/2021 21:38:06'!
+initialize
+
+	parents := OrderedCollection new.! !
+
+
+!Account methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 12:04:28'!
+allLeaves
+
+	self subclassResponsibility ! !
+
+!Account methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 12:03:23'!
+isLeaf
+
+	self subclassResponsibility ! !
+
+!Account methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 11:51:20'!
+isRoot
+
+	^parents isEmpty ! !
+
+!Account methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 12:03:49'!
+leaves: leafContainer
+
+	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'balance' stamp: 'DB 5/25/2021 12:57:17'!
+balance
+
+	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'testing' stamp: 'DB 5/25/2021 12:02:30'!
+hasRegistered: aTransaction
+
+	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'transactions' stamp: 'DB 5/25/2021 12:14:37'!
+transactions
+
+	self subclassResponsibility 
+	! !
+
+!Account methodsFor: 'transactions' stamp: 'DB 5/25/2021 12:15:03'!
+transactions: transactionContainer
+
+	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'adding' stamp: 'DB 5/24/2021 19:31:56'!
+isChildOf: aParent
+
+	parents add: aParent 	! !
+
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!Portfolio methodsFor: 'initialization' stamp: 'DB 5/24/2021 21:38:43'!
+initialize
+
+	accounts := OrderedCollection new.
+	super initialize 
+	! !
+
+
+!Portfolio methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 12:55:02'!
+allLeaves
+
+	| leafContainer |
+	
+	leafContainer := OrderedCollection new.
+	self allRoots  do: [ :aRoot | aRoot leaves: leafContainer].
+	
+	^leafContainer 
+! !
+
+!Portfolio methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 11:13:13'!
+allRoots
+
+	| rootContainers |
+	rootContainers := OrderedCollection new.
+	
+	self roots: rootContainers.
+	
+	^rootContainers 
+! !
+
+!Portfolio methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 11:59:55'!
+assertNotDuplicatedAssetOrCycles: anAsset
+
+	| anAssetLeaves |
+	anAssetLeaves _ anAsset allLeaves.
+	
+	(self allLeaves anySatisfy: [:leaf | anAssetLeaves includes: leaf]) ifTrue: [self error: self class cannotAddAccountErrorDescription]! !
+
+!Portfolio methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 12:03:04'!
+isLeaf
+
+	^accounts isEmpty ! !
+
+!Portfolio methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 11:33:14'!
+leaves: leafContainer
+
+	(self isLeaf) ifTrue: [leafContainer add: self] ifFalse: [ accounts do: [:aChild | aChild leaves: leafContainer ]]
+	! !
+
+!Portfolio methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 11:50:46'!
+roots: rootContainer
+
+	(self isRoot) ifTrue: [rootContainer add: self] ifFalse: [ parents do: [:aParent | aParent roots: rootContainer] ]
+	! !
+
+
+!Portfolio methodsFor: 'adding' stamp: 'DB 5/25/2021 12:01:54'!
+add: anAccount
+
+	self assertNotDuplicatedAssetOrCycles: anAccount.	
+
+	self isFatherOf: anAccount.
+	anAccount isChildOf: self.! !
+
+!Portfolio methodsFor: 'adding' stamp: 'DB 5/25/2021 11:45:46'!
+isFatherOf: anAsset
+
+	^ accounts add: anAsset! !
+
+
+!Portfolio methodsFor: 'testing' stamp: 'DB 5/25/2021 12:55:27'!
+hasRegistered: aTransaction
+
+	^accounts anySatisfy: [:account | account hasRegistered: aTransaction].! !
+
+
+!Portfolio methodsFor: 'transactions' stamp: 'DB 5/25/2021 12:10:06'!
+transactions
+	
+	| transactions |
+	transactions := OrderedCollection new.
+	accounts do: [	:asset | asset transactions: transactions].
+	^transactions! !
+
+!Portfolio methodsFor: 'transactions' stamp: 'DB 5/25/2021 12:11:57'!
+transactions: transactionContainer
+
+	accounts do: [	:asset | asset transactions: transactionContainer].
+	! !
+
+
+!Portfolio methodsFor: 'balance' stamp: 'DB 5/23/2021 20:32:58'!
+balance
+
+	^accounts sum: [:anAsset | anAsset balance] ifEmpty: [0]! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Portfolio class' category: 'Portfolio-Ejercicio'!
+Portfolio class
+	instanceVariableNames: ''!
+
+!Portfolio class methodsFor: 'error' stamp: 'DB 5/20/2021 21:04:13'!
+cannotAddAccountErrorDescription
+	^'cannot add account'! !
+
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'DB 5/25/2021 12:29:55'!
+initialize
+
+	transactions := OrderedCollection new.
+	super initialize
+	! !
+
+
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
+register: aTransaction
+
+	transactions add: aTransaction 
+! !
+
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
+transactions 
+
+	^ transactions copy! !
+
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'DB 5/25/2021 12:12:59'!
+transactions: transactionContainer
+
+	^ transactionContainer addAll: self transactions! !
+
+
+!ReceptiveAccount methodsFor: 'balance' stamp: 'DB 5/17/2021 21:23:56'!
+balance
+
+	|balance|
+	balance := 0.
+	transactions do: [:aTransaction |  balance := aTransaction addTo: balance].
+	^balance.! !
+
+
+!ReceptiveAccount methodsFor: 'testing' stamp: 'NR 10/17/2019 03:28:43'!
+hasRegistered: aTransaction
+
+	^ transactions includes: aTransaction 
+! !
+
+
+!ReceptiveAccount methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 12:56:15'!
+allLeaves
+
+	^ OrderedCollection with: self ! !
+
+!ReceptiveAccount methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 11:29:20'!
+isLeaf
+	^true! !
+
+!ReceptiveAccount methodsFor: 'assertions - private' stamp: 'DB 5/25/2021 11:39:33'!
+leaves: leafContainer
+
+	leafContainer add: self
+	! !
 
 
 !classDefinition: #AccountTransaction category: 'Portfolio-Ejercicio'!
@@ -439,134 +778,3 @@ Withdraw class
 for: aValue
 
 	^ self new initializeFor: aValue ! !
-
-
-!classDefinition: #Asset category: 'Portfolio-Ejercicio'!
-Object subclass: #Asset
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Ejercicio'!
-
-!Asset methodsFor: 'balance' stamp: 'DB 5/17/2021 21:44:20'!
-balance
-	self subclassResponsibility ! !
-
-
-!Asset methodsFor: 'testing' stamp: 'DB 5/23/2021 18:46:52'!
-hasRegistered: aTransaction
-	self subclassResponsibility ! !
-
-
-!Asset methodsFor: 'transactions' stamp: 'DB 5/23/2021 18:48:13'!
-transactions
-
-	self subclassResponsibility ! !
-
-
-!classDefinition: #Portfolio category: 'Portfolio-Ejercicio'!
-Asset subclass: #Portfolio
-	instanceVariableNames: 'accounts'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Ejercicio'!
-
-!Portfolio methodsFor: 'initialization' stamp: 'DB 5/23/2021 18:50:27'!
-initialize
-
-	accounts := OrderedCollection new.! !
-
-
-!Portfolio methodsFor: 'adding' stamp: 'DB 5/23/2021 20:49:47'!
-add: anAsset
-	
-	(accounts anySatisfy: [:asset | asset anySatisfy: anAsset]) ifTrue: [self error: self class cannotAddAccountErrorDescription].
-
-	(accounts anySatisfy: [:asset | anAsset anySatisfy: asset]) ifTrue: [self error: self class cannotAddAccountErrorDescription].	
-	
-	(anAsset anySatisfy: self) ifTrue: [self error: self class cannotAddAccountErrorDescription ].
-	
-	accounts add: anAsset! !
-
-!Portfolio methodsFor: 'adding' stamp: 'DB 5/23/2021 20:00:34'!
-anySatisfy: anAsset 
-
-	^(self = anAsset) or: (accounts anySatisfy: [:asset | asset anySatisfy: anAsset] )
-	! !
-
-
-!Portfolio methodsFor: 'testing' stamp: 'DB 5/17/2021 22:00:30'!
-hasRegistered: aTransaction
-
-	^accounts anySatisfy: [:account | (account hasRegistered: aTransaction)].! !
-
-
-!Portfolio methodsFor: 'transactions' stamp: 'DB 5/20/2021 20:35:01'!
-transactions
-	
-	| transactions |
-	transactions := OrderedCollection new.
-	accounts do: [	:asset | transactions addAll: asset transactions].
-	^transactions! !
-
-
-!Portfolio methodsFor: 'balance' stamp: 'DB 5/23/2021 20:32:58'!
-balance
-
-	^accounts sum: [:anAsset | anAsset balance] ifEmpty: [0]! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'Portfolio class' category: 'Portfolio-Ejercicio'!
-Portfolio class
-	instanceVariableNames: ''!
-
-!Portfolio class methodsFor: 'error' stamp: 'DB 5/20/2021 21:04:13'!
-cannotAddAccountErrorDescription
-	^'cannot add account'! !
-
-
-!classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio'!
-Asset subclass: #ReceptiveAccount
-	instanceVariableNames: 'transactions'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Ejercicio'!
-
-!ReceptiveAccount methodsFor: 'initialization' stamp: 'DB 5/23/2021 20:08:33'!
-anySatisfy: anAsset
-
-	^self = anAsset! !
-
-!ReceptiveAccount methodsFor: 'initialization' stamp: 'NR 10/17/2019 15:06:56'!
-initialize
-
-	transactions := OrderedCollection new.! !
-
-
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
-register: aTransaction
-
-	transactions add: aTransaction 
-! !
-
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
-transactions 
-
-	^ transactions copy! !
-
-
-!ReceptiveAccount methodsFor: 'balance' stamp: 'DB 5/17/2021 21:23:56'!
-balance
-
-	|balance|
-	balance := 0.
-	transactions do: [:aTransaction |  balance := aTransaction addTo: balance].
-	^balance.! !
-
-
-!ReceptiveAccount methodsFor: 'testing' stamp: 'NR 10/17/2019 03:28:43'!
-hasRegistered: aTransaction
-
-	^ transactions includes: aTransaction 
-! !
