@@ -1,520 +1,3 @@
-!classDefinition: #PortfolioTest category: 'Portfolio-Solucion'!
-TestCase subclass: #PortfolioTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:16:26'!
-test01BalanceOfPortfolioWithoutAccountsIsZero
-
-	self assert: 0 equals: Portfolio new balance! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'NR 5/27/2021 17:36:04'!
-test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance
-
-	| account portfolio |
-	
-	account := ReceptiveAccount new.
-	Deposit register: 100 on: account.
-	portfolio := Portfolio with: account.
-	
-	self assert: account balance equals: portfolio balance! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:23:25'!
-test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios
-
-	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortofolio |
-	
-	simplePortfolioAccount := ReceptiveAccount new.
-	Deposit register: 100 on: simplePortfolioAccount.
-	simplePortfolio := Portfolio with: simplePortfolioAccount.
-	
-	composedPortfolioAccount := ReceptiveAccount new.
-	Withdraw register: 50 on: composedPortfolioAccount.
-	composedPortofolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
-	
-	self assert: (composedPortfolioAccount balance + simplePortfolio balance) equals: composedPortofolio balance! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:43:15'!
-test04PortfolioWithoutAccountsHasNoRegisteredTransaction
-
-	self deny: (Portfolio new hasRegistered: (Deposit for: 100))! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:43:11'!
-test05PortfolioHasRegisteredItsAccountsTransactions
-
-	| account portfolio deposit |
-	
-	account := ReceptiveAccount new.
-	deposit := Deposit register: 100 on: account.
-	portfolio := Portfolio with: account.
-	
-	self assert: (portfolio hasRegistered: deposit)! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:06'!
-test06PortfolioLooksForRegisteredTransactionsRecursively
-
-	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioAccountWithdraw simplePortfolioAccountDeposit |
-	
-	simplePortfolioAccount := ReceptiveAccount new.
-	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
-	simplePortfolio := Portfolio with: simplePortfolioAccount.
-	
-	composedPortfolioAccount := ReceptiveAccount new.
-	composedPortfolioAccountWithdraw := Withdraw register: 50 on: composedPortfolioAccount.
-	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
-	
-	self assert: (composedPortfolio hasRegistered: simplePortfolioAccountDeposit).
-	self assert: (composedPortfolio hasRegistered: composedPortfolioAccountWithdraw)! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:10'!
-test07PortfolioHasNoTransactionWhenHasNoAccounts
-
-	self assert: Portfolio new transactions isEmpty! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'NR 6/22/2020 07:31:19'!
-test08PortfolioTransactionsIncludesAllItsAccountsTransactions
-
-	| account portfolio accountDeposit anotherAccount portfolioTransactions anotherAccountWithdraw |
-	
-	account := ReceptiveAccount new.
-	accountDeposit := Deposit register: 100 on: account.
-	anotherAccount := ReceptiveAccount new.
-	anotherAccountWithdraw := Withdraw register: 100 on: account.
-	portfolio := Portfolio with: account.
-	
-	portfolioTransactions := portfolio transactions.
-	
-	self assert: 2 equals: portfolioTransactions size.
-	self assert: (portfolioTransactions includes: accountDeposit).
-	self assert: (portfolioTransactions includes: anotherAccountWithdraw)! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:20'!
-test09PortfolioTransactionsAreCalculatedRecursively
-
-	| simplePortfolioAccount simplePortfolio composedPortfolioAccount composedPortfolio composedPortfolioAccountWithdraw simplePortfolioAccountDeposit composedPortfolioTransactions |
-	
-	simplePortfolioAccount := ReceptiveAccount new.
-	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
-	simplePortfolio := Portfolio with: simplePortfolioAccount.
-	
-	composedPortfolioAccount := ReceptiveAccount new.
-	composedPortfolioAccountWithdraw := Withdraw register: 50 on: composedPortfolioAccount.
-	composedPortfolio := Portfolio with: simplePortfolio with: composedPortfolioAccount.
-	
-	composedPortfolioTransactions := composedPortfolio transactions.
-	self assert: 2 equals: composedPortfolioTransactions size.
-	self assert: (composedPortfolioTransactions includes: simplePortfolioAccountDeposit).
-	self assert: (composedPortfolioTransactions includes: composedPortfolioAccountWithdraw)! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:24'!
-test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce
-
-	| account portfolio |
-	
-	account := ReceptiveAccount new.
-	portfolio := Portfolio with: account.
-	
-	self 
-		should: [ portfolio add: account ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError |
-			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
-			self assert: 1 equals: portfolio accountsSize.
-			self assert: (portfolio accountsIncludes: account) ]! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:28'!
-test11PortfolioCanNotIncludeAccountOfItsPortfolios
-
-	| account simplePortfolio composedPortfolio |
-	
-	account := ReceptiveAccount new.
-	simplePortfolio := Portfolio with: account.
-	composedPortfolio := Portfolio with: simplePortfolio.
-	
-	self 
-		should: [ composedPortfolio add: account ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError |
-			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
-			self assert: 1 equals: composedPortfolio accountsSize.
-			self assert: (composedPortfolio accountsIncludes: simplePortfolio) ]! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 11:58:32'!
-test12PortfolioCanNotIncludeItself
-
-	| account simplePortfolio |
-	
-	account := ReceptiveAccount new.
-	simplePortfolio := Portfolio with: account.
-	
-	self 
-		should: [ simplePortfolio add: simplePortfolio ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError |
-			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
-			self assert: 1 equals: simplePortfolio accountsSize.
-			self assert: (simplePortfolio accountsIncludes: account) ]! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 12:01:51'!
-test13ComposedPortfolioCanNotHaveParentPortfolioAccount
-
-	| account simplePortfolio composedPortfolio |
-	
-	account := ReceptiveAccount new.
-	simplePortfolio := Portfolio new.
-	composedPortfolio := Portfolio with: simplePortfolio.
-	composedPortfolio add: account.
-	
-	self 
-		should: [ simplePortfolio add: account ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError |
-			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
-			self assert: simplePortfolio accountsIsEmpty ]! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/25/2019 12:12:16'!
-test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively
-
-	| account leftParentPortfolio leftRootParentPortfolio portfolio rightParentPortfolio rightRootParentPortfolio |
-	
-	account := ReceptiveAccount new.
-	portfolio := Portfolio new.
-	leftParentPortfolio := Portfolio with: portfolio .
-	leftRootParentPortfolio := Portfolio with: leftParentPortfolio.
-	leftRootParentPortfolio add: account.
-	
-	rightParentPortfolio := Portfolio with: portfolio .
-	rightRootParentPortfolio := Portfolio with: rightParentPortfolio.
-	rightRootParentPortfolio add: account.
-
-	self 
-		should: [ portfolio add: account ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError |
-			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
-			self assert: portfolio accountsIsEmpty ]! !
-
-!PortfolioTest methodsFor: 'tests' stamp: 'HAW 5/29/2019 16:31:18'!
-test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd
-
-	| portfolioToAdd portfolioToModify rootPortfolio sharedAccount |
-	
-	sharedAccount := ReceptiveAccount new.
-	portfolioToModify := Portfolio new.
-	rootPortfolio := Portfolio with: sharedAccount with: portfolioToModify.
-	portfolioToAdd := Portfolio with: sharedAccount.
-	
-	self 
-		should: [ portfolioToModify add: portfolioToAdd ]
-		raise: Error - MessageNotUnderstood 
-		withExceptionDo: [ :anError | 
-			self assert: Portfolio canNotAddAccountErrorMessage equals: anError messageText.
-			self assert: portfolioToModify accountsIsEmpty ]! !
-
-
-!classDefinition: #ReceptiveAccountTest category: 'Portfolio-Solucion'!
-TestCase subclass: #ReceptiveAccountTest
-	instanceVariableNames: 'transfer'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:19:48'!
-test01ReceptiveAccountHaveZeroAsBalanceWhenCreated 
-
-	| account |
-	
-	account := ReceptiveAccount new.
-
-	self assert: 0 equals: account balance .
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:19:54'!
-test02DepositIncreasesBalanceOnTransactionValue 
-
-	| account |
-	
-	account := ReceptiveAccount  new.
-	Deposit register: 100 on: account.
-		
-	self assert: 100 equals: account balance .
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:02'!
-test03WithdrawDecreasesBalanceOnTransactionValue 
-
-	| account |
-	
-	account := ReceptiveAccount new.
-	Deposit register: 100 on: account.
-	Withdraw register: 50 on: account.
-		
-	self assert: 50 equals: account balance .
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:32'!
-test04WithdrawValueMustBePositive 
-
-	| account withdrawValue |
-	
-	account := ReceptiveAccount new.
-	withdrawValue := 50.
-	
-	self assert: withdrawValue equals: (Withdraw register: withdrawValue on: account) value
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:46'!
-test05ReceptiveAccountKnowsRegisteredTransactions 
-
-	| account deposit withdraw |
-	
-	account := ReceptiveAccount new.
-	deposit := Deposit register: 100 on: account.
-	withdraw := Withdraw register: 50 on: account.
-		
-	self assert: (account hasRegistered: deposit).
-	self assert: (account hasRegistered: withdraw).
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:20:54'!
-test06ReceptiveAccountDoNotKnowNotRegisteredTransactions
-
-	| account deposit withdraw |
-	
-	account := ReceptiveAccount new.
-	deposit :=  Deposit for: 100.
-	withdraw := Withdraw for: 50.
-		
-	self deny: (account hasRegistered: deposit).
-	self deny: (account hasRegistered:withdraw).
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'HAW 5/23/2019 15:21:24'!
-test07AccountKnowsItsTransactions 
-
-	| account1 deposit1 |
-	
-	account1 := ReceptiveAccount new.
-	
-	deposit1 := Deposit register: 100 on: account1.
-		
-	self assert: 1 equals: account1 transactions size .
-	self assert: (account1 transactions includes: deposit1).
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 15:38:04'!
-test08AnAccountSendsMoneyToAnotherOne
-
-	| sender receiver |
-	
-	sender := ReceptiveAccount new.
-	receiver := ReceptiveAccount new.
-	
-	Transfer register: 100 from: sender to: receiver.
-		
-	self assert: -100 equals: sender balance.
-	self assert: 100 equals: receiver balance.
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 16:27:08'!
-test09anAccountCantSendMoneyToItself
-
-	| account |
-	
-	account := ReceptiveAccount new.
-	
-	self should:  [Transfer register: 100 from: account to: account] raise: Error withMessageText: Transfer anAccountCantSendMoneyToItselfErrorDescription
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 16:33:35'!
-test10TransactionAmountCannotBeZeroOrNegative
-
-	| sender receiver |
-	
-	sender := ReceptiveAccount new.
-	receiver := ReceptiveAccount new.
-	
-	self should:  [Transfer register: -100 from: sender to: receiver] 
-		raise: Error 
-		withMessageText: Transfer anInvalidTransactionAmountErrorDescription
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 16:42:13'!
-test11BalanceOfAnAccountWithoutTransactionsReturnsOnlyBalance
-
-	| account accountSummary |
-	
-	account := ReceptiveAccount new.
-	
-	accountSummary := account accountSummary.
-	
-	self assert: 1 equals: accountSummary size.
-	self assert: 'Balance = 0' equals: accountSummary first.
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 17:03:37'!
-test12
-
-	| account accountSummary |
-	
-	account := ReceptiveAccount new.
-	Deposit register: 100 on: account. 
-	
-	accountSummary := account accountSummary.
-	
-	self assert: 2 equals: accountSummary size.
-	self assert: 'Depósito por 100' equals: (accountSummary at: 1).
-	self assert: 'Balance = 100' equals: (accountSummary at: 2).
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 17:04:48'!
-test13
-
-	| account accountSummary |
-	
-	account := ReceptiveAccount new.
-	Withdraw register: 100 on: account. 
-	
-	accountSummary := account accountSummary.
-	
-	self assert: 2 equals: accountSummary size.
-	self assert: 'Extraccion por 100' equals: (accountSummary at: 1).
-	self assert: 'Balance = -100' equals: (accountSummary at: 2).
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/31/2021 15:59:21'!
-test14
-
-	| sender receiver accountSummary |
-	
-	sender := ReceptiveAccount new.
-	receiver := ReceptiveAccount new.
-	Transfer register: 50 from: sender to: receiver. 
-	
-	accountSummary := sender accountSummary.
-	
-	self assert: 2 equals: accountSummary size.
-	self assert: 'Salida por transferencia de 50' equals: (accountSummary at: 1).
-	self assert: 'Balance = -50' equals: (accountSummary at: 2).
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/31/2021 16:03:50'!
-test15
-
-	| sender receiver accountSummary |
-	
-	sender := ReceptiveAccount new.
-	receiver := ReceptiveAccount new.
-	Transfer register: 30 from: sender to: receiver. 
-	
-	accountSummary := receiver accountSummary.
-	
-	self assert: 2 equals: accountSummary size.
-	self assert: 'Entrada por transferencia de 30' equals: (accountSummary at: 1).
-	self assert: 'Balance = 30' equals: (accountSummary at: 2).
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/31/2021 16:10:23'!
-test15bis
-
-	| sender receiver accountSummary |
-	
-	sender := ReceptiveAccount new.
-	receiver := ReceptiveAccount new.
-	
-	Transfer register: 50 from: sender to: receiver.
-	Transfer register: 30 from: receiver to: sender.
-	Deposit register: 100 on: sender.
-	Withdraw register: 200 on: sender.
-	
-	accountSummary := sender accountSummary.
-	
-	self assert: 5 equals: accountSummary size.
-	self assert: 'Salida por transferencia de 50' equals: (accountSummary at: 1).
-	self assert: 'Entrada por transferencia de 30' equals: (accountSummary at: 2).
-	self assert: 'Depósito por 100' equals: (accountSummary at: 3).
-	self assert: 'Extraccion por 200' equals: (accountSummary at: 4).
-	self assert: 'Balance = -120' equals: (accountSummary at: 5).
-! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 17:11:11'!
-test16
-
-	| account |
-	
-	account := ReceptiveAccount new.
-	
-	self assert: 0 equals: account transferNetReport.
-	! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 17:13:54'!
-test17
-
-	| sender receiver |
-	
-	sender := ReceptiveAccount new.
-	receiver := ReceptiveAccount new.
-	
-	Transfer register: 100 from: sender to: receiver.
-	
-	self assert: -100 equals: sender transferNetReport.
-	self assert: 100 equals: receiver transferNetReport.! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 17:26:11'!
-test18
-
-	| sender |
-	
-	sender := ReceptiveAccount new.
-	Deposit register: 100 on:sender. 
-	self assert: 0 equals: sender transferNetReport.! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/30/2021 17:28:55'!
-test19
-
-	| sender |
-	
-	sender := ReceptiveAccount new.
-	Withdraw register: 100 on:sender. 
-	self assert: 0 equals: sender transferNetReport.! !
-
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'crivera 5/31/2021 15:52:29'!
-test20
-
-	| sender receiver |
-	
-	sender := ReceptiveAccount new.
-	receiver := ReceptiveAccount new.
-	
-	Transfer register: 100 from: sender to: receiver.
-	Transfer register: 200 from: receiver to: sender.
-	
-	self assert: 100 equals: sender transferNetReport.
-	self assert: -100 equals: receiver transferNetReport.! !
-
-
-!classDefinition: #TransferTest category: 'Portfolio-Solucion'!
-TestCase subclass: #TransferTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!TransferTest methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 15:43:56'!
-test01
-	| sender receiver transfer |
-	
-	sender := ReceptiveAccount new.
-	receiver := ReceptiveAccount new.
-	
-	transfer := Transfer register: 100 from: sender to: receiver.
-		
-	self assert: (sender hasRegistered: transfer withdraw).
-	self assert: (receiver hasRegistered: transfer deposit).! !
-
-
 !classDefinition: #Account category: 'Portfolio-Solucion'!
 Object subclass: #Account
 	instanceVariableNames: ''
@@ -553,6 +36,11 @@ transactions
 !Account methodsFor: 'composition' stamp: 'HAW 5/25/2019 12:24:04'!
 addedTo: aPortfolio
 
+	self subclassResponsibility ! !
+
+
+!Account methodsFor: 'report' stamp: 'crivera 6/1/2021 21:49:46'!
+report: aReport
 	self subclassResponsibility ! !
 
 
@@ -667,6 +155,11 @@ signalCanNotAddAccount
 	
 	self error: self class canNotAddAccountErrorMessage! !
 
+
+!Portfolio methodsFor: 'report' stamp: 'crivera 6/1/2021 21:49:06'!
+report: aReport 
+	accounts do: [:account | account report: aReport ]! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'Portfolio class' category: 'Portfolio-Solucion'!
@@ -751,52 +244,193 @@ addedTo: aPortfolio
 	! !
 
 
-!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 17:03:04'!
-accountSummary
-	| summary |
-	summary := OrderedCollection new.
-	transactions do: [:transaction | transaction printOnSummary: summary ].
-	summary add: ('Balance = ', self balance asString).
-	^ summary
-	
-	! !
-
-!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'crivera 5/31/2021 15:55:06'!
-transferNetReport
-	| amount |
-	amount := 0.
-	transactions do: [:transaction | amount := (transaction xxx: amount)].
-	^amount! !
+!ReceptiveAccount methodsFor: 'report' stamp: 'crivera 6/1/2021 20:43:06'!
+report: aReport
+	transactions do: [:transaction | transaction reportTo: aReport ]! !
 
 
-!classDefinition: #AccountTransaction category: 'Portfolio-Solucion'!
-Object subclass: #AccountTransaction
+!classDefinition: #Report category: 'Portfolio-Solucion'!
+Object subclass: #Report
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!AccountTransaction methodsFor: 'value' stamp: 'HernanWilkinson 9/12/2011 12:25'!
-value 
-
+!Report methodsFor: 'initialization' stamp: 'crivera 6/1/2021 20:24:28'!
+initializeWith: aReceptiveAccount 
 	self subclassResponsibility ! !
 
 
-!AccountTransaction methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:39'!
+!Report methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:25:34'!
+reportToWithDeposit: aDeposit 
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:25:58'!
+reportToWithDepositTransfer: aDepositTransfer 
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:26:22'!
+reportToWithWithdraw: aWithdraw 
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:26:34'!
+reportToWithWithdrawTransfer: aWithdrawTransfer 
+	self subclassResponsibility ! !
+
+
+!Report methodsFor: 'report' stamp: 'crivera 6/1/2021 20:25:09'!
+report
+	self subclassResponsibility ! !
+
+
+!classDefinition: #SummaryReport category: 'Portfolio-Solucion'!
+Report subclass: #SummaryReport
+	instanceVariableNames: 'account summary'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!SummaryReport methodsFor: 'initialization' stamp: 'crivera 6/1/2021 21:39:56'!
+initializeWith: aReceptiveAccount 
+	account := aReceptiveAccount.
+	summary := OrderedCollection new! !
+
+
+!SummaryReport methodsFor: 'report-private' stamp: 'crivera 6/1/2021 19:58:38'!
+reportToWithDeposit: aDeposit 
+	summary add: 'Depósito por ', (aDeposit value asString) ! !
+
+!SummaryReport methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:00:45'!
+reportToWithDepositTransfer: aDepositTransfer 
+	^summary add: 'Entrada por transferencia de ', (aDepositTransfer value asString)! !
+
+!SummaryReport methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:00:59'!
+reportToWithWithdraw: aWithdraw 
+	^summary add: 'Extracción por ', (aWithdraw value asString)! !
+
+!SummaryReport methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:01:13'!
+reportToWithWithdrawTransfer: aWithdrawTransfer 
+	summary add: 'Salida por transferencia de ', (aWithdrawTransfer value asString)! !
+
+
+!SummaryReport methodsFor: 'report' stamp: 'crivera 6/1/2021 21:39:56'!
+report
+	
+	account report: self.
+	summary add: ('Balance = ', account balance asString).
+	^ summary! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'SummaryReport class' category: 'Portfolio-Solucion'!
+SummaryReport class
+	instanceVariableNames: ''!
+
+!SummaryReport class methodsFor: 'as yet unclassified' stamp: 'crivera 5/31/2021 21:49:48'!
+for: aReceptiveAccount 
+	^ self new initializeWith: aReceptiveAccount ! !
+
+
+!classDefinition: #TransferNetReport category: 'Portfolio-Solucion'!
+Report subclass: #TransferNetReport
+	instanceVariableNames: 'receptiveAccount transferNet'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TransferNetReport methodsFor: 'initialization' stamp: 'crivera 6/1/2021 20:12:42'!
+initializeWith: aReceptiveAccount 
+	
+	receptiveAccount := aReceptiveAccount.
+	transferNet  := 0! !
+
+
+!TransferNetReport methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:16:50'!
+reportToWithDeposit: aDeposit 
+	! !
+
+!TransferNetReport methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:15:15'!
+reportToWithDepositTransfer: aDepositTransfer 
+	transferNet  := transferNet + aDepositTransfer value! !
+
+!TransferNetReport methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:18:09'!
+reportToWithWithdraw: aWithdraw 
+	! !
+
+!TransferNetReport methodsFor: 'report-private' stamp: 'crivera 6/1/2021 20:14:05'!
+reportToWithWithdrawTransfer: aWithdrawTransfer 
+	transferNet := transferNet - aWithdrawTransfer value! !
+
+
+!TransferNetReport methodsFor: 'report' stamp: 'crivera 6/1/2021 20:12:26'!
+report
+	receptiveAccount report: self.
+	
+	^ transferNet! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'TransferNetReport class' category: 'Portfolio-Solucion'!
+TransferNetReport class
+	instanceVariableNames: ''!
+
+!TransferNetReport class methodsFor: 'as yet unclassified' stamp: 'crivera 6/1/2021 20:07:29'!
+for: aReceptiveAccount 
+	^ self new initializeWith: aReceptiveAccount ! !
+
+
+!classDefinition: #Transaction category: 'Portfolio-Solucion'!
+Object subclass: #Transaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!Transaction methodsFor: 'value' stamp: 'crivera 6/1/2021 21:21:13'!
+value
+	self subclassResponsibility ! !
+
+
+!Transaction methodsFor: 'balance' stamp: 'crivera 6/1/2021 21:20:36'!
 affectBalance: aBalance
 
 	self subclassResponsibility ! !
 
 
-!AccountTransaction methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 17:00:43'!
-printOnSummary: aSummary 
-	self shouldBeImplemented.! !
+!Transaction methodsFor: 'report' stamp: 'crivera 6/1/2021 21:20:53'!
+reportTo: aReport 
+
+	self subclassResponsibility ! !
+
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Solucion'!
+Transaction subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!AccountTransaction methodsFor: 'value' stamp: 'crivera 6/1/2021 20:54:29'!
+value 
+
+	^value! !
+
+
+!AccountTransaction methodsFor: 'initialization' stamp: 'crivera 6/1/2021 20:54:14'!
+initializeFor: aValue
+
+	value := aValue ! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'AccountTransaction class' category: 'Portfolio-Solucion'!
 AccountTransaction class
 	instanceVariableNames: ''!
+
+!AccountTransaction class methodsFor: 'instance creation' stamp: 'crivera 6/1/2021 20:56:14'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
 
 !AccountTransaction class methodsFor: 'instance creation' stamp: 'NR 10/21/2019 18:54:27'!
 register: aValue on: account
@@ -811,92 +445,99 @@ register: aValue on: account
 
 !classDefinition: #Deposit category: 'Portfolio-Solucion'!
 AccountTransaction subclass: #Deposit
-	instanceVariableNames: 'value'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!Deposit methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:45'!
-initializeFor: aValue
-
-	value := aValue ! !
-
-!Deposit methodsFor: 'initialization' stamp: 'crivera 5/30/2021 17:02:45'!
-printOnSummary: aSummary 
-	aSummary add: ('Depósito por ', value asString )! !
-
-
-!Deposit methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:38'!
-value
-
-	^ value! !
-
-
-!Deposit methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:02'!
+!Deposit methodsFor: 'balance' stamp: 'crivera 6/1/2021 21:04:52'!
 affectBalance: aBalance
 
-	^aBalance + value ! !
+	^aBalance +  value ! !
 
 
-!Deposit methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 17:28:21'!
-xxx: aSmallInteger 
-	^aSmallInteger ! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'Deposit class' category: 'Portfolio-Solucion'!
-Deposit class
-	instanceVariableNames: ''!
-
-!Deposit class methodsFor: 'instance creation' stamp: 'HernanWilkinson 7/13/2011 18:38'!
-for: aValue
-
-	^ self new initializeFor: aValue ! !
+!Deposit methodsFor: 'report' stamp: 'crivera 6/1/2021 20:44:10'!
+reportTo: aReport 
+	aReport reportToWithDeposit: self! !
 
 
 !classDefinition: #Withdraw category: 'Portfolio-Solucion'!
 AccountTransaction subclass: #Withdraw
-	instanceVariableNames: 'value'
+	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!Withdraw methodsFor: 'initialization' stamp: 'HernanWilkinson 7/13/2011 18:46'!
-initializeFor: aValue
-
-	value := aValue ! !
-
-!Withdraw methodsFor: 'initialization' stamp: 'crivera 5/30/2021 17:08:49'!
-printOnSummary: aSummary 
-	aSummary add: ('Extraccion por ', value asString)! !
-
-
-!Withdraw methodsFor: 'value' stamp: 'HernanWilkinson 7/13/2011 18:33'!
-value
-
-	^ value! !
-
-
-!Withdraw methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:25:15'!
+!Withdraw methodsFor: 'balance' stamp: 'crivera 6/1/2021 21:05:43'!
 affectBalance: aBalance
 
-	^aBalance - value! !
+	^aBalance -  value! !
 
 
-!Withdraw methodsFor: 'as yet unclassified' stamp: 'crivera 5/31/2021 15:51:01'!
-xxx: aSmallInteger 
-	^aSmallInteger ! !
+!Withdraw methodsFor: 'report' stamp: 'crivera 6/1/2021 20:45:09'!
+reportTo: aReport 
+	aReport reportToWithWithdraw: self! !
+
+
+!classDefinition: #TransferTransaction category: 'Portfolio-Solucion'!
+Transaction subclass: #TransferTransaction
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TransferTransaction methodsFor: 'initialization' stamp: 'crivera 5/30/2021 16:17:02'!
+initializeWith: aTransaction 
+	transfer := aTransaction.! !
+
+
+!TransferTransaction methodsFor: 'report' stamp: 'crivera 6/1/2021 19:42:04'!
+value
+	^ transfer value! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'Withdraw class' category: 'Portfolio-Solucion'!
-Withdraw class
+!classDefinition: 'TransferTransaction class' category: 'Portfolio-Solucion'!
+TransferTransaction class
 	instanceVariableNames: ''!
 
-!Withdraw class methodsFor: 'instance creation' stamp: 'HernanWilkinson 7/13/2011 18:33'!
-for: aValue
+!TransferTransaction class methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 16:19:45'!
+for: aTransference 
+	^ self new initializeWith: aTransference ! !
 
-	^ self new initializeFor: aValue ! !
+
+!classDefinition: #DepositTransfer category: 'Portfolio-Solucion'!
+TransferTransaction subclass: #DepositTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!DepositTransfer methodsFor: 'initialization' stamp: 'crivera 5/30/2021 16:15:48'!
+affectBalance: aSmallInteger 
+	^ aSmallInteger + transfer value ! !
+
+
+!DepositTransfer methodsFor: 'report' stamp: 'crivera 6/1/2021 20:00:45'!
+reportTo: aSummaryReport 
+	^ aSummaryReport reportToWithDepositTransfer: self! !
+
+
+!classDefinition: #WithdrawTransfer category: 'Portfolio-Solucion'!
+TransferTransaction subclass: #WithdrawTransfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!WithdrawTransfer methodsFor: 'initialization' stamp: 'crivera 5/30/2021 16:16:34'!
+affectBalance: aSmallInteger 
+	^ aSmallInteger - transfer value! !
+
+
+!WithdrawTransfer methodsFor: 'report' stamp: 'crivera 6/1/2021 20:01:13'!
+reportTo: aSummaryReport 
+	^aSummaryReport reportToWithWithdrawTransfer: self! !
 
 
 !classDefinition: #Transfer category: 'Portfolio-Solucion'!
@@ -906,11 +547,21 @@ Object subclass: #Transfer
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!Transfer methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 16:07:33'!
+!Transfer methodsFor: 'testing' stamp: 'crivera 5/30/2021 16:07:33'!
 deposit
 	^deposit! !
 
-!Transfer methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 16:05:51'!
+!Transfer methodsFor: 'testing' stamp: 'crivera 5/30/2021 16:07:47'!
+withdraw
+	^ withdraw! !
+
+
+!Transfer methodsFor: 'value' stamp: 'crivera 5/30/2021 16:06:33'!
+value
+	^ amount ! !
+
+
+!Transfer methodsFor: 'initialization' stamp: 'crivera 5/30/2021 16:05:51'!
 initializeAmount: anAmount from: aReceptiveAccountSendingMoney to: aReceptiveAccountReceivingMoney 
 	amount := anAmount.
 	withdraw := WithdrawTransfer for: self.
@@ -918,14 +569,6 @@ initializeAmount: anAmount from: aReceptiveAccountSendingMoney to: aReceptiveAcc
 	aReceptiveAccountSendingMoney register: withdraw.
 	aReceptiveAccountReceivingMoney  register: deposit.
 	^ self! !
-
-!Transfer methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 16:06:33'!
-value
-	^ amount ! !
-
-!Transfer methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 16:07:47'!
-withdraw
-	^ withdraw! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -947,79 +590,3 @@ register: anAmount from: aReceptiveAccountSendingMoney to: aReceptiveAccountRece
 	aReceptiveAccountSendingMoney = aReceptiveAccountReceivingMoney ifTrue: [self error: self anAccountCantSendMoneyToItselfErrorDescription].
 	^ self new initializeAmount: anAmount from: aReceptiveAccountSendingMoney to: aReceptiveAccountReceivingMoney ! !
 
-
-
-!classDefinition: #XX category: 'Portfolio-Solucion'!
-Object subclass: #XX
-	instanceVariableNames: 'transfer'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!XX methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 16:18:16'!
-affectBalance: anAmount
-	self subclassResponsibility ! !
-
-!XX methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 16:17:02'!
-initializeWith: aTransaction 
-	transfer := aTransaction.! !
-
-!XX methodsFor: 'as yet unclassified' stamp: 'crivera 5/31/2021 16:12:56'!
-printOnSummary: anOrderedCollection 
-	self subclassResponsibility ! !
-
-!XX methodsFor: 'as yet unclassified' stamp: 'crivera 5/31/2021 16:11:36'!
-xxx: aSmallInteger 
-	self subclassResponsibility ! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'XX class' category: 'Portfolio-Solucion'!
-XX class
-	instanceVariableNames: ''!
-
-!XX class methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 16:19:45'!
-for: aTransference 
-	^ self new initializeWith: aTransference ! !
-
-
-!classDefinition: #DepositTransfer category: 'Portfolio-Solucion'!
-XX subclass: #DepositTransfer
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!DepositTransfer methodsFor: 'initialization' stamp: 'crivera 5/30/2021 16:15:48'!
-affectBalance: aSmallInteger 
-	^ aSmallInteger + transfer value ! !
-
-!DepositTransfer methodsFor: 'initialization' stamp: 'crivera 5/30/2021 17:23:39'!
-xxx: aSmallInteger 
-	^ aSmallInteger + (transfer value)! !
-
-
-!DepositTransfer methodsFor: 'as yet unclassified' stamp: 'crivera 5/31/2021 16:04:57'!
-printOnSummary: anOrderedCollection 
-	anOrderedCollection add: ('Entrada por transferencia de ', (transfer value asString ))! !
-
-
-!classDefinition: #WithdrawTransfer category: 'Portfolio-Solucion'!
-XX subclass: #WithdrawTransfer
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!WithdrawTransfer methodsFor: 'initialization' stamp: 'crivera 5/30/2021 16:16:34'!
-affectBalance: aSmallInteger 
-	^ aSmallInteger - transfer value! !
-
-
-!WithdrawTransfer methodsFor: 'as yet unclassified' stamp: 'crivera 5/31/2021 16:02:40'!
-printOnSummary: anOrderedCollection 
-	anOrderedCollection add: 'Salida por transferencia de ', (transfer value asString).! !
-
-!WithdrawTransfer methodsFor: 'as yet unclassified' stamp: 'crivera 5/30/2021 17:20:52'!
-xxx: aSmallInteger 
-	^ aSmallInteger - (transfer value)! !
