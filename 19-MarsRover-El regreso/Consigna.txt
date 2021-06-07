@@ -1,0 +1,9 @@
+Para hacer un seguimiento del MarsRover, nos han pedido la siguiente funcionalidad
+1) Tener un log donde se vayan agregando los cambios de la posición y hacia donde apunta el MarsRover
+2) Tener una ventana donde se muestre la posición actual y hacia donde apunta el MarsRover actualmente.
+La diferencia entre 1) y 2) es que 1) es un log donde van quedando todos los cambios y 2) sólo muestra la situación actual en unos text fields de una ventana.
+Es necesario que la solución soporte que solo se esté usando el log, o solo la ventana o ambos al mismo tiempo.
+Adicionalmente, la solución debe ser extensible. O sea, se debe poder agregar otras maneras de hacer el seguimiento del MarsRover como mandar mensajes a un micro servicio, grabarlo en una base de datos, etc. sin que esto implique una modificación en este.
+
+Construir esta funcionalidad en base a la solución de la cátedra del MarsRover.
+ACLARACION: La solución provista no tiene buenos nombres de tests y tienen también código repetido. No es necesario arreglarlo.
