@@ -598,6 +598,10 @@ Object subclass: #MarsRoverHeading
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
+!MarsRoverHeading methodsFor: 'heading' stamp: 'DB 6/6/2021 19:47:43'!
+printHeading
+	^self class cardinalPoint asString ! !
+
 !MarsRoverHeading methodsFor: 'heading' stamp: 'HAW 8/22/2019 12:06:17'!
 rotateLeft: aMarsRover
 
@@ -624,11 +628,6 @@ moveBackward: aMarsRover
 moveForward: aMarsRover
 
 	self subclassResponsibility ! !
-
-
-!MarsRoverHeading methodsFor: 'as yet unclassified' stamp: 'DB 6/6/2021 19:47:43'!
-printHeading
-	^self class cardinalPoint asString ! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -824,7 +823,7 @@ Object subclass: #MarsRoverObserver
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!MarsRoverObserver methodsFor: 'as yet unclassified' stamp: 'DB 6/6/2021 20:57:52'!
+!MarsRoverObserver methodsFor: 'update' stamp: 'DB 6/6/2021 20:57:52'!
 update: aMarsRover
 	self subclassResponsibility .
 ! !
@@ -862,7 +861,7 @@ MarsRoverLoggingObserver subclass: #MarsRoverHeadingLogger
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!MarsRoverHeadingLogger methodsFor: 'as yet unclassified' stamp: 'DB 6/6/2021 20:10:43'!
+!MarsRoverHeadingLogger methodsFor: 'update' stamp: 'DB 6/6/2021 20:10:43'!
 update: aMarsRover
 
 	log add: aMarsRover printHeading.
@@ -876,7 +875,7 @@ MarsRoverLoggingObserver subclass: #MarsRoverLogger
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!MarsRoverLogger methodsFor: 'as yet unclassified' stamp: 'DB 6/6/2021 20:12:32'!
+!MarsRoverLogger methodsFor: 'update' stamp: 'DB 6/6/2021 20:12:32'!
 update: aMarsRover
 
 	log add: ('heading:',aMarsRover printHeading,',position:',aMarsRover position asString)! !
@@ -890,7 +889,7 @@ MarsRoverLoggingObserver subclass: #MarsRoverPositionLogger
 	category: 'MarsRover-WithHeading'!
 
 
-!MarsRoverPositionLogger methodsFor: 'as yet unclassified' stamp: 'DB 6/6/2021 20:07:24'!
+!MarsRoverPositionLogger methodsFor: 'update' stamp: 'DB 6/6/2021 20:07:24'!
 update: aMarsRover
 
 	log add: aMarsRover position asString.
@@ -904,7 +903,7 @@ MarsRoverObserver subclass: #MarsRoverWindow
 	poolDictionaries: ''
 	category: 'MarsRover-WithHeading'!
 
-!MarsRoverWindow methodsFor: 'as yet unclassified' stamp: 'DB 6/6/2021 20:15:03'!
+!MarsRoverWindow methodsFor: 'update' stamp: 'DB 6/6/2021 20:15:03'!
 update: aMarsRover
 	position := aMarsRover position.
 	heading := aMarsRover printHeading.! !
