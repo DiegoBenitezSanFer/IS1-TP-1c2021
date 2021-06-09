@@ -1,0 +1,1013 @@
+
+
+----QUIT----(9 March 2021 14:58:42) CuisUniversity-4532.image priorSource: 13044060!
+
+----STARTUP---- (9 March 2021 14:58:43) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-4532.image!
+
+
+----QUIT----(9 March 2021 14:58:43) CuisUniversity-4532.image priorSource: 16885479!
+
+----STARTUP---- (3 June 2021 17:22:07) as /Users/crivera/Documents/Facultad/IS1/Cuis/macos64/CuisUniversity-4532.image!
+
+
+----End fileIn of /Users/crivera/Documents/Facultad/IS1/Nuestras-entregas/18-Portfolio 2/Portfolio-Solucion-Tests.st----!
+
+----End fileIn of /Users/crivera/Documents/Facultad/IS1/Nuestras-entregas/18-Portfolio 2/Portfolio-Solucion.st----!
+
+----End fileIn of /Users/crivera/Documents/Facultad/IS1/Enunciados/19-MarsRover-El regreso/MarsRover-WithHeading.st----!
+
+----QUIT----(3 June 2021 22:13:03) CuisUniversity-4532.image priorSource: 16885703!
+
+----STARTUP---- (6 June 2021 20:53:10) as /Users/crivera/Documents/Facultad/IS1/Cuis/macos64/CuisUniversity-4532.image!
+
+
+----End fileIn of /Users/crivera/Documents/Facultad/IS1/Cuis/macos64/Packages/TerseGuide.pck.st----!
+
+----QUIT----(6 June 2021 21:15:23) CuisUniversity-4532.image priorSource: 16948947!
+
+----STARTUP---- (8 June 2021 19:21:31) as /Users/crivera/Documents/Facultad/IS1/Cuis/macos64/CuisUniversity-4532.image!
+
+
+Object subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+
+!classDefinition: #CartTest category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 19:23:00'!
+Object subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+
+!classDefinition: #Cart category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 19:39:45'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+!CartTest methodsFor: 'no messages' stamp: 'lilmonk3y 6/8/2021 19:39:35'!
+test01
+	| cart |
+	cart _ Cart new.
+	
+	self assert: 0 equals: cart items size! !
+
+TestCase subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+
+!classDefinition: #NameOfSubclass category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 19:40:00'!
+TestCase subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+
+!classRemoval: #NameOfSubclass stamp: 'lilmonk3y 6/8/2021 19:40:11'!
+TestCase subclass: #NameOfSubclass
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+
+!classDefinition: #CartTest category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 19:40:17'!
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 19:40:22'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:40:37'!
+items
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:41:07' prior: 50864298!
+items
+	^ Bag new.! !
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 19:41:10'!
+PASSED!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 19:41:10'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:42:45'!
+test02
+	| cart |
+	cart _ Cart new.
+	
+	cart addItem: nil.
+	self assert: 0 equals: cart items size! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:46:44' prior: 50864311!
+test02
+	| cart |
+	cart _ Cart new.
+	
+	cart addItem: 'unNombre'.
+	
+	self assert: 1 equals: cart items size! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:46:58' prior: 50864318!
+test02
+	| cart cartItems |
+	cart _ Cart new.
+	
+	cart addItem: 'unNombre'.
+	
+	cartItems _ cart items.
+	self assert: 1 equals: cartItems size! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:48:12' prior: 50864325!
+test02
+	| cart cartItems |
+	cart _ Cart new.
+	
+	cart addItem: 'unNombre'.
+	
+	cartItems _ cart items.
+	self assert: 1 equals: cartItems size.
+	self assert: (cartItems includes: 'unNombre').! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:48:27' prior: 50864333!
+test02
+	| cart cartItems isbn |
+	cart _ Cart new.
+	
+	isbn _ 'unNombre'.
+	cart addItem: isbn.
+	
+	cartItems _ cart items.
+	self assert: 1 equals: cartItems size.
+	self assert: (cartItems includes: 'unNombre').! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:48:52' prior: 50864343!
+test02
+	| cart cartItems isbn |
+	cart _ Cart new.
+	isbn _ 'unNombre'.
+	
+	cart addItem: isbn.
+	
+	cartItems _ cart items.
+	self assert: 1 equals: cartItems size.
+	self assert: (cartItems includes: isbn).! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:49:50' prior: 50864353!
+test02
+	| cart cartItems isbn |
+	cart _ Cart new.
+	isbn _ '9780321146533'.
+	
+	cart addItem: isbn.
+	
+	cartItems _ cart items.
+	self assert: 1 equals: cartItems size.
+	self assert: (cartItems includes: isbn).! !
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 19:49:57'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:50:05'!
+addItem: aString 
+	self shouldBeImplemented.! !
+
+!classDefinition: #Cart category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 19:50:35'!
+Object subclass: #Cart
+	instanceVariableNames: 'items'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:50:29' prior: 50864375!
+addItem: aString 
+	items add: aString! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:50:48' prior: 50864387!
+addItem: anItem 
+	items add: anItem! !
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 19:51:53'!
+ERROR!
+!Cart methodsFor: 'nil' stamp: 'lilmonk3y 6/8/2021 19:52:36' overrides: 16896425!
+initialize
+	items _ Bag new! !
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 19:52:42'!
+FAILURE!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:53:21' prior: 50864303!
+items
+	^ items .! !
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 19:53:23'!
+PASSED!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 19:53:23'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 19:53:23'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 19:58:51'!
+test03
+	| cart cartItems isbnOfTDDByExample |
+	cart _ Cart new.
+	isbnOfTDDByExample _ '9780321146533'.
+	
+	cart addItem: isbnOfTDDByExample.
+	cart addItem: isbnOfTDDByExample.
+		
+	cartItems _ cart items.
+	self assert: 2 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample).! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:03:33' prior: 50864417!
+test03
+	| cart cartItems isbnOfTDDByExample |
+	cart _ Cart new.
+	isbnOfTDDByExample _ '9780321146533'.
+	
+	cart addItem: isbnOfTDDByExample amount: 2.
+		
+	cartItems _ cart items.
+	self assert: 2 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample).! !
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:03:43'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:03:49'!
+addItem: aString amount: aSmallInteger 
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:05:07' prior: 50864444!
+addItem: aString amount: aSmallInteger 
+	items add: aString withOccurrences: aSmallInteger ! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:05:17' prior: 50864450!
+addItem: anItem amount: aSmallInteger 
+	items add: anItem withOccurrences: aSmallInteger ! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:05:25' prior: 50864456!
+addItem: anItem amount: anAmount 
+	items add: anItem withOccurrences: anAmount ! !
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:05:31'!
+PASSED!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:05:31'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:05:31'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:05:31'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:14:03'!
+test04
+	| cart aCatalogue anInvalidISBN |
+	aCatalogue _ Collection new.
+	cart _ Cart forCatalogue: aCatalogue.
+	anInvalidISBN _ '9780321146537'.
+	
+	self should: [cart addItem: anInvalidISBN] 
+		raise: Error description: Cart isbnNotPresentInCatalogueErrorDescription.
+		! !
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:14:35'!
+ERROR!
+!Cart class methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:14:43'!
+forCatalogue: aCollection 
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:15:09' prior: 50864491!
+forCatalogue: aCollection 
+	^ self new initializeWith: aCollection ! !
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:15:18'!
+ERROR!
+
+!classDefinition: #Cart category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 20:15:24'!
+Object subclass: #Cart
+	instanceVariableNames: 'items collection'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+!Cart methodsFor: 'initialization' stamp: 'lilmonk3y 6/8/2021 20:15:24'!
+initializeWith: aCollection 
+	self shouldBeImplemented.
+	collection := aCollection.! !
+
+!classDefinition: #Cart category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 20:16:02'!
+Object subclass: #Cart
+	instanceVariableNames: 'items collection catalogue'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+!Cart methodsFor: 'initialization' stamp: 'lilmonk3y 6/8/2021 20:15:59' prior: 50864510!
+initializeWith: aCollection 
+	catalogue := aCollection.! !
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:16:03'!
+ERROR!
+!Cart class methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:16:12'!
+isbnNotPresentInCatalogueErrorDescription
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:16:34' prior: 50864530!
+isbnNotPresentInCatalogueErrorDescription
+	^ 'isbnNotPresentInCatalogue'! !
+!Cart class methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:16:57' prior: 50864536!
+isbnNotPresentInCatalogueErrorDescription
+	^ 'isbn not present in catalogue'! !
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:16:58'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:17:03'!
+PASSED!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:17:03'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:17:03'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:17:03'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:17:03'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:17:03'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:17:07'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:17:47'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:18:25'!
+FAILURE!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:20:34'!
+PASSED!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:20:34'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:20:34'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:20:34'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:20:34'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:20:34'!
+FAILURE!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:20:52' prior: 50864477!
+test04
+	| cart aCatalogue anInvalidISBN |
+	aCatalogue _ Collection new.
+	cart _ Cart forCatalogue: aCatalogue.
+	anInvalidISBN _ '9780321146537'.
+	
+	self should: [cart addItem: anInvalidISBN] 
+		raise: [Error] description: Cart isbnNotPresentInCatalogueErrorDescription.
+		! !
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:20:54'!
+FAILURE!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:21:34' prior: 50864586!
+test04
+	| cart aCatalogue anInvalidISBN |
+	aCatalogue _ Collection new.
+	cart _ Cart forCatalogue: aCatalogue.
+	anInvalidISBN _ '9780321146537'.
+	
+	self should: [cart addItem: anInvalidISBN] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription.
+		! !
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:21:38'!
+FAILURE!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:23:43' prior: 50864392!
+addItem: anItem 
+	(catalogue includes: anItem) ifFalse: [self error: self class isbnNotPresentInCatalogueErrorDescription ]
+	items add: anItem! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:23:47' prior: 50864615!
+addItem: anItem 
+	(catalogue includes: anItem) ifFalse: [self error: self class isbnNotPresentInCatalogueErrorDescription ].
+	items add: anItem! !
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:23:56'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:24:36'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:24:42'!
+FAILURE!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:24:42'!
+FAILURE!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:25:46' prior: 50864601!
+test04
+	| cart aCatalogue anInvalidISBN |
+	aCatalogue _ Collection new.
+	cart _ Cart forCatalogue: aCatalogue.
+	anInvalidISBN _ '9780321146537'.
+	self halt.
+	self should: [cart addItem: anInvalidISBN] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription.
+		! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:26:34' prior: 50864641!
+test04
+	| cart aCatalogue anInvalidISBN |
+	aCatalogue _ OrderedCollection new.
+	cart _ Cart forCatalogue: aCatalogue.
+	anInvalidISBN _ '9780321146537'.
+	self halt.
+	self should: [cart addItem: anInvalidISBN] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription.
+		! !
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:26:46'!
+PASSED!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:26:46'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:26:46'!
+ERROR!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:26:46'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:26:54' prior: 50864654!
+test04
+	| cart aCatalogue anInvalidISBN |
+	aCatalogue _ OrderedCollection new.
+	cart _ Cart forCatalogue: aCatalogue.
+	anInvalidISBN _ '9780321146537'.
+
+	self should: [cart addItem: anInvalidISBN] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription.
+		! !
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:26:59'!
+PASSED!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:26:59'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:26:59'!
+ERROR!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:26:59'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:26:59'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:26:59'!
+ERROR!
+
+!classDefinition: #CartTest category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 20:28:11'!
+TestCase subclass: #CartTest
+	instanceVariableNames: 'catalogue'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:28:10' overrides: 16927572!
+setUp
+	catalogue _ OrderedCollection new.! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:28:54' prior: 50864676!
+test04
+	| cart anInvalidISBN |
+	cart _ Cart forCatalogue: catalogue.
+	anInvalidISBN _ '9780321146537'.
+
+	self should: [cart addItem: anInvalidISBN] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription.
+		! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:30:52' prior: 50864430!
+test03
+	| cart cartItems isbnOfTDDByExample |
+	isbnOfTDDByExample _ '9780321146533'.
+	catalogue add: isbnOfTDDByExample.
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample amount: 2.
+		
+	cartItems _ cart items.
+	self assert: 2 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample).! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:31:35' prior: 50864363!
+test02
+	| cart cartItems isbn |
+	isbn _ '9780321146533'.
+	catalogue add: isbn.
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbn.
+	
+	cartItems _ cart items.
+	self assert: 1 equals: cartItems size.
+	self assert: (cartItems includes: isbn).! !
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:31:39'!
+PASSED!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:31:39'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:31:39'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:31:39'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:31:39'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:34:40'!
+test05
+	| cart notExistingISBN |
+	notExistingISBN _ '1234'.
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: notExistingISBN amount: 2] raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription ! !
+
+!testRun: #CartTest #test05 stamp: 'lilmonk3y 6/8/2021 20:34:45'!
+FAILURE!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:35:46' prior: 50864462!
+addItem: anItem amount: anAmount 
+	items add: anItem withOccurrences: anAmount ! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:36:21' prior: 50864623!
+addItem: anItem 
+	
+	self addItem: anItem amount: 1! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:36:24' prior: 50864782!
+addItem: anItem 
+
+	self addItem: anItem amount: 1! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:36:33' prior: 50864776!
+addItem: anItem amount: anAmount 
+	(catalogue includes: anItem) ifFalse: [self error: self class isbnNotPresentInCatalogueErrorDescription ].
+	
+	items add: anItem withOccurrences: anAmount ! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:36:38' prior: 50864792!
+addItem: anItem amount: anAmount 
+	
+	(catalogue includes: anItem) ifFalse: [self error: self class isbnNotPresentInCatalogueErrorDescription ].
+	
+	items add: anItem withOccurrences: anAmount ! !
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:36:41'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:36:41'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:36:41'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:36:41'!
+PASSED!
+
+!testRun: #CartTest #test05 stamp: 'lilmonk3y 6/8/2021 20:36:41'!
+PASSED!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:37:16'!
+validateItemISBNExistsInCatalogue: anItem
+
+	^ (catalogue includes: anItem) ifFalse: [self error: self class isbnNotPresentInCatalogueErrorDescription ]! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:37:16' prior: 50864801!
+addItem: anItem amount: anAmount 
+	
+	self validateItemISBNExistsInCatalogue: anItem.
+	
+	items add: anItem withOccurrences: anAmount ! !
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:37:19'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:37:19'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:37:19'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:37:19'!
+PASSED!
+
+!testRun: #CartTest #test05 stamp: 'lilmonk3y 6/8/2021 20:37:19'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:38:14' prior: 50864763!
+test05
+	| cart notExistingISBN |
+	notExistingISBN _ '1234'.
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: notExistingISBN amount: 2] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription ! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:38:23'!
+test06
+	| cart notExistingISBN |
+	notExistingISBN _ '1234'.
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: notExistingISBN amount: 2] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription ! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:39:43' prior: 50864726!
+test03
+	| cart cartItems isbnOfTDDByExample |
+	
+	catalogue add: isbnOfTDDByExample.
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample amount: 2.
+		
+	cartItems _ cart items.
+	self assert: 2 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample).! !
+
+!classDefinition: #CartTest category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 20:40:16'!
+TestCase subclass: #CartTest
+	instanceVariableNames: 'catalogue isbnOfTDDByExample2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:40:15' prior: 50864710 overrides: 16927572!
+setUp
+	catalogue _ OrderedCollection new.
+	
+	isbnOfTDDByExample2 _ '9780321146533'.! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:40:59' prior: 50864872!
+test03
+	| cart cartItems  |
+	
+	catalogue add: isbnOfTDDByExample2.
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample2 amount: 2.
+		
+	cartItems _ cart items.
+	self assert: 2 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample2).! !
+
+!classDefinition: #CartTest category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 20:41:21'!
+TestCase subclass: #CartTest
+	instanceVariableNames: 'catalogue isbnOfTDDByExample'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:41:21' prior: 50864893 overrides: 16927572!
+setUp
+	catalogue _ OrderedCollection new.
+	
+	isbnOfTDDByExample _ '9780321146533'.! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:41:21' prior: 50864899!
+test03
+	| cart cartItems  |
+	
+	catalogue add: isbnOfTDDByExample.
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample amount: 2.
+		
+	cartItems _ cart items.
+	self assert: 2 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample).! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:42:08' prior: 50864861!
+test06
+	| cart |
+	
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: isbnOfTDDByExample amount: -1] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription ! !
+
+!testRun: #CartTest #test06 stamp: 'lilmonk3y 6/8/2021 20:42:10'!
+PASSED!
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:42:10'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:42:10'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:42:10'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:42:10'!
+PASSED!
+
+!testRun: #CartTest #test05 stamp: 'lilmonk3y 6/8/2021 20:42:10'!
+PASSED!
+
+!testRun: #CartTest #test06 stamp: 'lilmonk3y 6/8/2021 20:42:10'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:42:45' prior: 50864938!
+test06
+	| cart |
+	
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: isbnOfTDDByExample amount: -1] 
+		raise: Error withMessageText: Cart amountCannotBeANegativeNumberErrorDescription ! !
+
+!testRun: #CartTest #test06 stamp: 'lilmonk3y 6/8/2021 20:42:47'!
+ERROR!
+!Cart class methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:42:55'!
+amountCannotBeANegativeNumberErrorDescription
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:43:22' prior: 50864976!
+amountCannotBeANegativeNumberErrorDescription
+	^ 'amount Cannot Be A Negative Number Error Description'! !
+!Cart class methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:43:30' prior: 50864982!
+amountCannotBeANegativeNumberErrorDescription
+	^ 'amount Cannot Be A Negative Number'! !
+
+!testRun: #CartTest #test06 stamp: 'lilmonk3y 6/8/2021 20:43:33'!
+FAILURE!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:43:49' prior: 50864964!
+test06
+	| cart |
+	catalogue add: isbnOfTDDByExample.
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: isbnOfTDDByExample amount: -1] 
+		raise: Error withMessageText: Cart amountCannotBeANegativeNumberErrorDescription ! !
+
+!testRun: #CartTest #test06 stamp: 'lilmonk3y 6/8/2021 20:43:51'!
+FAILURE!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:46:35' prior: 50864830!
+addItem: anItem amount: anAmount 
+	
+	self validateItemISBNExistsInCatalogue: anItem.
+	(anAmount < 0) ifTrue: [self error: self class amountCannotBeANegativeNumberErrorDescription ].
+	
+	items add: anItem withOccurrences: anAmount ! !
+
+!testRun: #CartTest #test01 stamp: 'lilmonk3y 6/8/2021 20:46:38'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 20:46:38'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 20:46:38'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 20:46:38'!
+PASSED!
+
+!testRun: #CartTest #test05 stamp: 'lilmonk3y 6/8/2021 20:46:38'!
+PASSED!
+
+!testRun: #CartTest #test06 stamp: 'lilmonk3y 6/8/2021 20:46:38'!
+PASSED!
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:47:18'!
+validateAmountIsStrictlyPositive: anAmount
+
+	^ (anAmount < 0) ifTrue: [self error: self class amountCannotBeANegativeNumberErrorDescription ]! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 20:47:18' prior: 50865011!
+addItem: anItem amount: anAmount 
+	
+	self validateItemISBNExistsInCatalogue: anItem.
+	self validateAmountIsStrictlyPositive: anAmount.
+	
+	items add: anItem withOccurrences: anAmount ! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 21:00:20'!
+test01OnCartCreationItShouldBeEmpty
+	| cart |
+	cart _ Cart new.
+	
+	self assert: 0 equals: cart items size! !
+
+!methodRemoval: CartTest #test01 stamp: 'lilmonk3y 6/8/2021 21:00:20'!
+test01
+	| cart |
+	cart _ Cart new.
+	
+	self assert: 0 equals: cart items size!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 21:01:17' prior: 50864740!
+test02
+	| cart cartItems|
+
+	catalogue add: isbnOfTDDByExample .
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample .
+	
+	cartItems _ cart items.
+	self assert: 1 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample ).! !
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 21:01:19'!
+PASSED!
+
+!testRun: #CartTest #test01OnCartCreationItShouldBeEmpty stamp: 'lilmonk3y 6/8/2021 21:01:19'!
+PASSED!
+
+!testRun: #CartTest #test02 stamp: 'lilmonk3y 6/8/2021 21:01:19'!
+PASSED!
+
+!testRun: #CartTest #test03 stamp: 'lilmonk3y 6/8/2021 21:01:19'!
+PASSED!
+
+!testRun: #CartTest #test04 stamp: 'lilmonk3y 6/8/2021 21:01:19'!
+PASSED!
+
+!testRun: #CartTest #test05 stamp: 'lilmonk3y 6/8/2021 21:01:19'!
+PASSED!
+
+!testRun: #CartTest #test06 stamp: 'lilmonk3y 6/8/2021 21:01:19'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 21:01:52'!
+test02AddingAnItemModifiesCartSize
+	| cart cartItems|
+
+	catalogue add: isbnOfTDDByExample .
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample .
+	
+	cartItems _ cart items.
+	self assert: 1 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample ).! !
+
+!methodRemoval: CartTest #test02 stamp: 'lilmonk3y 6/8/2021 21:01:52'!
+test02
+	| cart cartItems|
+
+	catalogue add: isbnOfTDDByExample .
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample .
+	
+	cartItems _ cart items.
+	self assert: 1 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample ).!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 21:02:03' prior: 50864926!
+test03
+	| cart cartItems|
+	
+	catalogue add: isbnOfTDDByExample.
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample amount: 2.
+		
+	cartItems _ cart items.
+	self assert: 2 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample).! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 21:02:34'!
+test03CartAllowsMultiAdd
+	| cart cartItems|
+	
+	catalogue add: isbnOfTDDByExample.
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample amount: 2.
+		
+	cartItems _ cart items.
+	self assert: 2 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample).! !
+
+!methodRemoval: CartTest #test03 stamp: 'lilmonk3y 6/8/2021 21:02:34'!
+test03
+	| cart cartItems|
+	
+	catalogue add: isbnOfTDDByExample.
+	cart _ Cart forCatalogue: catalogue.
+	
+	cart addItem: isbnOfTDDByExample amount: 2.
+		
+	cartItems _ cart items.
+	self assert: 2 equals: cartItems size.
+	self assert: (cartItems includes: isbnOfTDDByExample).!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 21:03:21'!
+test04CannotAddAnItemNotIncludedOnCartCatalogue
+	| cart anInvalidISBN |
+	cart _ Cart forCatalogue: catalogue.
+	anInvalidISBN _ '9780321146537'.
+
+	self should: [cart addItem: anInvalidISBN] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription.
+		! !
+
+!methodRemoval: CartTest #test04 stamp: 'lilmonk3y 6/8/2021 21:03:21'!
+test04
+	| cart anInvalidISBN |
+	cart _ Cart forCatalogue: catalogue.
+	anInvalidISBN _ '9780321146537'.
+
+	self should: [cart addItem: anInvalidISBN] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription.
+		!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 21:04:05'!
+test05CannotAddAnItemNotIncludedOnCatalogueInMultiAdd
+	| cart notExistingISBN |
+	notExistingISBN _ '1234'.
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: notExistingISBN amount: 2] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription ! !
+
+!methodRemoval: CartTest #test05 stamp: 'lilmonk3y 6/8/2021 21:04:05'!
+test05
+	| cart notExistingISBN |
+	notExistingISBN _ '1234'.
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: notExistingISBN amount: 2] 
+		raise: Error withMessageText: Cart isbnNotPresentInCatalogueErrorDescription !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 21:04:56'!
+test06CannotAddAnItemWithNegativeAmount
+	| cart |
+	catalogue add: isbnOfTDDByExample.
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: isbnOfTDDByExample amount: -1] 
+		raise: Error withMessageText: Cart amountCannotBeANegativeNumberErrorDescription ! !
+
+!methodRemoval: CartTest #test06 stamp: 'lilmonk3y 6/8/2021 21:04:56'!
+test06
+	| cart |
+	catalogue add: isbnOfTDDByExample.
+	cart _ Cart forCatalogue: catalogue.
+	
+	self should: [cart addItem: isbnOfTDDByExample amount: -1] 
+		raise: Error withMessageText: Cart amountCannotBeANegativeNumberErrorDescription !
+!Cart methodsFor: 'as yet unclassified' stamp: 'lilmonk3y 6/8/2021 21:05:34' prior: 50864399 overrides: 16896425!
+initialize
+	items _ Bag new! !
+
+!methodRemoval: Cart #initialize stamp: 'lilmonk3y 6/8/2021 21:05:40'!
+initialize
+	items _ Bag new!
+!Cart methodsFor: 'initialization' stamp: 'lilmonk3y 6/8/2021 21:05:49' prior: 50864523!
+initializeWith: aCollection 
+	catalogue := aCollection.
+	items _ Bag new! !
+
+Object subclass: #Cart
+	instanceVariableNames: 'items catalogue'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+
+!classDefinition: #Cart category: 'TusLibros.com' stamp: 'lilmonk3y 6/8/2021 21:07:32'!
+Object subclass: #Cart
+	instanceVariableNames: 'items catalogue'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros.com'!
+
+!testRun: #CartTest #test02AddingAnItemModifiesCartSize stamp: 'lilmonk3y 6/8/2021 21:07:36'!
+PASSED!
+
+!testRun: #CartTest #test01OnCartCreationItShouldBeEmpty stamp: 'lilmonk3y 6/8/2021 21:07:36'!
+ERROR!
+
+!testRun: #CartTest #test02AddingAnItemModifiesCartSize stamp: 'lilmonk3y 6/8/2021 21:07:36'!
+PASSED!
+
+!testRun: #CartTest #test03CartAllowsMultiAdd stamp: 'lilmonk3y 6/8/2021 21:07:36'!
+PASSED!
+
+!testRun: #CartTest #test04CannotAddAnItemNotIncludedOnCartCatalogue stamp: 'lilmonk3y 6/8/2021 21:07:36'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddAnItemNotIncludedOnCatalogueInMultiAdd stamp: 'lilmonk3y 6/8/2021 21:07:36'!
+PASSED!
+
+!testRun: #CartTest #test06CannotAddAnItemWithNegativeAmount stamp: 'lilmonk3y 6/8/2021 21:07:36'!
+PASSED!
+
+!testRun: #CartTest #test01OnCartCreationItShouldBeEmpty stamp: 'lilmonk3y 6/8/2021 21:07:36'!
+ERROR!
+!CartTest methodsFor: 'testing' stamp: 'lilmonk3y 6/8/2021 21:08:01' prior: 50865052!
+test01OnCartCreationItShouldBeEmpty
+	| cart |
+	cart _ Cart forCatalogue: catalogue .
+	
+	self assert: 0 equals: cart items size! !
+
+!testRun: #CartTest #test01OnCartCreationItShouldBeEmpty stamp: 'lilmonk3y 6/8/2021 21:08:03'!
+PASSED!
+
+!testRun: #CartTest #test02AddingAnItemModifiesCartSize stamp: 'lilmonk3y 6/8/2021 21:08:05'!
+PASSED!
+
+!testRun: #CartTest #test01OnCartCreationItShouldBeEmpty stamp: 'lilmonk3y 6/8/2021 21:08:05'!
+PASSED!
+
+!testRun: #CartTest #test02AddingAnItemModifiesCartSize stamp: 'lilmonk3y 6/8/2021 21:08:05'!
+PASSED!
+
+!testRun: #CartTest #test03CartAllowsMultiAdd stamp: 'lilmonk3y 6/8/2021 21:08:05'!
+PASSED!
+
+!testRun: #CartTest #test04CannotAddAnItemNotIncludedOnCartCatalogue stamp: 'lilmonk3y 6/8/2021 21:08:05'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddAnItemNotIncludedOnCatalogueInMultiAdd stamp: 'lilmonk3y 6/8/2021 21:08:05'!
+PASSED!
+
+!testRun: #CartTest #test06CannotAddAnItemWithNegativeAmount stamp: 'lilmonk3y 6/8/2021 21:08:05'!
+PASSED!
