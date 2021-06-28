@@ -1,0 +1,2646 @@
+
+
+----QUIT----(9 March 2021 14:58:42) CuisUniversity-4532.image priorSource: 13044060!
+
+----STARTUP---- (9 March 2021 14:58:43) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-4532.image!
+
+
+----QUIT----(9 March 2021 14:58:43) CuisUniversity-4532.image priorSource: 16885479!
+
+----STARTUP---- (24 June 2021 19:24:41) as /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/CuisUniversity-4532.image!
+
+
+----QUIT----(24 June 2021 19:24:45) CuisUniversity-4532.image priorSource: 16885703!
+
+----STARTUP---- (24 June 2021 19:24:49) as /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/CuisUniversity-4532.image!
+
+
+----End fileIn of /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/Packages/System/Collections-CompactArrays.pck.st----!
+
+----End fileIn of /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/Packages/Features/Compression.pck.st----!
+
+----End fileIn of /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/Packages/Features/Sound.pck.st----!
+
+----End fileIn of /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/Packages/Features/Cryptography-DigitalSignatures.pck.st----!
+
+----End fileIn of /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/Packages/Features/Identities-UUID.pck.st----!
+
+----End fileIn of /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/Packages/System/Network-Kernel.pck.st----!
+
+----End fileIn of /Users/dbenitez/uba/1c2021-IS1/2021-1c/20-TusLibros/Iteracion 4/WebClient.pck.st----!
+
+----End fileIn of /Users/dbenitez/uba/1c2021-IS1/2021-1c/20-TusLibros/Iteracion 4/StringsServicesServer.st----!
+
+----End fileIn of /Users/dbenitez/uba/1c2021-IS1/2021-1c/20-TusLibros/Iteracion3/TusLibros-80.st----!
+
+server := StringsServicesRestInterface on: 8080.!
+
+server := StringsServicesRestInterface on: 8080.!
+
+server := StringsServicesRestInterface listeningOn: 8080.!
+
+server destroy.!
+
+server := StringsServicesRestInterface listeningOn: 8080.!
+
+server destroy.!
+!StringsServicesRestInterface methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:19:33' prior: 50896078!
+initializeWith: aPortNumber
+	
+	stringGenius := StringGenius new.
+	
+	port:= aPortNumber.
+	
+	webServer := WebServer new listenOn: self port.
+	
+	webServer addService: '/quote' action:[:request |	
+		
+		request send200Response: (self sayRandomQuote)].
+	
+	webServer addService: '/words' action:[:request | |wordsAsJson sentence words |
+		
+		[sentence := (request fields at:'sentence').
+		words := stringGenius words: sentence.
+		wordsAsJson:= WebUtils jsonEncode: (words).
+		request send200Response: (wordsAsJson)
+		 ] 
+		on: Error 
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/firstLetter' action:[:request | |letterAsJson word letter |
+		
+		[word := (request fields at:'sentence').
+		letter := stringGenius firstLetter: word.
+		letterAsJson:= WebUtils jsonEncode: (letter asString).
+		request send200Response: (letterAsJson)
+		 ] 
+		on: Error 
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/vowels' action:[:request | |vowelsAsJson word vowels |
+		
+		[word := (request fields at:'sentence').
+		vowels := stringGenius vowels: word.
+		vowelsAsJson:= WebUtils jsonEncode: (vowels).
+		request send200Response: (vowelsAsJson)
+		 ] 
+		on: Error 
+		do: [ :anError |
+			request send400Response: (anError messageText) ]].
+	
+	webServer addService: '/toUppercase' action:[:request | |upperCasedWordAsJson word upperCasedWord |
+		
+		[word := (request fields at:'sentence').
+		upperCasedWord := stringGenius toUppercase: word.
+		upperCasedWordAsJson:= WebUtils jsonEncode: (upperCasedWord).
+		request send200Response: (upperCasedWordAsJson)
+		 ] 
+		on: Error 
+		do:  [ :anError | request 
+			request send400Response: (anError messageText)]].
+! !
+
+TestCase subclass: #StoreWebClientTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classDefinition: #StoreWebClientTest category: 'TusLibros-Tests' stamp: 'DB 6/24/2021 21:20:01'!
+TestCase subclass: #StoreWebClientTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+!StoreWebClientTest methodsFor: 'nil' stamp: 'DB 6/24/2021 21:20:12'!
+test01
+
+	! !
+
+!classDefinition: #StoreServer category: 'TusLibros-Model' stamp: 'DB 6/24/2021 21:30:27'!
+Object subclass: #StoreServer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:29:27' prior: 50897921!
+test01
+
+	| response |
+	StoreServer listenOn: self port. 
+		
+	response := (WebClient httpGet: 'http://localhost:8080/createCart?user=user&pass=pass') content 
+	
+	self assert: response status equals: 200.! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:30:37'!
+ERROR!
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:30:45'!
+port
+	self shouldBeImplemented.! !
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:31:28' prior: 50897944!
+port
+	^80! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:31:40'!
+ERROR!
+!StoreServer class methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:31:58'!
+listenOn: aSmallInteger 
+	self shouldBeImplemented.! !
+!StoreServer class methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:32:38' prior: 50897955!
+listenOn: aPort 
+	^self new initializeWith: aPort.! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:32:49'!
+ERROR!
+
+!classDefinition: #StoreServer category: 'TusLibros-Model' stamp: 'DB 6/24/2021 21:32:59'!
+Object subclass: #StoreServer
+	instanceVariableNames: 'port'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:32:59'!
+initializeWith: aPort 
+	self shouldBeImplemented.
+	port := aPort.! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:33:03' prior: 50897974!
+initializeWith: aPort 
+	
+	port := aPort.! !
+
+!classDefinition: #StoreServer category: 'TusLibros-Model' stamp: 'DB 6/24/2021 21:44:30'!
+Object subclass: #StoreServer
+	instanceVariableNames: 'port systemFacade'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #AuthenticatorStub category: 'TusLibros-Model' stamp: 'DB 6/24/2021 21:44:44'!
+Object subclass: #AuthenticatorStub
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #MerchantProcessorMock category: 'TusLibros-Model' stamp: 'DB 6/24/2021 21:45:27'!
+Object subclass: #MerchantProcessorMock
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #StoreServer category: 'TusLibros-Model' stamp: 'DB 6/24/2021 21:45:31'!
+Object subclass: #StoreServer
+	instanceVariableNames: 'port systemFacade webServer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #StoreServer category: 'TusLibros-Model' stamp: 'DB 6/24/2021 21:45:35'!
+Object subclass: #StoreServer
+	instanceVariableNames: 'port systemFacade webServer webSever'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:46:11' prior: 50897979!
+initializeWith: aPort 
+	
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime new.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	webSever addServices: '/createCart' action: [:request | 
+		|aUser aPassword|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		
+		request send200Response: (systemFacade createCartFor: aUser authenticatedWith: aPassword).
+	].! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:46:22'!
+ERROR!
+!AuthenticatorStub class methodsFor: 'instance creation' stamp: 'DB 6/24/2021 21:46:32'!
+setup
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeSetup! !
+!AuthenticatorStub class methodsFor: 'instance creation' stamp: 'DB 6/24/2021 21:46:38' prior: 50898046!
+setup
+	^self new initializeSetup! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:46:41'!
+ERROR!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:46:50'!
+initializeSetup
+	self shouldBeImplemented.! !
+
+!classDefinition: #AuthenticatorStub category: 'TusLibros-Model' stamp: 'DB 6/24/2021 21:47:53'!
+Object subclass: #AuthenticatorStub
+	instanceVariableNames: 'validUser'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #AuthenticatorStub category: 'TusLibros-Model' stamp: 'DB 6/24/2021 21:47:55'!
+Object subclass: #AuthenticatorStub
+	instanceVariableNames: 'validUser validPass'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:47:51' prior: 50898061!
+initializeSetup
+	validUser := 'User1'.
+	validPass := 'Pass2'! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:47:57'!
+ERROR!
+!Catalog class methodsFor: 'instance creation' stamp: 'DB 6/24/2021 21:48:06'!
+instance
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeInstance! !
+!Catalog class methodsFor: 'instance creation' stamp: 'DB 6/24/2021 21:48:10' prior: 50898089!
+instance
+	^self new initializeInstance! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:48:11'!
+ERROR!
+!Catalog methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:48:21'!
+initializeInstance
+	self shouldBeImplemented.! !
+!Catalog methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:48:58' prior: 50898103!
+initializeInstance
+	 ! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:49:01'!
+ERROR!
+!MerchantProcessorMock class methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:49:10'!
+setup
+	self shouldBeImplemented.! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:49:18'!
+ERROR!
+!MerchantProcessorMock class methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:49:28' prior: 50898115!
+setup
+	! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:49:30'!
+ERROR!
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:50:10'!
+ERROR!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:50:40' prior: 50898022!
+initializeWith: aPort 
+	
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime new.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	webServer addServices: '/createCart' action: [:request | 
+		|aUser aPassword|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		
+		request send200Response: (systemFacade createCartFor: aUser authenticatedWith: aPassword).
+	].! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:50:48'!
+ERROR!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:51:31' prior: 50898132!
+initializeWith: aPort 
+	
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime new.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		
+		request send200Response: (systemFacade createCartFor: aUser authenticatedWith: aPassword).
+	].! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:51:32'!
+ERROR!
+
+server destroy.!
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:53:03' prior: 50897949!
+port
+	^8080! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:53:15'!
+ERROR!
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:54:14' prior: 50897932!
+test01
+
+	| response |
+	StoreServer listenOn: self port. 
+		
+	response := (WebClient httpGet: 'http://localhost:8080/createCart?user=user&pass=pass') content.
+	
+	self assert: response status equals: 200.! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:54:15'!
+ERROR!
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:55:10' prior: 50898188!
+test01
+
+	| response |
+	StoreServer listenOn: self port. 
+		
+	response := (WebClient httpGet: 'http://localhost:8080/createCart?user=user&pass=pass').
+	
+	self assert: response status equals: 200.! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:55:15'!
+FAILURE!
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:55:50' prior: 50898201!
+test01
+
+	| response |
+	StoreServer listenOn: self port. 
+		
+	response := (WebClient httpGet: 'http://localhost:8080/createCart?user=user&pass=pass').
+	
+	self assert: 200 equals: response status.! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:56:01'!
+FAILURE!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:56:58' prior: 50898156!
+initializeWith: aPort 
+	
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime new.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		self halt.
+		
+		request send200Response: (systemFacade createCartFor: aUser authenticatedWith: aPassword).
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:57:14' prior: 50898225!
+initializeWith: aPort 
+	
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime new.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword|
+		self halt.
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		
+		
+		request send200Response: (systemFacade createCartFor: aUser authenticatedWith: aPassword).
+	].! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:57:19'!
+FAILURE!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/24/2021 21:58:15' prior: 50898247!
+initializeWith: aPort 
+	
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime new.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword|
+		self halt.
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		
+		
+		request send200Response: (systemFacade createCartFor: aUser authenticatedWith: aPassword).
+	].! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:58:38'!
+FAILURE!
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/24/2021 21:58:42'!
+FAILURE!
+
+----QUIT----(24 June 2021 22:16:26) CuisUniversity-4532.image priorSource: 16885930!
+
+----STARTUP---- (27 June 2021 21:36:26) as /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/CuisUniversity-4532.image!
+
+
+MerchantProcessor subclass: #MerchantProcessorMock
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #MerchantProcessorMock category: 'TusLibros-Model' stamp: 'DB 6/27/2021 21:37:40'!
+MerchantProcessor subclass: #MerchantProcessorMock
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!MerchantProcessorMock methodsFor: 'nil' stamp: 'DB 6/27/2021 21:37:47' overrides: 50896640!
+debit: anAmount from: aCreditCard
+	! !
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 6/27/2021 21:41:31' prior: 50896882!
+createCartFor: aUser authenticatedWith: aPassword
+
+	self halt.
+
+	^ self if: aUser authenticatesWith: aPassword do: [ | cartId cartSession |
+
+		cartId := self generateCartId.
+		cartSession := CartSession ownedBy: aUser with: (Cart acceptingItemsOf: catalog) on: self..
+		cartSessions at: cartId put: cartSession.
+
+		cartId  ]! !
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 6/27/2021 21:42:17' prior: 50898328!
+createCartFor: aUser authenticatedWith: aPassword
+
+	^ self if: aUser authenticatesWith: aPassword do: [ | cartId cartSession |
+
+		cartId := self generateCartId.
+		cartSession := CartSession ownedBy: aUser with: (Cart acceptingItemsOf: catalog) on: self..
+		cartSessions at: cartId put: cartSession.
+
+		cartId  ]! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:46:34'!
+at: aUser ifAbsent: block! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:46:45' prior: 50898355!
+at: aUser ifAbsent: block
+
+	! !
+
+!classDefinition: #AuthenticatorStub category: 'TusLibros-Model' stamp: 'DB 6/27/2021 21:48:55'!
+Object subclass: #AuthenticatorStub
+	instanceVariableNames: 'validUser validPass users'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:48:53' prior: 50898082!
+initializeSetup
+
+
+	users := Dictionary new
+		at: self validUser put: self validUserPassword;
+		yourself! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:49:27' prior: 50898359!
+at: aUser ifAbsent: aBlock
+
+	users at: aUser ifAbsent: aBlock
+
+	! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:49:58'!
+validUser
+	^'ValidUser'
+"
+		at: self validUser put: self validUserPassword;
+		yourself"! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:50:14'!
+validUserPassword
+	^'aPassword'! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:50:20' prior: 50898372!
+initializeSetup
+
+	users := Dictionary new
+		at: self validUser put: self validUserPassword;
+		yourself! !
+
+tusLibrosServer destroy!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:51:25'!
+destroy
+	
+	webServer ifNotNil:[webServer destroy].! !
+
+tusLibrosServer destroy.!
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:52:00' prior: 50898384!
+validUser
+	^'dbenitez'! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:52:06' prior: 50898390!
+validUserPassword
+	^'123'! !
+
+tusLibrosServer destroy.!
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:53:05' prior: 50898379!
+at: aUser ifAbsent: aBlock
+
+self halt.
+	users at: aUser ifAbsent: aBlock
+
+	! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:53:26' prior: 50898421!
+at: aUser ifAbsent: aBlock
+
+	users at: aUser ifAbsent: aBlock
+
+	! !
+
+tusLibrosServer destroy.!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:54:20' prior: 50898395!
+initializeSetup
+
+	
+
+	users := Dictionary new
+		at: self validUser put: self validUserPassword;
+		yourself! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:54:26' prior: 50898433!
+initializeSetup
+
+	self halt.
+
+	users := Dictionary new
+		at: self validUser put: self validUserPassword;
+		yourself! !
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:54:49' prior: 50898440!
+initializeSetup 
+
+	users := Dictionary new
+		at: self validUser put: self validUserPassword;
+		yourself! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:54:56' prior: 50898427!
+at: aUser ifAbsent: aBlock
+	self halt.
+	users at: aUser ifAbsent: aBlock
+
+	! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:56:00' prior: 50898456!
+at: aUser ifAbsent: aBlock
+	self halt.
+	users at: aUser ifAbsent: aBlock
+
+	! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:56:09' prior: 50898410!
+validUser
+	^'lucas'! !
+
+tusLibrosServer destroy.!
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:57:12' prior: 50898449!
+initializeSetup 
+
+	self halt.
+	users := Dictionary new
+		at: self validUser put: self validUserPassword;
+		yourself! !
+
+tusLibrosServer destroy.!
+
+tusLibrosServer := StoreServer listenOn: 8080. !
+
+tusLibrosServer destroy.!
+
+tusLibrosServer := StoreServer listenOn: 8080.  a StoreServer !
+
+tusLibrosServer destroy.!
+
+Object subclass: #AuthenticatorStub
+	instanceVariableNames: 'users'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #AuthenticatorStub category: 'TusLibros-Model' stamp: 'DB 6/27/2021 22:02:28'!
+Object subclass: #AuthenticatorStub
+	instanceVariableNames: 'users'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+tusLibrosServer destroy. a StoreServer !
+
+StoreServer allInstance.!
+
+StoreServer allInstances .!
+
+StoreServer allInstances do: [:aServer | aServer destroy.]!
+
+StoreServer allInstances do: [:aServer | aServer destroy.]!
+
+StoreServer allInstances do: [:aServer | aServer destroy.]!
+
+StoreServer allInstances!
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/27/2021 22:05:53' prior: 50898213!
+test01
+
+	| response |
+	StoreServer allInstances do: [:aServer | aServer destroy.].
+	
+	StoreServer listenOn: self port. 
+		
+	response := (WebClient httpGet: 'http://localhost:8080/createCart?user=user&pass=pass').
+	
+	self assert: 200 equals: response status.! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/27/2021 22:06:27'!
+ERROR!
+
+Object subclass: #StoreServer
+	instanceVariableNames: 'port systemFacade webServer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #StoreServer category: 'TusLibros-Model' stamp: 'DB 6/27/2021 22:06:43'!
+Object subclass: #StoreServer
+	instanceVariableNames: 'port systemFacade webServer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:07:35' prior: 50898475!
+initializeSetup 
+
+
+	users := Dictionary new
+		at: self validUser put: self validUserPassword;
+		yourself! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:07:56' prior: 50898462!
+at: aUser ifAbsent: aBlock
+	
+	users at: aUser ifAbsent: aBlock
+
+	! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/27/2021 22:07:57'!
+FAILURE!
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/27/2021 22:08:00'!
+PASSED!
+
+StoreServer allInstances!
+
+self destroy.!
+
+StoreServer allInstances  do: [:aServer | aServer destroy.]!
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/27/2021 22:09:59' prior: 50898510!
+test01
+
+	
+	StoreServer allInstances do: [:aServer | aServer destroy.].
+	
+	"StoreServer listenOn: self port. 
+		
+	response := (WebClient httpGet: 'http://localhost:8080/createCart?user=user&pass=pass').
+	
+	self assert: 200 equals: response status."! !
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/27/2021 22:10:14'!
+PASSED!
+
+!testRun: #StoreWebClientTest #test01 stamp: 'DB 6/27/2021 22:10:14'!
+PASSED!
+
+StoreServer allInstances!
+!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/27/2021 22:10:25' prior: 50898558!
+test01
+
+	
+	StoreServer allInstances do: [:aServer | aServer destroy.].
+	
+	"StoreServer listenOn: self port. 
+		
+	response := (WebClient httpGet: 'http://localhost:8080/createCart?user=user&pass=pass').
+	
+	self assert: 200 equals: response status."! !
+
+tusLibrosServer := StoreServer listenOn: 8080. !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:11:13' prior: 50898272!
+initializeWith: aPort 
+	
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime new.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		
+		
+		request send200Response: (systemFacade createCartFor: aUser authenticatedWith: aPassword).
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:11:16' prior: 50898588!
+initializeWith: aPort 
+	
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime new.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		request send200Response: (systemFacade createCartFor: aUser authenticatedWith: aPassword).
+	].! !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:11:24' prior: 50898544!
+at: aUser ifAbsent: aBlock
+	self halt.
+	users at: aUser ifAbsent: aBlock
+
+	! !
+
+tusLibrosServer destroy. a StoreServer.!
+
+tusLibrosServer := StoreServer listenOn: 8080.  !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:12:42' prior: 50898636!
+at: aUser ifAbsent: aBlock
+	self halt.
+	^users at: aUser ifAbsent: aBlock
+
+	! !
+
+clockN :=  DateAndTime new.!
+
+clockN now.!
+
+clockN today.!
+
+clockN :=  Date new.!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:16:56' prior: 50898612!
+initializeWith: aPort 
+	
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		request send200Response: (systemFacade createCartFor: aUser authenticatedWith: aPassword).
+	].! !
+
+tusLibrosServer destroy. a StoreServer.!
+
+tusLibrosServer := StoreServer listenOn: 8080.   !
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:17:11' prior: 50898645!
+at: aUser ifAbsent: aBlock
+
+	^users at: aUser ifAbsent: aBlock
+
+	! !
+
+clockN :=  DateAndTime.!
+
+clockN today.!
+
+clockN now.!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 6/27/2021 22:18:14' prior: 50898342!
+createCartFor: aUser authenticatedWith: aPassword
+
+	^ self if: aUser authenticatesWith: aPassword do: [ | cartId cartSession |
+
+		self halt.
+		cartId := self generateCartId.
+		cartSession := CartSession ownedBy: aUser with: (Cart acceptingItemsOf: catalog) on: self..
+		cartSessions at: cartId put: cartSession.
+
+		cartId  ]! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:19:11' prior: 50898653!
+initializeWith: aPort 
+	
+	| id |
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		request send200Response: (id).
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:19:23' prior: 50898702!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		request send200Response: (id).
+	].! !
+
+tusLibrosServer destroy. a StoreServer.!
+
+tusLibrosServer := StoreServer listenOn: 8080. !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:21:37' prior: 50898727!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].! !
+
+tusLibrosServer destroy. !
+
+tusLibrosServer := StoreServer listenOn: 8080. !
+
+----SNAPSHOT----(27 June 2021 22:34:40) CuisUniversity-4532.image priorSource: 18132809!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:39:42' prior: 50898754!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity of: bookISBN toCartIdentifiedAs: request.
+		
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:39:50' prior: 50898786!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity of: bookISBN toCartIdentifiedAs: cartID.
+		
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:40:19' prior: 50898822!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: Catalog instance
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity of: bookISBN toCartIdentifiedAs: cartID.
+		request send200Response: ''.
+	].! !
+
+tusLibrosServer destroy. !
+
+tusLibrosServer := StoreServer listenOn: 8080.  !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:43:03' prior: 50898858!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self catalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity of: bookISBN toCartIdentifiedAs: cartID.
+		request send200Response: ''.
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:43:39'!
+defaultCatalog
+
+	^ Dictionary new
+		at: self itemSellByTheStore put: self itemSellByTheStorePrice;
+		at: self anotherItemSellByTheStore put: self anotherItemSellByTheStorePrice;
+		yourself ! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:04'!
+itemSellByTheStore
+
+	^ 'validBook'! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:15' prior: 50898935!
+defaultCatalog! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:18' prior: 50898948!
+defaultCatalog
+
+	^ Dictionary new
+		at: self itemSellByTheStore put: self itemSellByTheStorePrice;
+		at: self anotherItemSellByTheStore put: self anotherItemSellByTheStorePrice;
+		yourself ! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:26'!
+itemSellByTheStorePrice
+
+	^10! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:40'!
+anotherItemSellByTheStore
+
+	^'anotherValidBook'! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:48'!
+anotherItemSellByTheStorePrice
+
+	^15! !
+
+tusLibrosServer := StoreServer listenOn: 8080.  !
+
+tusLibrosServer destroy. !
+
+tusLibrosServer := StoreServer listenOn: 8080.  !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:45:28' prior: 50898898!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity of: bookISBN toCartIdentifiedAs: cartID.
+		request send200Response: ''.
+	].! !
+
+tusLibrosServer := StoreServer listenOn: 8080.  !
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 6/27/2021 22:45:42' prior: 50898688!
+createCartFor: aUser authenticatedWith: aPassword
+
+	^ self if: aUser authenticatesWith: aPassword do: [ | cartId cartSession |
+
+		cartId := self generateCartId.
+		cartSession := CartSession ownedBy: aUser with: (Cart acceptingItemsOf: catalog) on: self..
+		cartSessions at: cartId put: cartSession.
+
+		cartId  ]! !
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 6/27/2021 22:47:11' prior: 50896859!
+add: anAmount of: aBook toCartIdentifiedAs: aCartId
+
+	self halt.
+	self withCartSessionIdentifiedAs: aCartId do: [ :cartSession | cartSession addToCart: anAmount of: aBook ]! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:48:41' prior: 50898978!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asInteger of: bookISBN toCartIdentifiedAs: cartID asInteger .
+		request send200Response: ''.
+	].! !
+
+tusLibrosServer destroy. !
+
+tusLibrosServer := StoreServer listenOn: 8080.  !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:49:20' prior: 50899039!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		self halt.
+		systemFacade add: bookQuantity asInteger of: bookISBN toCartIdentifiedAs: cartID asInteger .
+		request send200Response: ''.
+	].! !
+
+tusLibrosServer destroy. !
+
+tusLibrosServer := StoreServer listenOn: 8080.  !
+
+'1' asInteger!
+
+'1' asNumber!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:53:28' prior: 50899079!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		self halt.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].! !
+
+tusLibrosServer destroy. !
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:54:35' prior: 50899121!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].! !
+
+tusLibrosServer destroy. !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:55:40' prior: 50899162!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID  | 
+		cartID := request fields at:'cartID'.
+		systemFacade list cartID asNumber .
+		request send200Response: ''.
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:57:33' prior: 50899201!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		listAsJson := WebUtils jsonEncode: (list).
+		request send200Response: (listAsJson).
+	].! !
+
+tusLibrosServer destroy. !
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 6/27/2021 22:57:58' prior: 50899030!
+add: anAmount of: aBook toCartIdentifiedAs: aCartId
+
+	self withCartSessionIdentifiedAs: aCartId do: [ :cartSession | cartSession addToCart: anAmount of: aBook ]! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:59:34' prior: 50899245!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		self halt.
+		listAsJson := WebUtils jsonEncode: (list).
+		request send200Response: (listAsJson).
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:59:52' prior: 50899302!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		self halt.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+
+		listAsJson := WebUtils jsonEncode: (list).
+		request send200Response: (listAsJson).
+	].! !
+
+tusLibrosServer destroy. !
+
+tusLibrosServer := StoreServer listenOn: 8080. a StoreServer !
+
+tusLibrosServer := StoreServer listenOn: 8080. !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:02:42' prior: 50899349!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		self halt.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		 
+
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].! !
+
+tusLibrosServer destroy. !
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:03:26' prior: 50899400!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		self halt.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].! !
+
+tusLibrosServer destroy.  !
+
+tusLibrosServer destroy.  !
+
+tusLibrosServer destroy.  !
+
+tusLibrosServer destroy.  !
+
+ a StoreServer !
+
+tusLibrosServer destroy.  !
+
+tusLibrosServer := StoreServer listenOn: 8080. !
+
+tusLibrosServer destroy.  !
+
+StoreServer allInstances  do: [:aServer | aServer destroy.]!
+
+tusLibrosServer := StoreServer listenOn: 8080.  !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:06:03' prior: 50899450!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		self halt.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:06:07' prior: 50899508!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:07:36' prior: 50899564!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+
+		request send200Response: ('').
+	].
+
+! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:09:15' prior: 50899620!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+		
+		systemFacade checkOutCartIdentifiedAs: cartID  withCreditCardNumbered: ccn ownedBy: cco expiringOn: cced.
+
+		request send200Response: ('').
+	].
+
+! !
+
+tusLibrosServer destroy.  !
+
+tusLibrosServer := StoreServer listenOn: 8080.   !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:11:09' prior: 50899675!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+		
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco expiringOn: cced.
+
+		request send200Response: ('').
+	].
+
+! !
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+
+tusLibrosServer destroy.  !
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+
+	StoreServer allInstances do: [:aServer | aServer destroy.].!
+
+tusLibrosServer := StoreServer listenOn: 8080. !
+
+'10020' asArray!
+
+'10020' asArray at:2!
+
+'10020' asArray at:3!
+
+'10020' asArray at:4!
+
+'10020' !
+
+'10020' substrings !
+
+'10020 df' substrings !
+
+'10020' at:3!
+
+'10020' indexOf: 3!
+
+'102020' asDate !
+
+'10/2020' asDate !
+
+----SNAPSHOT----(27 June 2021 23:22:14) CuisUniversity-4532.image priorSource: 18148215!
+
+'102020' asArray !
+
+'102020' collect: 'o'!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:30:26' prior: 50899736!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+		
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: DateAndTime month: 02   year: 2025.
+
+		request send200Response: ('').
+	].
+
+! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:30:35' prior: 50899813!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+		
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (DateAndTime month: 02 year: 2025).
+
+		request send200Response: ('').
+	].
+
+! !
+
+tusLibrosServer destroy.  !
+
+StoreServer allInstances  do: [:aServer | aServer destroy.]!
+
+tusLibrosServer := StoreServer listenOn: 8080. !
+
+DateAndTime month: 02 year: 2025!
+
+DateAndTime month: 2 year: 2025!
+
+DateAndTime year: 2025 month: 11 day: 1.!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:33:56' prior: 50899873!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+		
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (		DateAndTime year: 2025 month: 11 day: 1).
+
+		request send200Response: ('').
+	].
+
+! !
+
+tusLibrosServer destroy.  !
+
+StoreServer allInstances  do: [:aServer | aServer destroy.]!
+
+tusLibrosServer := StoreServer listenOn: 8080.   !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:34:40' prior: 50899941!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+		self halt.
+		
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (		DateAndTime year: 2025 month: 11 day: 1).
+
+		request send200Response: ('').
+	].
+
+! !
+
+StoreServer allInstances  do: [:aServer | aServer destroy.] !
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:38:05' prior: 50900006!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+			
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (		Month month: 11 year: 2026).
+
+		request send200Response: ('').
+	].
+
+! !
+
+StoreServer allInstances  do: [:aServer | aServer destroy.] !
+
+tusLibrosServer destroy.  !
+
+tusLibrosServer := StoreServer listenOn: 8080.!
+!MerchantProcessorMock class methodsFor: 'as yet unclassified' stamp: 'DB 6/27/2021 23:38:55' prior: 50898123!
+setup
+	^self new 
+	! !
+
+tusLibrosServer destroy.  !
+
+StoreServer allInstances  do: [:aServer | aServer destroy.] !
+
+tusLibrosServer := StoreServer listenOn: 8080. !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:41:04' prior: 50900070!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+			
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (		Month month: 11 year: 2026).
+
+		request send200Response: ('').
+	].
+
+	
+	webServer addService: '/listPurchases' action: [:request |
+		|clientID password | 
+		clientID := request fields at:'clientID'.
+		password := request fields at:'pass'.
+		request send200Response: ('').
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:41:39' prior: 50900143!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+			
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (		Month month: 11 year: 2026).
+
+		request send200Response: ('').
+	].
+
+	
+	webServer addService: '/listPurchases' action: [:request |
+		|clientID password | 
+		clientID := request fields at:'clientID'.
+		password := request fields at:'pass'.
+		
+	
+		
+		request send200Response: ('').
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:42:50' prior: 50900209!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn cced cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		cced := request fields at:'cced'.
+		cco := request fields at:'cco'.
+			
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (		Month month: 11 year: 2026).
+
+		request send200Response: ('').
+	].
+
+	
+	webServer addService: '/listPurchases' action: [:request |
+		|user password | 
+		user := request fields at:'user'.
+		password := request fields at:'pass'.
+		
+		systemFacade listPurchasesOf: user authenticatingWith: password.
+		
+		request send200Response: ('').
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:43:01' prior: 50900276!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn  cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		"cced := request fields at:'cced'."
+		cco := request fields at:'cco'.
+			
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (		Month month: 11 year: 2026).
+
+		request send200Response: ('').
+	].
+
+	
+	webServer addService: '/listPurchases' action: [:request |
+		|user password | 
+		user := request fields at:'user'.
+		password := request fields at:'pass'.
+		
+		systemFacade listPurchasesOf: user authenticatingWith: password.
+		
+		request send200Response: ('').
+	].! !
+!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:43:35' prior: 50900344!
+initializeWith: aPort 
+	
+
+	port := aPort.
+	
+	systemFacade := TusLibrosSystemFacade
+		authenticatingWith: AuthenticatorStub setup
+		acceptingItemsOf: self defaultCatalog
+		registeringOn: OrderedCollection new
+		debitingThrought: MerchantProcessorMock setup
+		measuringTimeWith: DateAndTime.
+	
+	webServer := WebServer new listenOn: aPort.
+	
+	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
+	
+	webServer addService: '/createCart' action: [:request | 
+		|aUser aPassword id cartAsJson|
+		aUser := request fields at:'user'.
+		aPassword := request fields at:'pass'.
+		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+		cartAsJson := WebUtils jsonEncode: (id asString).
+		request send200Response: (cartAsJson).
+	].
+
+	webServer addService: '/addToCart' action: [:request |
+		|cartID bookISBN bookQuantity| 
+		cartID := request fields at:'cartID'.
+		bookISBN := request fields at: 'bookISBN'.
+		bookQuantity := request fields at: 'bookQuantity'.
+		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+		request send200Response: ''.
+	].
+
+	webServer addService: '/listCart' action: [:request |
+		|cartID list listAsJson | 
+		cartID := request fields at:'cartID'.
+		list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+		listAsJson := WebUtils jsonEncode: (list asArray).
+		request send200Response: (listAsJson).
+	].
+
+	webServer addService: '/checkout' action: [:request |
+		|cartID ccn  cco | 
+		cartID := request fields at:'cartID'.
+		ccn := request fields at:'ccn'.
+		"cced := request fields at:'cced'."
+		cco := request fields at:'cco'.
+			
+		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (		Month month: 11 year: 2026).
+
+		request send200Response: ('').
+	].
+
+	
+	webServer addService: '/listPurchases' action: [:request |
+		|user password list listAsJson | 
+		user := request fields at:'user'.
+		password := request fields at:'pass'.
+		
+		list := systemFacade listPurchasesOf: user authenticatingWith: password.
+		
+		listAsJson := WebUtils jsonEncode: (list).
+		request send200Response: (listAsJson).
+	].! !
+
+tusLibrosServer destroy.  !
+
+StoreServer allInstances  do: [:aServer | aServer destroy.] !
+
+tusLibrosServer := StoreServer listenOn: 8080.  !
+
+----SNAPSHOT----(27 June 2021 23:44:47) CuisUniversity-4532.image priorSource: 18181055!
+
+----QUIT----(27 June 2021 23:45:04) CuisUniversity-4532.image priorSource: 18202743!
+
+----STARTUP---- (27 June 2021 23:53:16) as /Users/dbenitez/uba/1c2021-IS1/Quiz/macos64 - 20 - TusLibros.com It4/CuisUniversity-4532.image!
+
+
+----QUIT----(27 June 2021 23:53:28) CuisUniversity-4532.image priorSource: 18202833!
