@@ -154,6 +154,29 @@ acceptingItemsOf: aCatalog
 	^self new initializeAcceptingItemsOf: aCatalog ! !
 
 
+!classDefinition: #CartID category: 'TusLibros-Model'!
+Object subclass: #CartID
+	instanceVariableNames: 'cartID'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!CartID methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 19:33:58'!
+initializeWith: aCartID
+
+	cartID := aCartID! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'CartID class' category: 'TusLibros-Model'!
+CartID class
+	instanceVariableNames: ''!
+
+!CartID class methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 19:33:36'!
+with: cartID
+	^self new initializeWith: cartID! !
+
+
 !classDefinition: #CartSession category: 'TusLibros-Model'!
 Object subclass: #CartSession
 	instanceVariableNames: 'owner cart lastUsedTime systemFacade'
@@ -540,33 +563,143 @@ Object subclass: #StoreServer
 	poolDictionaries: ''
 	category: 'TusLibros-Model'!
 
-!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:40'!
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/1/2021 19:58:05'!
+addToCart: aRequest 
+	
+	|cartID bookISBN bookQuantity| 
+	
+	cartID := aRequest fields at:'cartID'.
+	bookISBN := aRequest fields at: 'bookISBN'.
+	bookQuantity := aRequest fields at: 'bookQuantity'.
+	systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
+	
+	aRequest send200Response: bookQuantity,' ',bookISBN, ' added to cart: ', cartID.
+
+! !
+
+!StoreServer methodsFor: 'handlers' stamp: 'DB 6/28/2021 19:46:21'!
+checkout: aRequest
+	
+	|cartID ccn  cco | 
+	cartID := aRequest fields at:'cartID'.
+	ccn := aRequest fields at:'ccn'.
+	"cced := request fields at:'cced'.  02-2021"
+	cco := aRequest fields at:'cco'.
+			
+	systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+			expiringOn: (		Month month: 11 year: 2026).
+
+	aRequest send200Response: ('').
+	! !
+
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/1/2021 19:59:38'!
+createCart: aRequest 
+
+	|aUser aPassword id cartAsJson|
+	
+	aUser := aRequest fields at:'user'.
+	aPassword := aRequest fields at:'pass'.
+	id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
+	cartAsJson := WebUtils jsonEncode: (Dictionary new at: 'CartID' put: id).
+	
+	aRequest send200Response: (cartAsJson).! !
+
+!StoreServer methodsFor: 'handlers' stamp: 'DB 6/28/2021 19:45:21'!
+listCart: aRequest 
+
+	|cartID list listAsJson | 
+	cartID := aRequest fields at:'cartID'.
+	list := systemFacade listCartIdentifiedAs: cartID asNumber .
+		
+	listAsJson := WebUtils jsonEncode: (list asArray).
+	aRequest send200Response: (listAsJson).
+	! !
+
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/6/2021 10:13:42'!
+listCatalog: aRequest
+	
+	|user password list listAsJson | 
+	user := aRequest fields at:'user'.
+	password := aRequest fields at:'pass'.
+		
+	list := systemFacade listCatalog: user authenticatingWith: password.
+		
+	listAsJson := WebUtils jsonEncode: (list).
+	aRequest send200Response: (listAsJson).
+	! !
+
+!StoreServer methodsFor: 'handlers' stamp: 'DB 6/28/2021 19:47:09'!
+listPurchases: aRequest
+	
+	|user password list listAsJson | 
+	user := aRequest fields at:'user'.
+	password := aRequest fields at:'pass'.
+		
+	list := systemFacade listPurchasesOf: user authenticatingWith: password.
+		
+	listAsJson := WebUtils jsonEncode: (list).
+	aRequest send200Response: (listAsJson).
+	! !
+
+
+!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:10:53'!
+DesignPatternsElementsOfReusableOOSoftware 
+ ^'978-0201633610 	Design Patterns: Elements of Reusable Object-Oriented Software'! !
+
+!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:10:12'!
+SmalltalkBestPracticePatterns
+	^'978-0134769042 	Smalltalk Best Practice Patterns'! !
+
+!StoreServer methodsFor: 'catalog' stamp: 'DB 6/27/2021 22:44:40'!
 anotherItemSellByTheStore
 
 	^'anotherValidBook'! !
 
-!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:48'!
+!StoreServer methodsFor: 'catalog' stamp: 'DB 6/27/2021 22:44:48'!
 anotherItemSellByTheStorePrice
 
 	^15! !
 
-!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:18'!
+!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:13:18'!
 defaultCatalog
 
 	^ Dictionary new
-		at: self itemSellByTheStore put: self itemSellByTheStorePrice;
-		at: self anotherItemSellByTheStore put: self anotherItemSellByTheStorePrice;
+		at: '978-0735619654' put: 1;        
+		at: '978-1583484906' put: 1;      
+		at: '978-0134769042' put: 1;      
+		at: '978-0201633610' put: 1;      
+		at: '978-0201184624' put: 1;      
+		at: '978-0131177055' put: 1;
 		yourself ! !
+
+!StoreServer methodsFor: 'catalog' stamp: 'DB 6/27/2021 22:44:04'!
+itemSellByTheStore
+
+	^ 'validBook'! !
+
+!StoreServer methodsFor: 'catalog' stamp: 'DB 6/27/2021 22:44:26'!
+itemSellByTheStorePrice
+
+	^10! !
+
+!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:08:57'!
+objectThinking
+
+	^'978-0735619654 	Object Thinking'! !
+
+!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:09:31'!
+smalltalkObjectsAndDesign
+	^'978-1583484906 	Smalltalk, Objects, and Design'! !
+
 
 !StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:51:25'!
 destroy
 	
 	webServer ifNotNil:[webServer destroy].! !
 
-!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 23:43:35'!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 7/6/2021 10:14:27'!
 initializeWith: aPort 
 	
-
 	port := aPort.
 	
 	systemFacade := TusLibrosSystemFacade
@@ -577,70 +710,19 @@ initializeWith: aPort
 		measuringTimeWith: DateAndTime.
 	
 	webServer := WebServer new listenOn: aPort.
-	
-	"t: 'http://localhost:8080/createCart?user='user'&pass='pass')."
-	
-	webServer addService: '/createCart' action: [:request | 
-		|aUser aPassword id cartAsJson|
-		aUser := request fields at:'user'.
-		aPassword := request fields at:'pass'.
-		id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
-		cartAsJson := WebUtils jsonEncode: (id asString).
-		request send200Response: (cartAsJson).
-	].
-
-	webServer addService: '/addToCart' action: [:request |
-		|cartID bookISBN bookQuantity| 
-		cartID := request fields at:'cartID'.
-		bookISBN := request fields at: 'bookISBN'.
-		bookQuantity := request fields at: 'bookQuantity'.
-		systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
-		request send200Response: ''.
-	].
-
-	webServer addService: '/listCart' action: [:request |
-		|cartID list listAsJson | 
-		cartID := request fields at:'cartID'.
-		list := systemFacade listCartIdentifiedAs: cartID asNumber .
 		
-		listAsJson := WebUtils jsonEncode: (list asArray).
-		request send200Response: (listAsJson).
-	].
+	webServer addService: '/createCart' action: [:request | self createCart: request.].
 
-	webServer addService: '/checkout' action: [:request |
-		|cartID ccn  cco | 
-		cartID := request fields at:'cartID'.
-		ccn := request fields at:'ccn'.
-		"cced := request fields at:'cced'."
-		cco := request fields at:'cco'.
-			
-		systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
-			expiringOn: (		Month month: 11 year: 2026).
-
-		request send200Response: ('').
-	].
-
+	webServer addService: '/addToCart' action: [:request | self addToCart: request.].
 	
-	webServer addService: '/listPurchases' action: [:request |
-		|user password list listAsJson | 
-		user := request fields at:'user'.
-		password := request fields at:'pass'.
-		
-		list := systemFacade listPurchasesOf: user authenticatingWith: password.
-		
-		listAsJson := WebUtils jsonEncode: (list).
-		request send200Response: (listAsJson).
-	].! !
-
-!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:04'!
-itemSellByTheStore
-
-	^ 'validBook'! !
-
-!StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 22:44:26'!
-itemSellByTheStorePrice
-
-	^10! !
+	webServer addService: '/listCart' action: [:request | self listCart: request.].
+	
+	webServer addService: '/checkout' action: [:request | self checkout: request].
+	
+	webServer addService: '/listPurchases' action: [:request | self listPurchases: request].
+	
+	webServer addService: '/listCatalog' action: [:request | self listCatalog: request].
+	! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -824,6 +906,11 @@ createCartFor: aUser authenticatedWith: aPassword
 listCartIdentifiedAs: aCartId
 
 	^ self withCartSessionIdentifiedAs: aCartId do: [ :cartSession | cartSession cartContent ]! !
+
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 7/6/2021 09:41:44'!
+listCatalog: aUser authenticatingWith: aPassword 
+
+	^self if: aUser authenticatesWith: aPassword do: [ ^catalog keys]! !
 
 !TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'HAW 11/26/2018 20:33:49'!
 listPurchasesOf: aUser authenticatingWith: aPassword

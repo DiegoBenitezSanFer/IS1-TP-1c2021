@@ -479,6 +479,40 @@ validUsersAndPasswords
 		yourself! !
 
 
+!TusLibrosSystemFacadeTest methodsFor: 'tests - list cataloge' stamp: 'DB 7/6/2021 09:43:49'!
+test20ListCatalogIncludesBooksSellByTheStore
+
+	| cataloge |
+
+	cataloge := systemFacade listCatalog: self validUser authenticatingWith: self validUserPassword.
+
+	self assert: (cataloge at: 1) equals: testObjectsFactory anotherItemSellByTheStore.
+	self assert: (cataloge at: 2) equals: testObjectsFactory itemSellByTheStore.
+
+
+	! !
+
+!TusLibrosSystemFacadeTest methodsFor: 'tests - list cataloge' stamp: 'DB 7/6/2021 09:39:57'!
+test21CanNotListCatalogOfInvalidCustomer
+
+	self
+		should: [systemFacade listCatalog: self invalidUser authenticatingWith: self validUserPassword ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: systemFacade invalidUserAndOrPasswordErrorDescription ]
+
+	! !
+
+!TusLibrosSystemFacadeTest methodsFor: 'tests - list cataloge' stamp: 'DB 7/6/2021 09:42:32'!
+test22CanNotListCatalogOfValidCustomerWithInvalidPassword
+
+	self
+		should: [systemFacade listCatalog: self validUser authenticatingWith: self invalidPassword ]
+		raise: Error - MessageNotUnderstood
+		withExceptionDo: [ :anError |
+			self assert: anError messageText equals: systemFacade invalidUserAndOrPasswordErrorDescription ]! !
+
+
 !TusLibrosSystemFacadeTest methodsFor: 'tests - checkout' stamp: 'HAW 6/19/2018 11:45:13'!
 test10CanCheckoutACart
 
@@ -634,52 +668,6 @@ revertTime: aDuration
 	clock revertTime: aDuration ! !
 
 
-!classDefinition: #ManualClock category: 'TusLibros-Tests'!
-Clock subclass: #ManualClock
-	instanceVariableNames: 'now'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros-Tests'!
-
-!ManualClock methodsFor: 'time change' stamp: 'HernanWilkinson 6/22/2013 12:54'!
-advanceTime: aDuration
-
-	now := now + aDuration ! !
-
-!ManualClock methodsFor: 'time change' stamp: 'HernanWilkinson 6/22/2013 13:08'!
-revertTime: aDuration
-
-	now := now + aDuration negated ! !
-
-
-!ManualClock methodsFor: 'time' stamp: 'HernanWilkinson 6/22/2013 12:56'!
-now
-
-	^ now! !
-
-!ManualClock methodsFor: 'time' stamp: 'HernanWilkinson 6/22/2013 12:53'!
-today
-
-	^now date! !
-
-
-!ManualClock methodsFor: 'initialization' stamp: 'HernanWilkinson 6/22/2013 12:52'!
-initializeNow: aTime
-
-	now := aTime ! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'ManualClock class' category: 'TusLibros-Tests'!
-ManualClock class
-	instanceVariableNames: ''!
-
-!ManualClock class methodsFor: 'instance creation' stamp: 'HernanWilkinson 6/22/2013 12:52'!
-now: aTime
-
-	^self new initializeNow: aTime ! !
-
-
 !classDefinition: #StoreTestObjectsFactory category: 'TusLibros-Tests'!
 Object subclass: #StoreTestObjectsFactory
 	instanceVariableNames: 'today'
@@ -774,3 +762,49 @@ today
 customer
 
 	^'aCustomer'! !
+
+
+!classDefinition: #ManualClock category: 'TusLibros-Tests'!
+ProtoObject subclass: #ManualClock
+	instanceVariableNames: 'now'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!ManualClock methodsFor: 'time change' stamp: 'HernanWilkinson 6/22/2013 12:54'!
+advanceTime: aDuration
+
+	now := now + aDuration ! !
+
+!ManualClock methodsFor: 'time change' stamp: 'HernanWilkinson 6/22/2013 13:08'!
+revertTime: aDuration
+
+	now := now + aDuration negated ! !
+
+
+!ManualClock methodsFor: 'time' stamp: 'HernanWilkinson 6/22/2013 12:56'!
+now
+
+	^ now! !
+
+!ManualClock methodsFor: 'time' stamp: 'HernanWilkinson 6/22/2013 12:53'!
+today
+
+	^now date! !
+
+
+!ManualClock methodsFor: 'initialization' stamp: 'HernanWilkinson 6/22/2013 12:52'!
+initializeNow: aTime
+
+	now := aTime ! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'ManualClock class' category: 'TusLibros-Tests'!
+ManualClock class
+	instanceVariableNames: ''!
+
+!ManualClock class methodsFor: 'instance creation' stamp: 'HernanWilkinson 6/22/2013 12:52'!
+now: aTime
+
+	^self new initializeNow: aTime ! !

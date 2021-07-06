@@ -11,3 +11,6 @@
 - http://localhost:8080/checkout?cartID=1&ccn=3232&cced=022021&cco=mycard
 ## List Purchases
 - http://localhost:8080/listPurchases?user=lucas&pass=123
+
+## List Catalog
+- http://localhost:8080/listcatalog?user=lucas&pass=123
