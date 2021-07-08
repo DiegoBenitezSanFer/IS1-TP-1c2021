@@ -252,30 +252,6 @@ debit: anAmount from: aCreditCard
 	^debitBehavior value: anAmount value: aCreditCard ! !
 
 
-!classDefinition: #StoreWebClientTest category: 'TusLibros-Tests'!
-TestCase subclass: #StoreWebClientTest
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros-Tests'!
-
-!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/24/2021 21:53:03'!
-port
-	^8080! !
-
-!StoreWebClientTest methodsFor: 'as yet unclassified' stamp: 'DB 6/27/2021 22:10:25'!
-test01
-
-	
-	StoreServer allInstances do: [:aServer | aServer destroy.].
-	
-	"StoreServer listenOn: self port. 
-		
-	response := (WebClient httpGet: 'http://localhost:8080/createCart?user=user&pass=pass').
-	
-	self assert: 200 equals: response status."! !
-
-
 !classDefinition: #TusLibrosSystemFacadeTest category: 'TusLibros-Tests'!
 TestCase subclass: #TusLibrosSystemFacadeTest
 	instanceVariableNames: 'testObjectsFactory clock systemFacade'
@@ -479,15 +455,14 @@ validUsersAndPasswords
 		yourself! !
 
 
-!TusLibrosSystemFacadeTest methodsFor: 'tests - list cataloge' stamp: 'DB 7/6/2021 09:43:49'!
+!TusLibrosSystemFacadeTest methodsFor: 'tests - list cataloge' stamp: 'DB 7/7/2021 23:09:09'!
 test20ListCatalogIncludesBooksSellByTheStore
 
 	| cataloge |
 
 	cataloge := systemFacade listCatalog: self validUser authenticatingWith: self validUserPassword.
 
-	self assert: (cataloge at: 1) equals: testObjectsFactory anotherItemSellByTheStore.
-	self assert: (cataloge at: 2) equals: testObjectsFactory itemSellByTheStore.
+	self assert: testObjectsFactory anotherItemSellByTheStorePrice  equals: (cataloge at: testObjectsFactory anotherItemSellByTheStore)
 
 
 	! !

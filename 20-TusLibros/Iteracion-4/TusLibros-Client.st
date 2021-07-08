@@ -1,91 +1,112 @@
 !classDefinition: #CartWindow category: 'TusLibros-Client'!
 Panel subclass: #CartWindow
-	instanceVariableNames: 'booksQtyTextBoxMorh booksListMorph catalogListMorph listPurchasesButtonMorph'
+	instanceVariableNames: 'booksQtyTextBoxMorh booksListMorph catalogListMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros-Client'!
 
-!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 19:44:44'!
-buildCart1stRow
+!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/8/2021 00:01:16'!
+buildCartView
 	
-	|firstRowLayoutMorph addToCartButtonMorph |
+	|secondRowLayoutMorph |
+		
+	booksListMorph := PluggableListMorph model: self model listGetter: #books indexGetter: #booksListIndex indexSetter: #booksListIndex:.
+	booksListMorph  borderColor: Color skyBlue; borderWidth: 1; morphWidth:800.
+
+	secondRowLayoutMorph := LayoutMorph newRow.
+	secondRowLayoutMorph separation: 40;
+	addMorph: (LabelMorph contents:'Cart');
+	addMorph: booksListMorph.
 	
-	addToCartButtonMorph := PluggableButtonMorph model: self model stateGetter: nil action: #addToCartRequest  label: 'Add to cart'.
+	^secondRowLayoutMorph! !
+
+!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 23:13:25'!
+buildCatalog
+	
+	|firstRowLayoutMorph  |
 	
 	catalogListMorph := PluggableListMorph model: self model listGetter: #catalog indexGetter: #catalogListIndex indexSetter: #catalogListIndex:.
-	
-	catalogListMorph  borderColor: Color skyBlue; borderWidth: 1; morphWidth:300.
-	
-	booksQtyTextBoxMorh := TextModelMorph textProvider: self model textGetter: #bookQtyText textSetter: #bookQtyText:.
-	
-	booksQtyTextBoxMorh textMorph setProperty: #keyStroke: toValue: [:key | booksQtyTextBoxMorh textMorph acceptContents ].
+	catalogListMorph borderColor: Color skyBlue; borderWidth: 1; morphWidth:800.
 	
 	firstRowLayoutMorph := LayoutMorph newRow.
 	firstRowLayoutMorph separation: 25;
 	addMorph: (LabelMorph contents:'Catalog');
-	addMorph: catalogListMorph;
-	addMorph: booksQtyTextBoxMorh;
-	addMorph: addToCartButtonMorph.
+	addMorph: catalogListMorph.
 	
 	^firstRowLayoutMorph! !
 
-!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 19:20:00'!
-buildCart2stRow
+!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 23:27:46'!
+buildMenu
 	
-	|secondRowLayoutMorph checkoutButtonMorph  |
+	|firstRowLayoutMorph addToCartButton checkoutButton listPurchasesButton |
+	
+	addToCartButton := PluggableButtonMorph model: self model stateGetter: nil action: #addToCartRequest  label: 'Add to cart'.
+	listPurchasesButton := PluggableButtonMorph model: self model stateGetter: nil action: #listPurchases  label: 'Purchases'.	
+	checkoutButton := PluggableButtonMorph model: self model stateGetter: nil action: #checkoutInput  label: 'Checkout'.	
+	
+	booksQtyTextBoxMorh := TextModelMorph textProvider: self model textGetter: #bookQtyText textSetter: #bookQtyText:.
+	booksQtyTextBoxMorh borderColor: Color skyBlue; borderWidth: 1; morphExtent: 100@30.
+	booksQtyTextBoxMorh textMorph setProperty: #keyStroke: toValue: [:key | booksQtyTextBoxMorh textMorph acceptContents ].
+	
+	firstRowLayoutMorph := LayoutMorph newRow.
+	firstRowLayoutMorph separation: 25;
+	addMorph: (LabelMorph contents:'Quantity');
+	addMorph: booksQtyTextBoxMorh;
+	addMorph: addToCartButton;
+	addMorph: listPurchasesButton;
+	addMorph: checkoutButton.
+	
+	^firstRowLayoutMorph! !
 
-	checkoutButtonMorph := PluggableButtonMorph model: self model stateGetter: nil action: #checkoutInput  label: 'Checkout'.	
-	
-	listPurchasesButtonMorph := PluggableButtonMorph model: self model stateGetter: nil action: #listPurchases  label: 'Purchases'.	
-		
-	booksListMorph := PluggableListMorph model: self model listGetter: #books indexGetter: #booksListIndex indexSetter: #booksListIndex:.
-	
-	booksListMorph  borderColor: Color skyBlue; borderWidth: 1; morphWidth:300.
-	
-
-	secondRowLayoutMorph := LayoutMorph newRow.
-	secondRowLayoutMorph separation: 25;
-	addMorph: (LabelMorph contents:'List');
-	addMorph: booksListMorph;
-	addMorph: checkoutButtonMorph;
-	addMorph: listPurchasesButtonMorph.
-	
-	
-	^secondRowLayoutMorph! !
-
-!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 00:22:51'!
+!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 23:27:46'!
 buildMorphicWindow
 
 	self layoutMorph beColumn;
 	separation: 15;
 	axisEdgeWeight: 0;
-	addMorph: self buildCart1stRow;
-	addMorph: self buildCart2stRow . ! !
+	addMorph: self buildCartView;
+	addMorph: self buildCatalog;
+	addMorph: self buildMenu. ! !
 
-
-!CartWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/6/2021 19:54:31'!
-checkoutInput
-
-	CheckoutWindow openWith: model.! !
-
-!CartWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 18:45:52'!
+!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/1/2021 18:45:52'!
 defaultExtent
 
 	^ 1035@485! !
 
-!CartWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/6/2021 10:30:31'!
+
+!CartWindow methodsFor: 'controller' stamp: 'DB 7/6/2021 19:54:31'!
+checkoutInput
+
+	CheckoutWindow openWith: model.! !
+
+!CartWindow methodsFor: 'controller' stamp: 'DB 7/7/2021 19:25:54'!
+listPurchases
+
+	model sendListPurchasesRequest.
+	"ListPurchases openWith: model "
+	
+	! !
+
+!CartWindow methodsFor: 'controller' stamp: 'DB 7/7/2021 20:18:42'!
+openListPurchases
+
+	ListPurchases openWith: model
+	
+	! !
+
+!CartWindow methodsFor: 'controller' stamp: 'DB 7/6/2021 10:30:31'!
 refreshCatalog
 
 	catalogListMorph updateList.
 	catalogListMorph setSelectionIndex: 0.! !
 
-!CartWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/5/2021 23:30:56'!
+!CartWindow methodsFor: 'controller' stamp: 'DB 7/5/2021 23:30:56'!
 refreshListCart
 
 	booksListMorph updateList.
 	booksListMorph setSelectionIndex: 0.! !
 
-!CartWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 21:23:12'!
+!CartWindow methodsFor: 'controller' stamp: 'DB 7/1/2021 21:23:12'!
 refreshListOfBooks
 
 	model listCartRequest! !
@@ -111,21 +132,6 @@ initializeWith: existedModel title: aTitle
 	
 	! !
 
-!CartWindow methodsFor: 'initialization' stamp: 'DB 7/7/2021 19:25:54'!
-listPurchases
-
-	model sendListPurchasesRequest.
-	"ListPurchases openWith: model "
-	
-	! !
-
-!CartWindow methodsFor: 'initialization' stamp: 'DB 7/7/2021 20:18:42'!
-openListPurchases
-
-	ListPurchases openWith: model
-	
-	! !
-
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'CartWindow class' category: 'TusLibros-Client'!
@@ -145,63 +151,66 @@ Panel subclass: #CheckoutWindow
 	poolDictionaries: ''
 	category: 'TusLibros-Client'!
 
-!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 21:00:09'!
+!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/8/2021 00:15:13'!
 buildCCED
 
 	| cced |
 	ccedTextBoxMorph := TextModelMorph textProvider: self model textGetter: #ccedText textSetter: #ccedText:.
-	ccedTextBoxMorph borderWidth: 3.
+	ccedTextBoxMorph  borderColor: Color skyBlue; borderWidth: 1; morphExtent: 100@30.
 	
 	cced := LayoutMorph newRow.
-	cced separation: 10;
-	addMorph: (LabelMorph contents: 'Credit Card Expiration Date');
+	cced separation: 5;
+	addMorph: (LabelMorph contents: 'Credit Card Exp Date:');
 	addMorph: ccedTextBoxMorph.
 	
 	^cced! !
 
-!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 20:49:54'!
+!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/8/2021 00:15:07'!
 buildCCN
 
 	| ccn |
 	cnnTextBoxMorph := TextModelMorph textProvider: self model textGetter: #ccnText textSetter: #ccnText:.
-	cnnTextBoxMorph borderWidth: 3.
+	cnnTextBoxMorph  borderColor: Color skyBlue; borderWidth: 1; morphExtent: 100@30.
 	
 	ccn := LayoutMorph newRow.
 	ccn separation: 10;
-	addMorph: (LabelMorph contents: 'Credit Card Number');
+	addMorph: (LabelMorph contents: 'Credit Card Number:');
 	addMorph: cnnTextBoxMorph.
 	
 	^ccn! !
 
-!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 20:50:08'!
+!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/8/2021 00:48:50'!
 buildCCO
 
 	| cco  |
 	ccoTextBoxMorph := TextModelMorph textProvider: self model textGetter: #ccoText textSetter: #ccoText:.
-	ccoTextBoxMorph borderWidth: 3.
-	
+	ccoTextBoxMorph  borderColor: Color skyBlue; borderWidth: 1; morphExtent: 200@30.
 	ticketListBoxMorph :=  PluggableListMorph model: self model listGetter: #tickets indexGetter: #ticketsListIndex indexSetter: #ticketsListIndex:.
+	ticketListBoxMorph  borderColor: Color skyBlue; borderWidth: 1; morphExtent: 500@200.
+
 	
 	cco := LayoutMorph newRow.
-	cco separation: 10;
+	cco separation: 15;
 	addMorph: (LabelMorph contents: 'Credit Card Owner:');
 	addMorph: ccoTextBoxMorph;
+	addMorph: (LabelMorph contents: 'Ticket:');
 	addMorph: ticketListBoxMorph.
 	
 	^cco! !
 
-!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 01:01:44'!
+!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/8/2021 00:18:56'!
 buildCheckoutButton
 
-	| checkoutButtom |
+	| checkoutButtomLayout |
 	
 	checkoutButtonMorph := PluggableButtonMorph model: self model stateGetter: nil action: #sendCheckoutRequest  label: 'Checkout'.
 	
-	checkoutButtom := LayoutMorph newColumn.
-	checkoutButtom separation: 5;
+	checkoutButtomLayout := LayoutMorph newColumn.
+	checkoutButtomLayout separation: 5;
+	
 	addMorph: checkoutButtonMorph.
 	
-	^checkoutButtom! !
+	^checkoutButtomLayout! !
 
 !CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 01:00:28'!
 buildMorphicWindow
@@ -338,20 +347,19 @@ buildLoginButtom
 	
 	! !
 
-!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 7/7/2021 20:59:21'!
+!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 7/7/2021 22:38:44'!
 buildLoginPass
 	
 	|passRowLayoutMorph |
 	
 	passTextBoxMorh := TextModelMorph textProvider: self model textGetter: #passText textSetter: #passText:.
-	passTextBoxMorh borderWidth: 2.
-	passTextBoxMorh morphExtent: 200@30.
+	passTextBoxMorh borderWidth: 1; borderColor: Color skyBlue; morphExtent: 200@30.
 
 	passTextBoxMorh textMorph setProperty: #keyStroke: toValue: [:key |
 		passTextBoxMorh textMorph acceptContents ].
 	
 	passRowLayoutMorph := LayoutMorph newRow.
-	passRowLayoutMorph separation: 10;
+	passRowLayoutMorph separation: 5;
 	addMorph: (LabelMorph contents:'Password');
 	addMorph: passTextBoxMorh.
 	
@@ -359,20 +367,19 @@ buildLoginPass
 	
 	! !
 
-!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 7/7/2021 20:59:25'!
+!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 7/7/2021 22:38:09'!
 buildLoginUser
 	
 	|userRowLayoutMorph |
 	
 	userTextBoxMorh := TextModelMorph textProvider: self model textGetter: #userText textSetter: #userText:.
-	userTextBoxMorh borderWidth: 2.
-	userTextBoxMorh morphExtent: 200@30.
+	userTextBoxMorh borderWidth: 1; borderColor: Color skyBlue; morphExtent: 200@30.
 	
 	userTextBoxMorh textMorph setProperty: #keyStroke: toValue: [:key |
 		userTextBoxMorh textMorph acceptContents ].
 	
 	userRowLayoutMorph := LayoutMorph newRow.
-	userRowLayoutMorph separation: 10;
+	userRowLayoutMorph separation: 30;
 	addMorph: (LabelMorph contents:'User');
 	addMorph: userTextBoxMorh.
 	
@@ -390,10 +397,10 @@ buildMorphicWindow
 	addMorph: self buildLoginPass;
 	addMorph: self buildLoginButtom. ! !
 
-!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 6/28/2021 21:22:35'!
+!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 7/7/2021 22:35:33'!
 defaultExtent
 
-	^ 1035@485! !
+	^ 400@485! !
 
 
 !TusLibrosLogin methodsFor: 'initialization' stamp: 'DB 7/1/2021 21:02:55'!
@@ -444,13 +451,13 @@ correctlyEncodeSpacesForUrlRequestParameter: aParameter
 	
 	^ aParameter copyReplaceAll: ' ' with: '%20'. ! !
 
-!RestInterfaceClient methodsFor: 'sending request' stamp: 'DB 7/7/2021 20:29:30'!
+!RestInterfaceClient methodsFor: 'sending request' stamp: 'DB 7/7/2021 21:44:58'!
 sendAddToCartRequest: aCartID bookISBN: aISBN bookQuantity: aQty
 
 	| resp  |
 	
 	"http://localhost:8080/addToCart?cartID=1&bookISBN=validBook&bookQuantity=2"
-		
+	
 	resp := WebClient htmlSubmit: (self url,'/addToCart') fields:  {
 				'cartID' ->  aCartID.
 				'bookISBN' -> aISBN.
@@ -595,10 +602,13 @@ Object subclass: #WindowModel
 	poolDictionaries: ''
 	category: 'TusLibros-Client'!
 
-!WindowModel methodsFor: 'request' stamp: 'DB 7/6/2021 10:43:28'!
+!WindowModel methodsFor: 'request' stamp: 'DB 7/7/2021 22:30:07'!
 addToCartRequest
 	
-	restInterface sendAddToCartRequest: cartID bookISBN: (catalog at: catalogSelectedIndex) bookQuantity: bookQty.
+	| book |
+	book := catalog at: catalogSelectedIndex .
+	
+	restInterface sendAddToCartRequest: cartID bookISBN: (book at: 'ISBN') bookQuantity: bookQty.
 	
 	self triggerEvent: #successfulAdded with: self.
 	
@@ -688,20 +698,48 @@ bookQtyText
 
 	^bookQty! !
 
-!WindowModel methodsFor: 'getter' stamp: 'DB 7/1/2021 20:35:27'!
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/8/2021 00:09:33'!
 books
 
-	^books! !
+"booksAsOrderCollection := OrderedCollection new.
+	(catalog keysAndValuesDo: [:akey :aValue | |isbn title price |
+		
+		isbn := aValue at: 'ISBN'.
+		title := (aValue at: 'Book') at: 'title'.
+		price := (aValue at: 'Book') at: 'price'.
+		
+		booksAsOrderCollection add: (isbn, ' - ', title, ' - price: ', price asString)]).
+	^booksAsOrderCollection asArray."
+	"| booksAsOrderCollection |
+	booksAsOrderCollection := OrderedCollection new.
+	books collect: [:book | booksAsOrderCollection add: (book  )]"
+	
+	| booksAsOrderCollection |
+	booksAsOrderCollection := OrderedCollection new.
+	books collect: [:book | booksAsOrderCollection add: (book at: 'ISBN'),' - ', ((book at: 'Qty') asString)].
+	^booksAsOrderCollection asArray.! !
 
 !WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 20:40:44'!
 booksListIndex
 
 	^cartSelectedIndex! !
 
-!WindowModel methodsFor: 'getter' stamp: 'DB 7/6/2021 10:24:28'!
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 22:38:58'!
 catalog
-
-	^catalog! !
+	
+	| booksAsOrderCollection |
+	
+	booksAsOrderCollection := OrderedCollection new.
+	(catalog keysAndValuesDo: [:akey :aValue | |isbn title price |
+		
+		isbn := aValue at: 'ISBN'.
+		title := (aValue at: 'Book') at: 'title'.
+		price := (aValue at: 'Book') at: 'price'.
+		
+		booksAsOrderCollection add: (isbn, ' - ', title, ' - price: ', price asString)]).
+	^booksAsOrderCollection asArray.
+	
+	! !
 
 !WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 20:40:37'!
 catalogListIndex
@@ -757,7 +795,7 @@ userText
 	^user! !
 
 
-!WindowModel methodsFor: 'setter' stamp: 'DB 7/1/2021 18:53:52'!
+!WindowModel methodsFor: 'setter' stamp: 'DB 7/7/2021 23:19:56'!
 bookQtyText: aQty
 
 	bookQty  := aQty.! !

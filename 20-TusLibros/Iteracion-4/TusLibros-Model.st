@@ -20,13 +20,13 @@ initializeSetup
 		at: self validUser put: self validUserPassword;
 		yourself! !
 
-!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:56:09'!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 7/8/2021 00:32:57'!
 validUser
-	^'lucas'! !
+	^'crazyCashier'! !
 
-!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:52:06'!
+!AuthenticatorStub methodsFor: 'initialization' stamp: 'DB 7/8/2021 00:33:04'!
 validUserPassword
-	^'123'! !
+	^'caraBonita'! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -52,6 +52,18 @@ initializeNamed: aTitle price: anAmount
 	title := aTitle.
 	amount := anAmount.! !
 
+!Book methodsFor: 'initialization' stamp: 'DB 7/7/2021 22:17:23'!
+marshal 
+	|json|
+	json := Dictionary new.
+	json at: 'title' put: title.
+	json at: 'price' put: amount.
+	^json.! !
+
+!Book methodsFor: 'initialization' stamp: 'DB 7/7/2021 22:04:37'!
+price 
+	^amount! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'Book class' category: 'TusLibros-Model'!
@@ -66,6 +78,58 @@ with: aTitle isbn: aISBN price: amount
 !Book class methodsFor: 'instance creation' stamp: 'DB 7/7/2021 19:01:32'!
 named: aTitle price: anAmount 
 	^self new initializeNamed: aTitle price: anAmount ! !
+
+
+!classDefinition: #BookCatalog category: 'TusLibros-Model'!
+Object subclass: #BookCatalog
+	instanceVariableNames: 'catalog'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!BookCatalog methodsFor: 'as yet unclassified' stamp: 'DB 7/7/2021 22:04:49'!
+at: key
+
+	^(catalog at: key) price! !
+
+!BookCatalog methodsFor: 'as yet unclassified' stamp: 'DB 7/7/2021 22:01:18'!
+includesKey: anISBN
+
+	^catalog includesKey: anISBN! !
+
+!BookCatalog methodsFor: 'as yet unclassified' stamp: 'DB 7/7/2021 21:47:24'!
+initializeWith: aCatalog
+
+	catalog  := aCatalog ! !
+
+!BookCatalog methodsFor: 'as yet unclassified' stamp: 'DB 7/7/2021 21:47:37'!
+keys
+
+	^catalog keys ! !
+
+!BookCatalog methodsFor: 'as yet unclassified' stamp: 'DB 7/7/2021 22:21:33'!
+marshal
+
+	|result |
+	result := OrderedCollection new.
+	catalog keysAndValuesDo: [:key :value  | |dic|
+		dic := Dictionary new.
+		dic at: 'ISBN' put: key.
+		dic at: 'Book' put: value marshal.
+		 result add: dic].
+	^result.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'BookCatalog class' category: 'TusLibros-Model'!
+BookCatalog class
+	instanceVariableNames: ''!
+
+!BookCatalog class methodsFor: 'as yet unclassified' stamp: 'DB 7/7/2021 21:46:52'!
+with: aCatalog
+
+	^self new initializeWith: aCatalog
+	! !
 
 
 !classDefinition: #Cart category: 'TusLibros-Model'!
@@ -86,7 +150,7 @@ invalidQuantityErrorMessage
 	^self class invalidQuantityErrorMessage ! !
 
 
-!Cart methodsFor: 'assertions' stamp: 'HernanWilkinson 6/22/2013 14:17'!
+!Cart methodsFor: 'assertions' stamp: 'DB 7/7/2021 22:05:33'!
 assertIsValidItem: anItem
 
 	(catalog includesKey: anItem) ifFalse: [ self signalInvalidItem ]! !
@@ -102,7 +166,7 @@ catalog
 
 	^ catalog! !
 
-!Cart methodsFor: 'content' stamp: 'HernanWilkinson 6/22/2013 12:30'!
+!Cart methodsFor: 'content' stamp: 'DB 7/7/2021 23:56:10'!
 content
 
 	^items copy! !
@@ -334,7 +398,7 @@ registerSale
 
 	salesBook add: self createSale! !
 
-!Cashier methodsFor: 'checkout - private' stamp: 'HernanWilkinson 6/22/2013 12:17'!
+!Cashier methodsFor: 'checkout - private' stamp: 'DB 7/7/2021 22:02:32'!
 totalOf: anItem quantity: aQuantity
 
 	^(cart catalog at: anItem) * aQuantity  ! !
@@ -483,16 +547,7 @@ total
 	^ total! !
 
 
-!LineItem methodsFor: 'initialization' stamp: 'HernanWilkinson 6/22/2013 12:18'!
-initializeOf: anItem quantity: aQuantity total: aTotal
-
-	item := anItem.
-	quantity := aQuantity.
-	total := aTotal
-
-! !
-
-!LineItem methodsFor: 'initialization' stamp: 'DB 7/6/2021 20:46:43'!
+!LineItem methodsFor: 'encode' stamp: 'DB 7/6/2021 20:46:43'!
 marshal
 
 	| json |
@@ -502,6 +557,16 @@ marshal
 	json at: 'total' put: total.
 	
 	^json.
+
+! !
+
+
+!LineItem methodsFor: 'initialization' stamp: 'HernanWilkinson 6/22/2013 12:18'!
+initializeOf: anItem quantity: aQuantity total: aTotal
+
+	item := anItem.
+	quantity := aQuantity.
+	total := aTotal
 
 ! !
 
@@ -637,7 +702,7 @@ addToCart: aRequest
 
 ! !
 
-!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 18:41:41'!
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 22:02:50'!
 checkout: aRequest
 	
 	[
@@ -669,20 +734,31 @@ createCart: aRequest
 	on: Error
 	do: [ :anError | aRequest send404Response: (anError messageText )		]! !
 
-!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 18:42:32'!
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/8/2021 00:10:46'!
 listCart: aRequest 
 
-	[|cartID list listAsJson | 
+	[|cartID list listAsJson json jsonResult| 
 	cartID := aRequest fields at:'cartID'.
-	list := systemFacade listCartIdentifiedAs: cartID asNumber .
-		
-	listAsJson := WebUtils jsonEncode: (list asArray).
-	aRequest send200Response: (listAsJson).]
+	
+	list := systemFacade listCartIdentifiedAs: cartID asNumber.
+	
+	json := list sortedCounts.
+	jsonResult := OrderedCollection new.
+	json collect: [:content | | dic |
+		dic := Dictionary new.
+		dic at: 'ISBN' put: (content value).
+		dic at: 'Qty' put: (content key).
+		jsonResult add: dic.].
+	
+	listAsJson := WebUtils jsonEncode: (jsonResult asArray).
+	
+	aRequest send200Response: (listAsJson).
+	]
 	on: Error
 	do: [ :anError | aRequest send404Response: (anError messageText )		]
 	! !
 
-!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 19:14:50'!
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 22:21:22'!
 listCatalog: aRequest
 	
 	[|user password catalog listAsJson | 
@@ -691,8 +767,9 @@ listCatalog: aRequest
 		
 	catalog := systemFacade listCatalog: user authenticatingWith: password.
 		
-	listAsJson := WebUtils jsonEncode: (self marshal: catalog).
-	aRequest send200Response: (listAsJson).]
+	listAsJson := WebUtils jsonEncode: (catalog marshal asArray).
+	aRequest send200Response: (listAsJson).
+	]
 	on: Error
 	do: [ :anError | aRequest send404Response: (anError messageText )		]
 	! !
@@ -713,29 +790,29 @@ listPurchases: aRequest
 	! !
 
 
-!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:13:18'!
+!StoreServer methodsFor: 'catalog' stamp: 'DB 7/7/2021 21:48:14'!
 defaultCatalog
 
-	^ Dictionary new
+	^BookCatalog with: (Dictionary new
 		at: '978-0735619654' put: 1;        
 		at: '978-1583484906' put: 1;      
 		at: '978-0134769042' put: 1;      
 		at: '978-0201633610' put: 1;      
 		at: '978-0201184624' put: 1;      
 		at: '978-0131177055' put: 1;
-		yourself ! !
+		yourself)! !
 
-!StoreServer methodsFor: 'catalog' stamp: 'DB 7/7/2021 19:16:58'!
+!StoreServer methodsFor: 'catalog' stamp: 'DB 7/7/2021 23:12:23'!
 defaultCatalogWithNames
 
-	^ Dictionary new
+	^BookCatalog with: ( Dictionary new
 		at: '978-0735619654' put: (Book named: 'Object thinking'  price: 49);        
 		at: '978-1583484906' put: (Book named: 'Smalltalk, Objects, and Design' price: 23);      
 		at: '978-0134769042' put: (Book named: 'Smalltalk Best Practice Patterns' price: 66);      
-		at: '978-0201633610' put: (Book named: 'Design Patterns: Elements of Reusable Object-Oriented Software 1st Edition' price: 48);      
+		at: '978-0201633610' put: (Book named: 'Design Patterns: Elements of Reusable OO' price: 48);      
 		at: '978-0201184624' put: (Book named: 'The Design Patterns Smalltalk Companion' price: 64);      
 		at: '978-0131177055' put: (Book named: 'Working Effectively with Legacy Code' price: 50);
-		yourself ! !
+		yourself )! !
 
 
 !StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:51:25'!
@@ -743,14 +820,14 @@ destroy
 	
 	webServer ifNotNil:[webServer destroy].! !
 
-!StoreServer methodsFor: 'initialization' stamp: 'DB 7/6/2021 10:14:27'!
+!StoreServer methodsFor: 'initialization' stamp: 'DB 7/7/2021 22:04:05'!
 initializeWith: aPort 
 	
 	port := aPort.
 	
 	systemFacade := TusLibrosSystemFacade
 		authenticatingWith: AuthenticatorStub setup
-		acceptingItemsOf: self defaultCatalog
+		acceptingItemsOf: self defaultCatalogWithNames 
 		registeringOn: OrderedCollection new
 		debitingThrought: MerchantProcessorMock setup
 		measuringTimeWith: DateAndTime.
