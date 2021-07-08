@@ -39,6 +39,35 @@ setup
 	^self new initializeSetup! !
 
 
+!classDefinition: #Book category: 'TusLibros-Model'!
+Object subclass: #Book
+	instanceVariableNames: 'title amount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!Book methodsFor: 'initialization' stamp: 'DB 7/7/2021 19:01:56'!
+initializeNamed: aTitle price: anAmount 
+	
+	title := aTitle.
+	amount := anAmount.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Book class' category: 'TusLibros-Model'!
+Book class
+	instanceVariableNames: ''!
+
+!Book class methodsFor: 'as yet unclassified' stamp: 'DB 7/7/2021 18:54:37'!
+with: aTitle isbn: aISBN price: amount
+	^self new initializeWith: aTitle using: aISBN withPrice: amount. ! !
+
+
+!Book class methodsFor: 'instance creation' stamp: 'DB 7/7/2021 19:01:32'!
+named: aTitle price: anAmount 
+	^self new initializeNamed: aTitle price: anAmount ! !
+
+
 !classDefinition: #Cart category: 'TusLibros-Model'!
 Object subclass: #Cart
 	instanceVariableNames: 'catalog items'
@@ -443,6 +472,11 @@ item
 
 	^ item! !
 
+!LineItem methodsFor: 'accessing' stamp: 'DB 7/6/2021 20:28:34'!
+quantity
+
+	^ quantity! !
+
 !LineItem methodsFor: 'accessing' stamp: 'HernanWilkinson 6/22/2013 12:21'!
 total
 
@@ -455,6 +489,19 @@ initializeOf: anItem quantity: aQuantity total: aTotal
 	item := anItem.
 	quantity := aQuantity.
 	total := aTotal
+
+! !
+
+!LineItem methodsFor: 'initialization' stamp: 'DB 7/6/2021 20:46:43'!
+marshal
+
+	| json |
+	json := Dictionary new.
+	json at: 'ISBN' put: 	item.
+	json at: 'quantity' put: quantity.
+	json at: 'total' put: total.
+	
+	^json.
 
 ! !
 
@@ -558,107 +605,113 @@ doneBy: aCustomer certifiedWith: aTicket
 
 !classDefinition: #StoreServer category: 'TusLibros-Model'!
 Object subclass: #StoreServer
-	instanceVariableNames: 'port systemFacade webServer'
+	instanceVariableNames: 'port systemFacade webServer ticket'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros-Model'!
 
-!StoreServer methodsFor: 'handlers' stamp: 'DB 7/1/2021 19:58:05'!
+!StoreServer methodsFor: 'encode' stamp: 'DB 7/7/2021 19:15:35'!
+marshal: catalog
+
+	^catalog keys.
+	! !
+
+
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 18:41:28'!
 addToCart: aRequest 
 	
+	[
 	|cartID bookISBN bookQuantity| 
 	
 	cartID := aRequest fields at:'cartID'.
 	bookISBN := aRequest fields at: 'bookISBN'.
 	bookQuantity := aRequest fields at: 'bookQuantity'.
+	
+	
 	systemFacade add: bookQuantity asNumber of: bookISBN toCartIdentifiedAs: cartID asNumber .
 	
 	aRequest send200Response: bookQuantity,' ',bookISBN, ' added to cart: ', cartID.
+	] 
+	on: Error
+	do: [ :anError | aRequest send404Response: (anError messageText )		]
 
 ! !
 
-!StoreServer methodsFor: 'handlers' stamp: 'DB 6/28/2021 19:46:21'!
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 18:41:41'!
 checkout: aRequest
 	
+	[
 	|cartID ccn  cco | 
 	cartID := aRequest fields at:'cartID'.
 	ccn := aRequest fields at:'ccn'.
 	"cced := request fields at:'cced'.  02-2021"
 	cco := aRequest fields at:'cco'.
-			
-	systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
+		
+	ticket := systemFacade checkOutCartIdentifiedAs: cartID asNumber withCreditCardNumbered: ccn ownedBy: cco 
 			expiringOn: (		Month month: 11 year: 2026).
-
-	aRequest send200Response: ('').
+			
+	aRequest send200Response: (WebUtils jsonEncode: ticket marshal ).]
+	on: Error
+	do: [ :anError | aRequest send404Response: (anError messageText )		]
 	! !
 
-!StoreServer methodsFor: 'handlers' stamp: 'DB 7/1/2021 19:59:38'!
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 18:42:21'!
 createCart: aRequest 
 
-	|aUser aPassword id cartAsJson|
+	[|aUser aPassword id cartAsJson|
 	
 	aUser := aRequest fields at:'user'.
 	aPassword := aRequest fields at:'pass'.
 	id := systemFacade createCartFor: aUser authenticatedWith: aPassword.
 	cartAsJson := WebUtils jsonEncode: (Dictionary new at: 'CartID' put: id).
 	
-	aRequest send200Response: (cartAsJson).! !
+	aRequest send200Response: (cartAsJson).] 
+	on: Error
+	do: [ :anError | aRequest send404Response: (anError messageText )		]! !
 
-!StoreServer methodsFor: 'handlers' stamp: 'DB 6/28/2021 19:45:21'!
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 18:42:32'!
 listCart: aRequest 
 
-	|cartID list listAsJson | 
+	[|cartID list listAsJson | 
 	cartID := aRequest fields at:'cartID'.
 	list := systemFacade listCartIdentifiedAs: cartID asNumber .
 		
 	listAsJson := WebUtils jsonEncode: (list asArray).
-	aRequest send200Response: (listAsJson).
+	aRequest send200Response: (listAsJson).]
+	on: Error
+	do: [ :anError | aRequest send404Response: (anError messageText )		]
 	! !
 
-!StoreServer methodsFor: 'handlers' stamp: 'DB 7/6/2021 10:13:42'!
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 19:14:50'!
 listCatalog: aRequest
 	
-	|user password list listAsJson | 
+	[|user password catalog listAsJson | 
 	user := aRequest fields at:'user'.
 	password := aRequest fields at:'pass'.
 		
-	list := systemFacade listCatalog: user authenticatingWith: password.
+	catalog := systemFacade listCatalog: user authenticatingWith: password.
 		
-	listAsJson := WebUtils jsonEncode: (list).
-	aRequest send200Response: (listAsJson).
+	listAsJson := WebUtils jsonEncode: (self marshal: catalog).
+	aRequest send200Response: (listAsJson).]
+	on: Error
+	do: [ :anError | aRequest send404Response: (anError messageText )		]
 	! !
 
-!StoreServer methodsFor: 'handlers' stamp: 'DB 6/28/2021 19:47:09'!
+!StoreServer methodsFor: 'handlers' stamp: 'DB 7/7/2021 19:53:41'!
 listPurchases: aRequest
 	
-	|user password list listAsJson | 
+	[|user password purchases listAsJson | 
 	user := aRequest fields at:'user'.
 	password := aRequest fields at:'pass'.
 		
-	list := systemFacade listPurchasesOf: user authenticatingWith: password.
+	purchases := systemFacade listPurchasesOf: user authenticatingWith: password.
 		
-	listAsJson := WebUtils jsonEncode: (list).
-	aRequest send200Response: (listAsJson).
+	listAsJson := WebUtils jsonEncode: (purchases).
+	aRequest send200Response: (listAsJson).]
+	on: Error
+	do: [ :anError | aRequest send404Response: (anError messageText )		]
 	! !
 
-
-!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:10:53'!
-DesignPatternsElementsOfReusableOOSoftware 
- ^'978-0201633610 	Design Patterns: Elements of Reusable Object-Oriented Software'! !
-
-!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:10:12'!
-SmalltalkBestPracticePatterns
-	^'978-0134769042 	Smalltalk Best Practice Patterns'! !
-
-!StoreServer methodsFor: 'catalog' stamp: 'DB 6/27/2021 22:44:40'!
-anotherItemSellByTheStore
-
-	^'anotherValidBook'! !
-
-!StoreServer methodsFor: 'catalog' stamp: 'DB 6/27/2021 22:44:48'!
-anotherItemSellByTheStorePrice
-
-	^15! !
 
 !StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:13:18'!
 defaultCatalog
@@ -672,24 +725,17 @@ defaultCatalog
 		at: '978-0131177055' put: 1;
 		yourself ! !
 
-!StoreServer methodsFor: 'catalog' stamp: 'DB 6/27/2021 22:44:04'!
-itemSellByTheStore
+!StoreServer methodsFor: 'catalog' stamp: 'DB 7/7/2021 19:16:58'!
+defaultCatalogWithNames
 
-	^ 'validBook'! !
-
-!StoreServer methodsFor: 'catalog' stamp: 'DB 6/27/2021 22:44:26'!
-itemSellByTheStorePrice
-
-	^10! !
-
-!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:08:57'!
-objectThinking
-
-	^'978-0735619654 	Object Thinking'! !
-
-!StoreServer methodsFor: 'catalog' stamp: 'DB 7/6/2021 10:09:31'!
-smalltalkObjectsAndDesign
-	^'978-1583484906 	Smalltalk, Objects, and Design'! !
+	^ Dictionary new
+		at: '978-0735619654' put: (Book named: 'Object thinking'  price: 49);        
+		at: '978-1583484906' put: (Book named: 'Smalltalk, Objects, and Design' price: 23);      
+		at: '978-0134769042' put: (Book named: 'Smalltalk Best Practice Patterns' price: 66);      
+		at: '978-0201633610' put: (Book named: 'Design Patterns: Elements of Reusable Object-Oriented Software 1st Edition' price: 48);      
+		at: '978-0201184624' put: (Book named: 'The Design Patterns Smalltalk Companion' price: 64);      
+		at: '978-0131177055' put: (Book named: 'Working Effectively with Legacy Code' price: 50);
+		yourself ! !
 
 
 !StoreServer methodsFor: 'initialization' stamp: 'DB 6/27/2021 21:51:25'!
@@ -737,7 +783,7 @@ listenOn: aPort
 
 !classDefinition: #Ticket category: 'TusLibros-Model'!
 Object subclass: #Ticket
-	instanceVariableNames: 'lineItems'
+	instanceVariableNames: 'lineItems items'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros-Model'!
@@ -748,10 +794,28 @@ total
 	^lineItems sum: [ :aLineItem | aLineItem total]! !
 
 
+!Ticket methodsFor: 'initialization' stamp: 'DB 7/6/2021 20:32:23'!
+asDictonary
+	
+	items := Dictionary new.
+	lineItems do: [:lineItem | items at: lineItem item put:  lineItem asDictonary		].
+	^items.! !
+
 !Ticket methodsFor: 'initialization' stamp: 'HernanWilkinson 6/22/2013 12:20'!
 initializeOf: aCollectionOfLineItems
 
 	lineItems := aCollectionOfLineItems ! !
+
+!Ticket methodsFor: 'initialization' stamp: 'DB 7/6/2021 20:57:58'!
+marshal
+	
+	| json |
+	json := Dictionary new.
+	json at: 'items' put: (lineItems collect: [:lineItem | lineItem marshal]) asArray.
+	json at: 'total' put: self total.
+	^json.
+	
+! !
 
 
 !Ticket methodsFor: 'line items' stamp: 'HernanWilkinson 6/22/2013 12:33'!
@@ -880,10 +944,10 @@ add: anAmount of: aBook toCartIdentifiedAs: aCartId
 
 	self withCartSessionIdentifiedAs: aCartId do: [ :cartSession | cartSession addToCart: anAmount of: aBook ]! !
 
-!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'HernanWilkinson 6/17/2015 20:47'!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 7/6/2021 20:02:35'!
 checkOutCartIdentifiedAs: aCartId withCreditCardNumbered: aCreditCartNumber ownedBy: anOwner expiringOn: anExpirationMonthOfYear
 
-	self
+	^self
 		withCartSessionIdentifiedAs: aCartId
 		do: [ :cartSession | cartSession
 			checkOutCartWithCreditCardNumbered: aCreditCartNumber
@@ -907,10 +971,10 @@ listCartIdentifiedAs: aCartId
 
 	^ self withCartSessionIdentifiedAs: aCartId do: [ :cartSession | cartSession cartContent ]! !
 
-!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 7/6/2021 09:41:44'!
+!TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'DB 7/7/2021 19:13:34'!
 listCatalog: aUser authenticatingWith: aPassword 
 
-	^self if: aUser authenticatesWith: aPassword do: [ ^catalog keys]! !
+	^self if: aUser authenticatesWith: aPassword do: [ ^catalog ]! !
 
 !TusLibrosSystemFacade methodsFor: 'facade protocol' stamp: 'HAW 11/26/2018 20:33:49'!
 listPurchasesOf: aUser authenticatingWith: aPassword

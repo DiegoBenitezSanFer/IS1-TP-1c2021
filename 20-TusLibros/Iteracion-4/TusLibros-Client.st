@@ -1,29 +1,24 @@
 !classDefinition: #CartWindow category: 'TusLibros-Client'!
 Panel subclass: #CartWindow
-	instanceVariableNames: 'booksQtyTextBoxMorh message booksListMorph catalogListMorph'
+	instanceVariableNames: 'booksQtyTextBoxMorh booksListMorph catalogListMorph listPurchasesButtonMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros-Client'!
 
-!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 10:35:09'!
+!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 19:44:44'!
 buildCart1stRow
 	
 	|firstRowLayoutMorph addToCartButtonMorph |
 	
 	addToCartButtonMorph := PluggableButtonMorph model: self model stateGetter: nil action: #addToCartRequest  label: 'Add to cart'.
-
 	
 	catalogListMorph := PluggableListMorph model: self model listGetter: #catalog indexGetter: #catalogListIndex indexSetter: #catalogListIndex:.
 	
 	catalogListMorph  borderColor: Color skyBlue; borderWidth: 1; morphWidth:300.
 	
-	
 	booksQtyTextBoxMorh := TextModelMorph textProvider: self model textGetter: #bookQtyText textSetter: #bookQtyText:.
 	
-	
-	booksQtyTextBoxMorh textMorph setProperty: #keyStroke: toValue: [:key |
-		booksQtyTextBoxMorh textMorph acceptContents ].
-	
+	booksQtyTextBoxMorh textMorph setProperty: #keyStroke: toValue: [:key | booksQtyTextBoxMorh textMorph acceptContents ].
 	
 	firstRowLayoutMorph := LayoutMorph newRow.
 	firstRowLayoutMorph separation: 25;
@@ -34,13 +29,15 @@ buildCart1stRow
 	
 	^firstRowLayoutMorph! !
 
-!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 00:32:13'!
+!CartWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 19:20:00'!
 buildCart2stRow
 	
 	|secondRowLayoutMorph checkoutButtonMorph  |
 
 	checkoutButtonMorph := PluggableButtonMorph model: self model stateGetter: nil action: #checkoutInput  label: 'Checkout'.	
 	
+	listPurchasesButtonMorph := PluggableButtonMorph model: self model stateGetter: nil action: #listPurchases  label: 'Purchases'.	
+		
 	booksListMorph := PluggableListMorph model: self model listGetter: #books indexGetter: #booksListIndex indexSetter: #booksListIndex:.
 	
 	booksListMorph  borderColor: Color skyBlue; borderWidth: 1; morphWidth:300.
@@ -50,7 +47,8 @@ buildCart2stRow
 	secondRowLayoutMorph separation: 25;
 	addMorph: (LabelMorph contents:'List');
 	addMorph: booksListMorph;
-	addMorph: checkoutButtonMorph.
+	addMorph: checkoutButtonMorph;
+	addMorph: listPurchasesButtonMorph.
 	
 	
 	^secondRowLayoutMorph! !
@@ -65,7 +63,7 @@ buildMorphicWindow
 	addMorph: self buildCart2stRow . ! !
 
 
-!CartWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 21:21:44'!
+!CartWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/6/2021 19:54:31'!
 checkoutInput
 
 	CheckoutWindow openWith: model.! !
@@ -74,12 +72,6 @@ checkoutInput
 defaultExtent
 
 	^ 1035@485! !
-
-!CartWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 20:06:04'!
-openSuccessfulWindow
-
-	SuccessfulWindow openWith: message.
-	! !
 
 !CartWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/6/2021 10:30:31'!
 refreshCatalog
@@ -99,7 +91,7 @@ refreshListOfBooks
 	model listCartRequest! !
 
 
-!CartWindow methodsFor: 'initialization' stamp: 'DB 7/6/2021 10:27:36'!
+!CartWindow methodsFor: 'initialization' stamp: 'DB 7/7/2021 20:07:34'!
 initializeWith: existedModel title: aTitle
 
 	self titleMorph showButtonsNamed: #( close collapse ).
@@ -114,6 +106,23 @@ initializeWith: existedModel title: aTitle
 	self model when: #successfulAdded send: #refreshListOfBooks to: self.
 	self model when: #successfulList send: #refreshListCart to: self.
 	self model when: #checkoutInput send: #checkoutInput to: self.
+	self model when: #listPurchases send: #listPurchases to: self.
+	self model when: #successfulListPurchases send: #openListPurchases to: self.
+	
+	! !
+
+!CartWindow methodsFor: 'initialization' stamp: 'DB 7/7/2021 19:25:54'!
+listPurchases
+
+	model sendListPurchasesRequest.
+	"ListPurchases openWith: model "
+	
+	! !
+
+!CartWindow methodsFor: 'initialization' stamp: 'DB 7/7/2021 20:18:42'!
+openListPurchases
+
+	ListPurchases openWith: model
 	
 	! !
 
@@ -131,16 +140,17 @@ openWith: model
 
 !classDefinition: #CheckoutWindow category: 'TusLibros-Client'!
 Panel subclass: #CheckoutWindow
-	instanceVariableNames: 'cnnTextBoxMorph ccoTextBoxMorph ccedTextBoxMorph checkoutButtonMorph'
+	instanceVariableNames: 'cnnTextBoxMorph ccoTextBoxMorph ccedTextBoxMorph checkoutButtonMorph ticketListBoxMorph'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros-Client'!
 
-!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 00:54:58'!
+!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 21:00:09'!
 buildCCED
 
 	| cced |
-	ccedTextBoxMorph := TextModelMorph textProvider: self model textGetter: nil textSetter: nil.
+	ccedTextBoxMorph := TextModelMorph textProvider: self model textGetter: #ccedText textSetter: #ccedText:.
+	ccedTextBoxMorph borderWidth: 3.
 	
 	cced := LayoutMorph newRow.
 	cced separation: 10;
@@ -149,11 +159,12 @@ buildCCED
 	
 	^cced! !
 
-!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 00:53:32'!
+!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 20:49:54'!
 buildCCN
 
 	| ccn |
-	cnnTextBoxMorph := TextModelMorph textProvider: self model textGetter: nil textSetter: nil.
+	cnnTextBoxMorph := TextModelMorph textProvider: self model textGetter: #ccnText textSetter: #ccnText:.
+	cnnTextBoxMorph borderWidth: 3.
 	
 	ccn := LayoutMorph newRow.
 	ccn separation: 10;
@@ -162,16 +173,20 @@ buildCCN
 	
 	^ccn! !
 
-!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 00:53:23'!
+!CheckoutWindow methodsFor: 'GUI building' stamp: 'DB 7/7/2021 20:50:08'!
 buildCCO
 
-	| cco |
-	ccoTextBoxMorph := TextModelMorph textProvider: self model textGetter: nil textSetter: nil.
+	| cco  |
+	ccoTextBoxMorph := TextModelMorph textProvider: self model textGetter: #ccoText textSetter: #ccoText:.
+	ccoTextBoxMorph borderWidth: 3.
+	
+	ticketListBoxMorph :=  PluggableListMorph model: self model listGetter: #tickets indexGetter: #ticketsListIndex indexSetter: #ticketsListIndex:.
 	
 	cco := LayoutMorph newRow.
 	cco separation: 10;
 	addMorph: (LabelMorph contents: 'Credit Card Owner:');
-	addMorph: ccoTextBoxMorph.
+	addMorph: ccoTextBoxMorph;
+	addMorph: ticketListBoxMorph.
 	
 	^cco! !
 
@@ -200,18 +215,13 @@ buildMorphicWindow
 	addMorph: self buildCheckoutButton.! !
 
 
-!CheckoutWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 21:34:48'!
-closeCheckoutWindow
-
-	self closeButtonClicked.! !
-
-!CheckoutWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 21:16:04'!
+!CheckoutWindow methodsFor: 'initialization' stamp: 'DB 7/1/2021 21:16:04'!
 defaultExtent
 
 	^ 1035@485
 	! !
 
-!CheckoutWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 21:34:40'!
+!CheckoutWindow methodsFor: 'initialization' stamp: 'DB 7/6/2021 21:20:30'!
 initializeWith: existedModel title: aTitle
 
 	self titleMorph showButtonsNamed: #( close collapse ).
@@ -222,7 +232,19 @@ initializeWith: existedModel title: aTitle
 	self openInWorld.
 	self yourself.
 	
-	self model when: #successfulCheckout send: #closeCheckoutWindow to: self.! !
+	self model when: #successfulCheckout send: #refeshTicket to: self.! !
+
+
+!CheckoutWindow methodsFor: 'events' stamp: 'DB 7/1/2021 21:34:48'!
+closeCheckoutWindow
+
+	self closeButtonClicked.! !
+
+!CheckoutWindow methodsFor: 'events' stamp: 'DB 7/6/2021 21:21:13'!
+refeshTicket
+
+	ticketListBoxMorph updateList.
+	ticketListBoxMorph setSelectionIndex: 0.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -236,14 +258,72 @@ openWith: model
 	^self new initializeWith: model title: 'Checkout'! !
 
 
-!classDefinition: #LoginWindow category: 'TusLibros-Client'!
-Panel subclass: #LoginWindow
+!classDefinition: #ListPurchases category: 'TusLibros-Client'!
+Panel subclass: #ListPurchases
+	instanceVariableNames: 'purchasesListBoxMorph'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Client'!
+
+!ListPurchases methodsFor: 'initialization' stamp: 'DB 7/7/2021 19:21:31'!
+initializeWith: existedModel title: aTitle
+
+	self titleMorph showButtonsNamed: #( close collapse ).
+	self setLabel: aTitle.
+	self model: existedModel.
+	self morphExtent: (self defaultExtent).
+	self buildMorphicWindow.
+	self openInWorld.
+	self yourself.! !
+
+
+!ListPurchases methodsFor: 'GUI building' stamp: 'DB 7/7/2021 20:22:13'!
+buildMorphicWindow
+
+	self layoutMorph beColumn;
+	separation: 15;
+	axisEdgeWeight: 0;
+	addMorph: self buildPurchases.! !
+
+!ListPurchases methodsFor: 'GUI building' stamp: 'DB 7/7/2021 21:02:24'!
+buildPurchases
+	| purchases |
+	
+	purchasesListBoxMorph := PluggableListMorph model: self model listGetter: #purchases indexGetter: #purchasesListIndex indexSetter: #purchasesListIndex:.
+	purchasesListBoxMorph morphExtent: 500@200.
+	
+	purchases := LayoutMorph newRow.
+	purchases separation: 10;
+	addMorph: (LabelMorph contents: 'Purchases:');
+	addMorph: purchasesListBoxMorph.
+	^purchases ! !
+
+!ListPurchases methodsFor: 'GUI building' stamp: 'DB 7/7/2021 19:22:03'!
+defaultExtent
+
+	^ 1035@485
+	! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'ListPurchases class' category: 'TusLibros-Client'!
+ListPurchases class
+	instanceVariableNames: ''!
+
+!ListPurchases class methodsFor: 'as yet unclassified' stamp: 'DB 7/7/2021 19:24:04'!
+openWith: model
+
+	^self new initializeWith: model title: 'Purchases'! !
+
+
+!classDefinition: #TusLibrosLogin category: 'TusLibros-Client'!
+Panel subclass: #TusLibrosLogin
 	instanceVariableNames: 'userTextBoxMorh passTextBoxMorh'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros-Client'!
 
-!LoginWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 01:02:45'!
+!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 7/6/2021 01:02:45'!
 buildLoginButtom
 	
 	|buttonRowLayoutMorph sendLoginButtonMorph|
@@ -258,20 +338,20 @@ buildLoginButtom
 	
 	! !
 
-!LoginWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 01:07:38'!
+!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 7/7/2021 20:59:21'!
 buildLoginPass
 	
 	|passRowLayoutMorph |
 	
 	passTextBoxMorh := TextModelMorph textProvider: self model textGetter: #passText textSetter: #passText:.
-	
+	passTextBoxMorh borderWidth: 2.
+	passTextBoxMorh morphExtent: 200@30.
 
-	
 	passTextBoxMorh textMorph setProperty: #keyStroke: toValue: [:key |
 		passTextBoxMorh textMorph acceptContents ].
 	
 	passRowLayoutMorph := LayoutMorph newRow.
-	passRowLayoutMorph separation: 15;
+	passRowLayoutMorph separation: 10;
 	addMorph: (LabelMorph contents:'Password');
 	addMorph: passTextBoxMorh.
 	
@@ -279,18 +359,20 @@ buildLoginPass
 	
 	! !
 
-!LoginWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 01:03:35'!
+!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 7/7/2021 20:59:25'!
 buildLoginUser
 	
 	|userRowLayoutMorph |
 	
 	userTextBoxMorh := TextModelMorph textProvider: self model textGetter: #userText textSetter: #userText:.
+	userTextBoxMorh borderWidth: 2.
+	userTextBoxMorh morphExtent: 200@30.
 	
 	userTextBoxMorh textMorph setProperty: #keyStroke: toValue: [:key |
 		userTextBoxMorh textMorph acceptContents ].
 	
 	userRowLayoutMorph := LayoutMorph newRow.
-	userRowLayoutMorph separation: 20;
+	userRowLayoutMorph separation: 10;
 	addMorph: (LabelMorph contents:'User');
 	addMorph: userTextBoxMorh.
 	
@@ -298,7 +380,7 @@ buildLoginUser
 	
 	! !
 
-!LoginWindow methodsFor: 'GUI building' stamp: 'DB 7/6/2021 00:58:35'!
+!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 7/6/2021 00:58:35'!
 buildMorphicWindow
 
 	self layoutMorph beColumn;
@@ -308,13 +390,13 @@ buildMorphicWindow
 	addMorph: self buildLoginPass;
 	addMorph: self buildLoginButtom. ! !
 
-
-!LoginWindow methodsFor: 'as yet unclassified' stamp: 'DB 6/28/2021 21:22:35'!
+!TusLibrosLogin methodsFor: 'GUI building' stamp: 'DB 6/28/2021 21:22:35'!
 defaultExtent
 
 	^ 1035@485! !
 
-!LoginWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 21:02:55'!
+
+!TusLibrosLogin methodsFor: 'initialization' stamp: 'DB 7/1/2021 21:02:55'!
 initializeWith: aTitle
 
 	self titleMorph showButtonsNamed: #( close collapse ).
@@ -327,7 +409,8 @@ initializeWith: aTitle
 				
 	self model when: #successfulLogin send: #openCartWindow to: self! !
 
-!LoginWindow methodsFor: 'as yet unclassified' stamp: 'DB 7/6/2021 10:38:48'!
+
+!TusLibrosLogin methodsFor: 'event' stamp: 'DB 7/6/2021 10:38:48'!
 openCartWindow
 
 	self closeButtonClicked .
@@ -339,45 +422,14 @@ openCartWindow
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
-!classDefinition: 'LoginWindow class' category: 'TusLibros-Client'!
-LoginWindow class
+!classDefinition: 'TusLibrosLogin class' category: 'TusLibros-Client'!
+TusLibrosLogin class
 	instanceVariableNames: ''!
 
-!LoginWindow class methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 17:56:52'!
+!TusLibrosLogin class methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 17:56:52'!
 open
 
 	^self new initializeWith: 'Login window'! !
-
-
-!classDefinition: #SuccessfulWindow category: 'TusLibros-Client'!
-Panel subclass: #SuccessfulWindow
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros-Client'!
-
-!SuccessfulWindow methodsFor: 'initialization' stamp: 'DB 7/1/2021 20:03:37'!
-initializeWith:  aTitle
-
-	self titleMorph showButtonsNamed: #( close collapse ).
-	self setLabel: aTitle.
-	self morphExtent: (self defaultExtent).
-	self openInWorld.
-	self yourself.! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'SuccessfulWindow class' category: 'TusLibros-Client'!
-SuccessfulWindow class
-	instanceVariableNames: ''!
-
-!SuccessfulWindow class methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 20:02:05'!
-open! !
-
-!SuccessfulWindow class methodsFor: 'as yet unclassified' stamp: 'DB 7/1/2021 20:03:04'!
-openWith: title
-	
-	^self new initializeWith: title! !
 
 
 !classDefinition: #RestInterfaceClient category: 'TusLibros-Client'!
@@ -387,7 +439,12 @@ Object subclass: #RestInterfaceClient
 	poolDictionaries: ''
 	category: 'TusLibros-Client'!
 
-!RestInterfaceClient methodsFor: 'sending request' stamp: 'DB 7/5/2021 23:30:48'!
+!RestInterfaceClient methodsFor: 'sending request' stamp: 'DB 6/28/2021 21:32:04'!
+correctlyEncodeSpacesForUrlRequestParameter: aParameter
+	
+	^ aParameter copyReplaceAll: ' ' with: '%20'. ! !
+
+!RestInterfaceClient methodsFor: 'sending request' stamp: 'DB 7/7/2021 20:29:30'!
 sendAddToCartRequest: aCartID bookISBN: aISBN bookQuantity: aQty
 
 	| resp  |
@@ -399,16 +456,17 @@ sendAddToCartRequest: aCartID bookISBN: aISBN bookQuantity: aQty
 				'bookISBN' -> aISBN.
 				'bookQuantity' -> aQty
 			}.
-			
-
-	^resp content.
+	
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream)).] 
+		ifFalse:[^self error: resp content].
 	
 	
 	
 	
 	! !
 
-!RestInterfaceClient methodsFor: 'sending request' stamp: 'DB 7/1/2021 21:31:59'!
+!RestInterfaceClient methodsFor: 'sending request' stamp: 'DB 7/6/2021 21:05:48'!
 sendCheckoutRequest: aCartID ccn: aCCN cced: aCCED cco: aCCO
 
 	| resp  |
@@ -476,6 +534,27 @@ sendListCatalogRequest: aUserName authenticated: aPassword
 	
 	! !
 
+!RestInterfaceClient methodsFor: 'sending request' stamp: 'DB 7/7/2021 19:52:46'!
+sendListPurchasesRequest: aUserName pass: aPassword
+
+	| resp  |
+	
+	"http://localhost:8080/listPurchases?user=lucas&pass=123"
+	resp := WebClient htmlSubmit: (self url,'/listPurchases') fields:  {
+				'user' ->  aUserName.
+				'pass' -> aPassword
+			}.
+			
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream)).] 
+		ifFalse:[^self error: resp content].
+		
+	
+	
+	
+	
+	! !
+
 !RestInterfaceClient methodsFor: 'sending request' stamp: 'DB 7/5/2021 23:25:21'!
 sendLoginRequest: aUserName pass: aPassword
 
@@ -508,16 +587,10 @@ url
 	
 	^'http://localhost:', self port asString! !
 
-
-!RestInterfaceClient methodsFor: 'as yet unclassified' stamp: 'DB 6/28/2021 21:32:04'!
-correctlyEncodeSpacesForUrlRequestParameter: aParameter
-	
-	^ aParameter copyReplaceAll: ' ' with: '%20'. ! !
-
 
 !classDefinition: #WindowModel category: 'TusLibros-Client'!
 Object subclass: #WindowModel
-	instanceVariableNames: 'restInterface user pass cartID bookISBN bookQty cartSelectedIndex books catalog catalogSelectedIndex'
+	instanceVariableNames: 'restInterface user pass cartID bookQty cartSelectedIndex catalogSelectedIndex ticketsSelectedIndex books catalog ccn cced cco ticket purchases purchasesListIndex'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros-Client'!
@@ -531,20 +604,10 @@ addToCartRequest
 	
 	! !
 
-!WindowModel methodsFor: 'request' stamp: 'DB 7/1/2021 21:14:09'!
+!WindowModel methodsFor: 'request' stamp: 'DB 7/6/2021 19:51:39'!
 checkoutInput
 
 	self triggerEvent: #checkoutInput with: self.
-	
-	! !
-
-!WindowModel methodsFor: 'request' stamp: 'DB 7/1/2021 21:33:20'!
-checkoutRequest
-
-	restInterface sendAddToCartRequest: cartID bookISBN: bookISBN bookQuantity: bookQty.
-	
-	self triggerEvent: #successfulCheckout with: self.
-	
 	! !
 
 !WindowModel methodsFor: 'request' stamp: 'DB 7/1/2021 20:35:24'!
@@ -553,6 +616,20 @@ listCartRequest
  	books := restInterface sendListCartRequest: cartID.
 		
 	self triggerEvent: #successfulList with: self.
+	! !
+
+!WindowModel methodsFor: 'request' stamp: 'DB 7/7/2021 19:20:21'!
+listPurchases
+
+	self triggerEvent: #listPurchases with: self.
+	! !
+
+!WindowModel methodsFor: 'request' stamp: 'DB 7/6/2021 20:49:32'!
+sendCheckoutRequest
+
+	ticket := restInterface sendCheckoutRequest: cartID ccn: ccn  cced: cced cco: cco.
+	
+	self triggerEvent: #successfulCheckout with: self.
 	! !
 
 !WindowModel methodsFor: 'request' stamp: 'DB 7/6/2021 10:27:51'!
@@ -564,7 +641,16 @@ sendListCatalogRequest
 	
 	! !
 
-!WindowModel methodsFor: 'request' stamp: 'DB 7/1/2021 20:10:37'!
+!WindowModel methodsFor: 'request' stamp: 'DB 7/7/2021 20:05:41'!
+sendListPurchasesRequest
+	
+	purchases :=  restInterface sendListPurchasesRequest: user pass: pass.
+	
+	self triggerEvent: #successfulListPurchases with: self.
+	
+	! !
+
+!WindowModel methodsFor: 'request' stamp: 'DB 7/7/2021 18:45:43'!
 sendLoginRequest
 	
 	cartID :=  restInterface sendLoginRequest: user pass: pass.
@@ -574,17 +660,27 @@ sendLoginRequest
 	! !
 
 
-!WindowModel methodsFor: 'initialization' stamp: 'DB 7/6/2021 10:46:04'!
+!WindowModel methodsFor: 'initialization' stamp: 'DB 7/7/2021 20:41:18'!
 initialize
 
 	restInterface := RestInterfaceClient new.
 	user := ''.
 	pass := ''.
-	catalog := OrderedCollection new.
 	bookQty := ''.
+	ccn := ''.
+	cced := ''.
+	cco := ''.
+	books := OrderedCollection new.
 	cartSelectedIndex := 0.
+	
+	catalog := OrderedCollection new.
 	catalogSelectedIndex := 0.
-	books := OrderedCollection new.! !
+	
+	ticket := Dictionary new.
+	ticketsSelectedIndex := 0.
+		
+	purchases := OrderedCollection new.
+	purchasesListIndex := 0! !
 
 
 !WindowModel methodsFor: 'getter' stamp: 'DB 7/1/2021 18:54:03'!
@@ -597,8 +693,9 @@ books
 
 	^books! !
 
-!WindowModel methodsFor: 'getter' stamp: 'DB 7/6/2021 10:46:04'!
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 20:40:44'!
 booksListIndex
+
 	^cartSelectedIndex! !
 
 !WindowModel methodsFor: 'getter' stamp: 'DB 7/6/2021 10:24:28'!
@@ -606,14 +703,53 @@ catalog
 
 	^catalog! !
 
-!WindowModel methodsFor: 'getter' stamp: 'DB 7/6/2021 10:40:36'!
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 20:40:37'!
 catalogListIndex
+
 	^catalogSelectedIndex! !
+
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 20:40:33'!
+ccedText
+
+	^cced! !
+
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/6/2021 19:25:26'!
+ccnText
+
+	^ccn! !
+
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 20:40:27'!
+ccoText
+
+	^cco! !
 
 !WindowModel methodsFor: 'getter' stamp: 'DB 6/28/2021 21:57:01'!
 passText
 
 	^pass! !
+
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 20:34:34'!
+purchases
+	
+	| purchacesAsOrderCollection |
+	purchacesAsOrderCollection := OrderedCollection new.
+	(purchases keysAndValuesDo: [:aKey :aValue | purchacesAsOrderCollection add: (aKey, ' price: ', aValue asString)]).
+	^purchacesAsOrderCollection asArray.! !
+
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 20:15:19'!
+purchasesListIndex
+
+	^purchasesListIndex! !
+
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 19:45:29'!
+tickets
+	
+	^(ticket at: 'items' ifAbsent:[OrderedCollection new]) collect: [:item | (item at: 'ISBN'), ' | ',(item at: 'quantity') asString,' | ',(item at: 'total') asString] ! !
+
+!WindowModel methodsFor: 'getter' stamp: 'DB 7/7/2021 20:40:02'!
+ticketsListIndex
+
+	^ticketsSelectedIndex! !
 
 !WindowModel methodsFor: 'getter' stamp: 'DB 6/28/2021 21:03:13'!
 userText
@@ -636,10 +772,30 @@ catalogListIndex: anIndex
 
 	catalogSelectedIndex := anIndex ! !
 
+!WindowModel methodsFor: 'setter' stamp: 'DB 7/6/2021 19:24:20'!
+ccedText: aCreditCardExpirationDate
+
+	cced  := aCreditCardExpirationDate.! !
+
+!WindowModel methodsFor: 'setter' stamp: 'DB 7/6/2021 19:25:02'!
+ccnText: aCreditCardNumber
+
+	ccn  := aCreditCardNumber.! !
+
 !WindowModel methodsFor: 'setter' stamp: 'DB 6/28/2021 21:57:15'!
 passText: aPassword
 
  	pass := aPassword! !
+
+!WindowModel methodsFor: 'setter' stamp: 'DB 7/7/2021 20:15:24'!
+purchasesListIndex: anIndex
+
+	purchasesListIndex := anIndex ! !
+
+!WindowModel methodsFor: 'setter' stamp: 'DB 7/6/2021 21:18:34'!
+ticketsListIndex: anIndex
+
+	ticketsSelectedIndex := anIndex ! !
 
 !WindowModel methodsFor: 'setter' stamp: 'DB 6/28/2021 21:09:47'!
 userText: aUser
